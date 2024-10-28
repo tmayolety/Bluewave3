@@ -1,0 +1,355 @@
+@import 'https://code.highcharts.com/css/highcharts.css';
+
+
+$chart-glow-transition:		0.4s;
+
+
+.chart-container{
+	@include				abs-pos(50%, auto, auto, 50%);
+	transform:				translate(-50%, -50%);
+	width:					100%;
+	height:					100%;
+
+	&.outside-highchart{
+		width:				fit-content;
+		height:				fit-content;
+	}
+
+	.highcharts-axis-labels{
+		font-family:		'polar_semibold';
+		opacity:			0.7;
+		font-size:			0.7rem;
+	}	
+}
+
+.chart-container{
+
+	.highcharts-point-active{
+		transition:			fill $chart-glow-transition 0s ease-in-out,
+							filter $chart-glow-transition 0s ease-in-out;
+	}
+ 
+	&.highcharts-point-bg-no{
+		.highcharts-point-bg{
+			fill:			rgba(255,255,255,0);
+		}
+	}
+}
+
+////////////////
+// DARK MODE //
+////////////////
+body[data-scheme="dark"]{
+	.highcharts-point-bg{
+		fill:				rgba(255,255,255,0.1);
+	}
+}
+
+////////////////
+// LIGHT MODE //
+////////////////
+body[data-scheme="light"]{
+	.highcharts-point-bg{
+		fill:				rgba(0,0,0,0.1);
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Force INFO VISIBLE //////////////////////////////////////////////////
+.highcharts-data-label-color-0{
+	top:					inherit!important;
+	opacity:				1!important;
+}
+.highcharts-data-label-color-1{
+	//top:					inherit!important;
+	opacity:				0!important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////
+// COLORS & GLOW //
+////////////////////////////////////////////////////////////////////////
+.chart-container{
+	@each $name, $color in $colors--type-list{
+		&.color-#{$name}{
+			.highcharts-point-active{
+				fill:				$color;
+				filter:				drop-shadow(0 0 4px $color);
+			}
+			.info .title1,
+			.info .title2{
+				text-shadow:		0px 0px 20px $color,
+									0px 0px 50px $color,
+									0px 0px 75px $color,
+									0px 0px 100px $color;
+			}
+			svg.icon{
+				fill:				$color;
+				filter:				drop-shadow(0 0 10px $color);
+			}
+		}
+	}
+
+	&.color-white{
+		.highcharts-point-active{
+			fill:				white;
+		}
+		.info .title1, .info .title2{
+			text-shadow:		0px 0px 20px white,
+								0px 0px 50px white,
+								0px 0px 75px white,
+								0px 0px 100px white;
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////
+// INFOS //
+////////////////////////////////////////////////////////////////////////
+//-----------------------------------------title1---title-2-----icon
+$chart-info--size:				mini		18px	10px		20px,
+								sm			24px	11px		25px,
+								med			32px	11px		30px,
+								lg			48px	12px		35px,
+								xl			70px	12px		40px;
+
+.chart-container{
+
+	.info{
+		position:				absolute;
+		left:					0%;
+		transform:				translate(-50%, 0);
+		text-align:				center;
+
+		.separator{
+			width:				1px;
+			display:			block;
+		}
+	}
+
+	// INFO TOP POSITION
+	@each $name, $value1, $value2 in $breakpoints-list {
+		@media screen #{$value1 $value2}{
+			@for $i from 1 through 300 {
+				&.info-top-#{$name}-#{$i}{
+					.info{
+						top:	#{$i}px;
+					}					
+				}
+			}
+		}
+	}
+
+	.title1{
+		@extend					%font-regular;
+		font-weight:			700;
+		transition:				text-shadow 0.4s 0s ease-in-out;
+	}
+
+	.title2{
+		@extend					%font-regular;
+		font-weight:			700;
+		transition:				text-shadow 0.4s 0s ease-in-out;
+	}
+
+	svg.icon{
+		fill:					white;
+		stroke:					none!important;
+		@include				transition(fill 0.4s 0s ease-in-out);
+	}
+
+
+	// QUARTER
+	&#gauge-quarter{
+		.info{
+			transform:			translate(-100%, 0);
+			.title2{
+				text-align:		right;
+			}
+		}
+	}
+
+
+	@each $name, $value1, $value2 in $breakpoints-list {
+		@media screen #{$value1 $value2}{
+
+			@each $name-size, $title1, $title2, $icon in $chart-info--size{
+				&.info-#{$name}-#{$name-size}{
+					.title1{
+						font-size:		$title1;
+						line-height:	$title1;
+					}
+
+					.title2{
+						font-size:		$title2;
+						line-height:	#{$title2 + 2px};
+					}
+					svg.icon{
+						width:			$icon;
+						height:			$icon;
+					}
+				}
+			}
+		}
+	}
+}
+
+// SCHEME /////////////////////////////////////////
+body[data-scheme="dark"]{
+	.chart-container{
+		.info{
+			color:					white;
+		}	
+	}
+}
+body[data-scheme="light"]{
+	.chart-container{
+		.info{
+			color:					black;
+		}	
+	}
+}
+
+
+
+
+
+
+
+
+
+// SCHEME PLOTBAND /////////////////////////////////////////
+body[data-scheme="dark"]{
+	.plotBands-yellow{
+		fill:					yellow;
+		fill-opacity:			1;
+	}
+	.plotBands-yellow-bg{
+		fill:					yellow;
+		fill-opacity:			0.3;
+	}
+	.plotBands-red{
+		fill:					red;
+		fill-opacity:			1;
+	}
+	.plotBands-red-bg{
+		fill:					red;
+		fill-opacity:			0.3;
+	}
+	.plotBands-gray{
+		fill:					white;
+		fill-opacity:			0.05;
+	}
+	.plotBands-gray-bg{
+		fill:					white;
+		fill-opacity:			0.05;
+	}
+
+}
+
+body[data-scheme="light"]{
+	.plotBands-yellow{
+		fill:					#eac118;
+		fill-opacity:			1;
+	}
+	.plotBands-yellow-bg{
+		fill:					#eac118;
+		fill-opacity:			1;
+	}
+	.plotBands-red{
+		fill:					red;
+		fill-opacity:			1;
+	}
+	.plotBands-red-bg{
+		fill:					red;
+		fill-opacity:			1;
+	}
+	.plotBands-gray{
+		fill:					black;
+		fill-opacity:			0.1;
+	}
+	.plotBands-gray-bg{
+		fill:					black;
+		fill-opacity:			0.1;
+	}
+
+}
+
+
+
+
+
+
+// HIGHCHARTS CSS //
+.highcharts-background{
+	fill:transparent;
+}
+
+
+.highcharts-pane{
+	fill-opacity:0;
+}
+
+body[data-scheme="dark"]{
+	.highcharts-pane{
+		fill:white;
+	}
+}
+body[data-scheme="light"]{
+	.highcharts-pane{
+		fill:black;
+	}
+}
+
+
+
+
+.highcharts-dial{
+  fill:						green!important;
+  z-index:					1;
+}
+
+.highcharts-pivot{
+  transition:				fill 0.4s 0s ease-in-out;
+  fill:						black!important;
+  stroke:					green!important;
+  stroke-width:				4px;
+  z-index:					2;
+}
