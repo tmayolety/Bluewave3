@@ -1,6 +1,5 @@
 <script setup>
 import IconDigitalLine from '../components/IconDigitalLine.vue'
-import { logout } from '@/store/auth';
 
 </script>
 
@@ -160,8 +159,6 @@ import { logout } from '@/store/auth';
                         </div>
 
                     </div>
-
-                    <button class="ui btn primary xl colored" @click="logout" style="margin-top: .2em;">Log out</button>
 
                 </div>
 

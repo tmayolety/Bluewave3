@@ -2,27 +2,7 @@
     import BasicHorizontalBar from '../components/BasicHorizontalBar.vue'
     import BasicHorizontalBarTotal from '../components/BasicHorizontalBarTotal.vue';
     import TanksMenu from '../submenus/TanksMenu.vue'
-    import { onMounted, ref, watchEffect, inject } from 'vue';
-    import { initializeWaterTankChart, timelineTimeData, updateWaterTankChart } from '../timelines/Timeline.js';
 
-    const getSignalValueEscalated = inject('getSignalValueEscalated');
-    const valueTotal = ref(null);
-
-    let chart;
-
-    const updateTime = async(time, rate) =>{
-        timelineTimeData.value = time
-        await updateWaterTankChart(chart, [491, 455, 456, 205, 300, 298, 297, 299, 206, 301, 207],time, rate);
-    }
-
-    onMounted(() => {
-        chart = initializeWaterTankChart('totalFuelTanks', 80000, 'rgba(235, 208, 132, 0.2)', 'rgba(235, 208, 132, 1)');
-        updateWaterTankChart(chart, [491, 455, 456, 205, 300, 298, 297, 299, 206, 301, 207], "-2d" ,"8h");
-    });
-
-    watchEffect(() => {
-        valueTotal.value = getSignalValueEscalated(491) + getSignalValueEscalated(455) + getSignalValueEscalated(456) + getSignalValueEscalated(205) + getSignalValueEscalated(300) + getSignalValueEscalated(298) + getSignalValueEscalated(297) + getSignalValueEscalated(299) + getSignalValueEscalated(206) + getSignalValueEscalated(207) + getSignalValueEscalated(301)
-    });
 
 </script>
 
@@ -78,25 +58,6 @@
 
                 </div>
 
-                <div class="ui col mini-1 xl-1 has-header grid type1 cols-mini-1"
-                    style="margin-top: .5em; width: fit-content; margin-bottom: .5em;" >
-
-                    <div class="canvas-container">
-                        <canvas id="totalFuelTanks"></canvas>
-                    </div>
-
-                    <div class="button-container">
-                        <button @click="updateTime('-12h', '1h')" :class="{active: timelineTimeData === '-12h' }" class="ui btn mini colored primary timeLineButtonWaterTanks"
-                            id="btn1WaterTanks">12H</button>
-                        <button @click="updateTime('-24h', '1h')" :class="{active: timelineTimeData === '-24h' }" class="ui btn mini colored primary timeLineButtonWaterTanks"
-                            id="btn2WaterTanks">24H</button>
-                        <button @click="updateTime('-2d', '3h')" :class="{active: timelineTimeData === '-2d' }" class="ui btn mini colored primary timeLineButtonWaterTanks"
-                            id="btn3WaterTanks">2D</button>
-                        <button @click="updateTime('-3d', '6h')" :class="{active: timelineTimeData === '-3d' }" class="ui btn mini colored primary timeLineButtonWaterTanks"
-                            id="btn4WaterTanks">3D</button>
-                    </div>
-
-                </div>
 
             </div>
 

@@ -2,27 +2,7 @@
     import BasicHorizontalBar from '../components/BasicHorizontalBar.vue'
     import BasicHorizontalBarTotal from '../components/BasicHorizontalBarTotal.vue';
     import TanksMenu from '../submenus/TanksMenu.vue'
-    import { onMounted, ref, watchEffect, inject } from 'vue';
-    import { initializeWaterTankChart, timelineTimeData, getTimelineData, updateWaterTankChart } from '../timelines/Timeline.js';
 
-    const getSignalValueEscalated = inject('getSignalValueEscalated');
-    const valueTotal = ref(null);
-
-    let chart;
-
-    const updateTime = async(time, rate) =>{
-        timelineTimeData.value = time
-        await updateWaterTankChart(chart, [453, 454], time, rate);
-    }
-
-    onMounted(() => {
-        chart = initializeWaterTankChart('totalWater', 85000, 'rgba(52, 152, 219, 0.2)', 'rgba(52, 152, 219, 1)');
-        updateWaterTankChart(chart, [453, 454], "-2d", "8h");
-    });
-
-    watchEffect(() => {
-        valueTotal.value = getSignalValueEscalated(453) + getSignalValueEscalated(454);
-    });
 
 </script>
 
@@ -63,21 +43,6 @@
 
                         </div>
 
-                    </div>
-
-                </div>
-                
-                <div class="ui col mini-1 xl-1 has-header grid type1 cols-mini-1" style="margin-top: .5em; width: fit-content;">
-
-                    <div class="canvas-container">
-                      <canvas id="totalWater"></canvas>
-                    </div>
-
-                    <div class="button-container">
-                      <button @click="updateTime('-12h', '1h')" :class="{active: timelineTimeData === '-12h'}" class="ui btn mini colored primary timeLineButtonWaterTanks" id="btn1WaterTanks">12H</button>
-                      <button @click="updateTime('-24h', '1h')" :class="{active: timelineTimeData === '-24h' }" class="ui btn mini colored primary timeLineButtonWaterTanks" id="btn2WaterTanks">24H</button>
-                      <button @click="updateTime('-2d', '3h')" :class="{active: timelineTimeData === '-2d' }" class="ui btn mini colored primary timeLineButtonWaterTanks" id="btn3WaterTanks">2D</button>
-                      <button @click="updateTime('-3d', '6h')" :class="{active: timelineTimeData === '-3d' }" class="ui btn mini colored primary timeLineButtonWaterTanks" id="btn4WaterTanks">3D</button>
                     </div>
 
                 </div>

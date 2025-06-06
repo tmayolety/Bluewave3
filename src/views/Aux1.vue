@@ -19,6 +19,7 @@ import VariousSystemsMenu from '../submenus/VariousSystemsMenu.vue'
                         <header class="col-header size-med">Various</header>
                         <div class="col-content overflow">
                             <ul class="ui table size-mini resp">
+                                
                                 <!-- Example with counting Hours
                                 <IconTextValueDigitalLine
                                     v-bind="{ signalId: 70, title: 'Compressor 1', icon: 'settings', size: '20', zeroText: 'Stopped', zeroColor: 'secondary', oneText: 'Running', oneColor: 'primary', countingHoursSignalId: 1028 }"></IconTextValueDigitalLine> 
