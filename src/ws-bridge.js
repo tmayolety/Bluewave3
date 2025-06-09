@@ -1,4 +1,4 @@
-import { applySignalData, applyAlarmData } from './main';
+import { applySignalData, applyAlarmData } from '../src/services/signalStore.js';
 
 export function startWebSocketBridge() {
   const socket = new WebSocket('ws://localhost:8765');
