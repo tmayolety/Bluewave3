@@ -1,29 +1,35 @@
-# mobile-bw-master-vue-app
+# bluewave 3
 
-This template should help get you started developing with Vue 3 in Vite.
-
-## Recommended IDE Setup
-
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+This project is the **next-generation UI for BlueWave 3**, featuring live signal visualization, WebSocket communication, and a simplified backend simulation layer.
 
 ## Project Setup
 
 ```sh
 npm install
-```
 
-### Compile and Hot-Reload for Development
+## Compile and Hot-Reload for Development
 
 ```sh
 npm run dev
-```
 
-### Compile and Minify for Production
+## Project Structure
 
 ```sh
-npm run build
-```
+bluewave3/
+├── backend/                # Python backend (signal simulator)
+│   └── server.py           # Sends simulated signal & alarm JSON
+├── src/
+│   ├── services/
+│   │   └── signalStore.js  # Vue signal store: reactivity & handlers
+│   ├── ws-bridge.js        # WebSocket bridge logic
+│   ├── views/              # Screens (e.g., SingleLine.vue)
+│   ├── components/         # Reusable Vue UI components
+│   └── ...
+├── main.js                 # App entrypoint + provide/inject wiring
+├── App.vue                 # Layout + routing
+
+## Run with
+
+```sh
+cd backend
+py server.py
