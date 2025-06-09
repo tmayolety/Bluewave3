@@ -3,7 +3,7 @@ import '../framework/css/utilities.css';
 import { createApp, ref, reactive } from 'vue';
 import App from './App.vue';
 import router from './router';
-import { startMockWebSocket } from './ws-client.js';
+import { startWebSocketBridge } from './ws-bridge.js';
 
 const app = createApp(App);
 
@@ -13,7 +13,7 @@ let valueRaw = reactive({});
 let valueEscalated = reactive({});
 let alarmsMainData = ref({});
 
-startMockWebSocket();
+startWebSocketBridge();
 
 // Función para recibir y aplicar datos de señales (mock inicial para pruebas)
 export function applySignalData(json) {
@@ -23,7 +23,7 @@ export function applySignalData(json) {
             const item = json[key];
             const value = parseFloat(item.value);
 
-            if (!valueRaw[signalId]) {
+            if (!valueRaw[signalId] || typeof valueRaw[signalId].value == 'undefined') {
                 valueRaw[signalId] = ref(value);
                 valueEscalated[signalId] = ref(value);
                 limits[signalId] = reactive(item.limits || {});
