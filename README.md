@@ -6,12 +6,14 @@ This project is the **next-generation UI for BlueWave 3**, featuring live signal
 
 ```sh
 npm install
+```
 
 ## Compile and Hot-Reload for Development
 
+
 ```sh
 npm run dev
-
+```
 ## Project Structure
 
 ```sh
@@ -27,9 +29,10 @@ bluewave3/
 │   └── ...
 ├── main.js                 # App entrypoint + provide/inject wiring
 ├── App.vue                 # Layout + routing
-
+```
 ## Run with
 
 ```sh
 cd backend
 py server.py
+```
