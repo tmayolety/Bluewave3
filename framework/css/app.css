@@ -99,11 +99,11 @@ main > header { position: relative; grid-area: header; align-content: center; di
 
 .ui.header-section { display: flex; flex-direction: row; justify-items: center; flex-wrap: wrap; height: 3rem; box-sizing: border-box; border-width: 2px; border-style: solid; border-color: RGBA(var(--sch-clr-ui-border)/var(--sch-clr-ui-border-op)); -webkit-transition: border 0s 0s ease-in-out; -moz-transition: border 0s 0s ease-in-out; -ms-transition: border 0s 0s ease-in-out; -o-transition: border 0s 0s ease-in-out; transition: border 0s 0s ease-in-out; }
 .ui.header-section > li { position: relative; display: flex; align-items: center; justify-items: center; text-align: center; }
-.ui.header-section > li::before { content: ''; top: 0; right: auto; bottom: 0; left: 0; position: absolute; width: 2px; background: RGBA(var(--sch-clr-ui-border)/var(--sch-clr-ui-border-op)); -webkit-transition: background 0s 0s ease-in-out; -moz-transition: background 0s 0s ease-in-out; -ms-transition: background 0s 0s ease-in-out; -o-transition: background 0s 0s ease-in-out; transition: background 0s 0s ease-in-out; }
+.ui.header-section > li::before { content: ''; top: 0; right: auto; bottom: 0; left: 0; position: absolute; background: RGBA(var(--sch-clr-ui-border)/var(--sch-clr-ui-border-op)); -webkit-transition: background 0s 0s ease-in-out; -moz-transition: background 0s 0s ease-in-out; -ms-transition: background 0s 0s ease-in-out; -o-transition: background 0s 0s ease-in-out; transition: background 0s 0s ease-in-out; }
 .ui.header-section > li svg { -webkit-transition: all 0s 0s ease-in-out; -moz-transition: all 0s 0s ease-in-out; -ms-transition: all 0s 0s ease-in-out; -o-transition: all 0s 0s ease-in-out; transition: all 0s 0s ease-in-out; }
 .ui.header-section > li.logo { flex-grow: 1; }
 .ui.header-section > li.logo::before { content: none; }
-.ui.header-section > li.logo:not([data-alert="true"]) { animation: glow-blue 4s infinite; }
+/*.ui.header-section > li.logo:not([data-alert="true"]) { animation: glow-blue 4s infinite; }*/
 .ui.header-section > li[data-alert="true"].logo { animation: glow 2s infinite; }
 .ui.header-section > li[data-alert="true"]:not(.active) .header-section--btn > svg { animation: glow 2s infinite; }
 .ui.header-section > li[data-alert="true"].logo > svg, .ui.header-section > li[data-alert="true"] .header-section--btn > svg { position: relative; fill: #ec4230; opacity: 1; }

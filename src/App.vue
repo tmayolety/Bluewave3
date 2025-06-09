@@ -1,15 +1,40 @@
 <script setup>
-import headerComponent from './components/header.vue';
-import mainNavComponent from './components/mainNav.vue';
-import { RouterView } from 'vue-router';
+import headerComponent from './components/header.vue'
+import sideNavComponent from './components/sideNav.vue'
+import { RouterView } from 'vue-router'
 </script>
 
 <template>
-  <div>
-    <main data-nav-open="true" id="mainContent" style="overflow-y: scroll; max-height: 100vh;">
+  <div class="layout-wrapper">
+    <!-- Menú colapsado ocupa espacio -->
+    <div class="menu-placeholder" />
+
+    <!-- Menú real (colapsado o expandido, se superpone solo al expandirse) -->
+    <sideNavComponent />
+
+    <main id="mainContent">
       <headerComponent />
       <RouterView />
     </main>
-    <mainNavComponent />
   </div>
 </template>
+
+<style scoped>
+.layout-wrapper {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+}
+
+.menu-placeholder {
+  width: 60px;
+  flex-shrink: 0;
+}
+
+#mainContent {
+  flex: 1;
+  overflow-y: auto;
+  max-height: 100vh;
+  transition: none;
+}
+</style>
