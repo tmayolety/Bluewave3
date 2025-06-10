@@ -6,7 +6,6 @@ export const limits = ref({});
 export const alarmsMainData = ref({});
 
 export function applySignalData(json) {
-    console.log("[applySignalData] Señales recibidas:", Object.keys(json)); 
   for (const key in json) {
     const signalId = parseInt(key);
     const item = json[key];

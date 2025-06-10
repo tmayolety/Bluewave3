@@ -52,12 +52,12 @@ onMounted(() => {
         <li
           v-for="(item, index) in menuItems.headers"
           :key="index"
-          :class="{ 'active': activeIndex === index }"
-        >
+          :class="{ 'active': activeIndex === index }">
           <RouterLink :to="item.path">
             <div class="icon" v-html="item.svg" />
             <span v-if="!collapsed" class="label">{{ item.label }}</span>
           </RouterLink>
+
         </li>
       </ul>
     </nav>
@@ -71,7 +71,7 @@ onMounted(() => {
   left: 0;
   height: 100vh;
   color: white;
-  background-color: #061f2e;
+  background-color: #383c41;
   transition: width 0.3s ease;
 }
 
@@ -103,42 +103,35 @@ onMounted(() => {
   justify-content: center;
 }
 
-.menu-list {
-  padding-top: 1rem;
-}
-
 .menu-list ul {
   list-style: none;
   padding: 0;
 }
 
 .menu-list li {
-  margin: 0.5rem 0;
+  margin: 0.2rem 0;
 }
 
 .menu-list li a {
   display: flex;
   align-items: center;
   gap: 1rem;
-  padding: 0.75rem 1rem;
+  padding: 0.5rem 1.3rem;
   color: white;
   text-decoration: none;
 }
 
 .menu-list li.active a {
-  background-color: #0e3a54;
-  font-weight: bold;
-  border-left: 4px solid #00d8ff;
+  background-color: #222222;
+  border-left: 4px solid #3498db;
+  padding: 0.5rem 1.1rem;
 }
 
-.menu-list li a:hover {
-  background-color: #104865;
-}
 
 .icon {
-  min-width: 24px;
-  max-width: 24px;
-  height: 24px;
+  min-width: 20px;
+  max-width: 20px;
+  height: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -156,5 +149,6 @@ onMounted(() => {
 
 .label {
   white-space: nowrap;
+  font-size: small;
 }
 </style>

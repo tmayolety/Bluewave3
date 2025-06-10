@@ -29,10 +29,9 @@ const activeLabel = useActiveLabel()
   display: flex;
   position: relative;
   height: 3rem;
-  background-color: rgba(0, 0, 0, 0.4); /* Ajusta al diseño del sistema */
+  background-color: #383c41;
 }
 
-/* Título completamente centrado respecto al viewport */
 .header-title-container {
   position: absolute;
   left: 50%;

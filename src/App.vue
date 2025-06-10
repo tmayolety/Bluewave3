@@ -34,6 +34,7 @@ import { RouterView } from 'vue-router'
 #mainContent {
   flex: 1;
   overflow-y: auto;
+  overflow-x: hidden;
   max-height: 100vh;
   transition: none;
 }
