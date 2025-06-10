@@ -8,14 +8,13 @@ import GeneratorsMenu from '../submenus/GeneratorsMenu.vue'
 </script>
 
 <template>
-
-    <GeneratorsMenu/>
+        <GeneratorsMenu/>
     <section>
         <article>
             <div class="ui grid type1 cols-mini-1  phone-1  ">
                 <div class="ui grid cols-mini-1 col mini-1 gap-sm pad-no has-header">
                     <header class="ui col">
-                        <font>Generators</font>
+                        <font>Generators 2</font>
                         <span class="gradients">
                             <span class="gradient-left"></span>
                             <span class="gradient-right"></span>
