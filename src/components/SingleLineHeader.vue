@@ -36,6 +36,6 @@ const containerColorClass = computed(() => {
   color: white;
   text-transform: uppercase;
   padding: 0.6rem;
-  border-radius: 0.5rem;
+  border-radius: 0.2rem;
 }
 </style>
