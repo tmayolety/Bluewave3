@@ -39,7 +39,7 @@
                                 v-bind="{ signalId: 454, unit: 'L', title: 'Stbd', displayScale: true, displayCapacity: false, color: 'color-fl-blue', scaleBottom: 0, scaleTop: 20000, scaleStep: 2000, scaleSegments: 10, size: 'medium', limitFlag: 'onBar', showLimits: true, valueMode: 'escalated', orientation: 'horizontal' }"></BasicHorizontalBar>    
 
                             <BasicHorizontalBarTotal
-                                v-bind="{ signalId1: 453, signalId2: 454, signalId3: 454, unit: 'L', title: 'Total Fresh Water', displayScale: true, color: 'color-fl-blue', scaleBottom: 0, scaleTop: 37000, scaleStep: 3700, scaleSegments: 10, size: 'medium', limitFlag: 'onBar', showLimits: true, valueMode: 'escalated', orientation: 'horizontal' }"></BasicHorizontalBarTotal>
+                                v-bind="{ signalId1: 4391, signalId2: 454, signalId3: 454, unit: 'L', title: 'Total Fresh Water', displayScale: true, color: 'color-fl-blue', scaleBottom: 0, scaleTop: 37000, scaleStep: 3700, scaleSegments: 10, size: 'medium', limitFlag: 'onBar', showLimits: true, valueMode: 'escalated', orientation: 'horizontal' }"></BasicHorizontalBarTotal>
 
                         </div>
 

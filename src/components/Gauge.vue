@@ -6,10 +6,9 @@ import axios from 'axios';
 const props = defineProps([
   'signalId', 
   'unit',
-  'icon',
-  'size',
   'marginTopValue',
   'textSizeClass',
+  'unitSizeClass',
   'valueMode',
   'scaleInterval',
   'isBattery',
@@ -25,11 +24,6 @@ const getLimits = inject('getLimits')
 
 const value = ref(null)
 const valueDisplay = ref(null)
-const iconRoute = `../../framework/3-modules/icons/${props.icon}.svg`
-const iconSize = `icon-size-${props.size}`
-const iconColor = ref('')
-const svgId = `svg_${props.signalId}_${Math.floor(Math.random() * (1000 - 100)) + Date.now()}`
-const svgContent = ref('')
 
 const limits = ref(null)
 const HH = ref(null)
@@ -46,24 +40,19 @@ const height = props.gaugeSizeHeight
 const width = props.gaugeSizeWidth
 
 
-onMounted( async ()=>{  
-  const response = await axios.get(iconRoute);
-  svgContent.value = response.data;
-
-})
 
 const colorIconRender = () => {
   if (HH.value == 0 && H.value == 0 && L.value == 0 && LL.value == 0) {
-    iconColor.value = 'color-fill-type-success';
+  
     valueRangeColor.value = "#27ae60";
   } else if (value.value <= LL.value || value.value >= HH.value) {
-    iconColor.value = 'color-fill-type-danger';
+   
     valueRangeColor.value = "#ff0000";
   } else if (value.value <= L.value || (value.value > H.value && value.value < HH.value)) {
-    iconColor.value = 'color-fill-type-warning';
+    
     valueRangeColor.value = "#f3e330";
   } else {
-    iconColor.value = 'color-fill-type-success';
+
     valueRangeColor.value = "#27ae60";
   }
 }
@@ -127,9 +116,8 @@ watchEffect(() => {
     </DxCircularGauge>
 
     <div class="infos-container visible" :class='[marginTopValue]'>
-        <i class="ui status-icon glow visible" :class='[iconSize, iconColor]' :id="svgId" v-html="svgContent"></i>
-        <div class="ui clr-subvalue-ui color-text-type-secondary-dark">{{unit}}</div>
-        <div class="ui font-bold" :class='[textSizeClass]'>{{valueDisplay}}</div>
+      <div class="ui font-bold" :class='[textSizeClass]'>{{valueDisplay}}</div>
+      <div class="ui clr-subvalue-ui color-text-type-secondary-dark" :class='[unitSizeClass]'>{{unit}}</div>
     </div>
 
 </template>

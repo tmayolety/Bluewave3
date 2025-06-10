@@ -88,7 +88,7 @@ main { height: 100%; display: grid; grid-template-columns: 1fr; grid-template-ro
 main > section { grid-area: section; overflow: auto; -webkit-overflow-scrolling: touch; scroll-behavior: smooth; }
 @media screen and (min-width: 0) and (max-width: 1179px) { main > section { padding-bottom: 30px; } }
 
-main > section > article { display: inline-block; width: 100%; box-sizing: border-box; padding: 1rem; }
+main > section > article { display: inline-block; width: 100%; box-sizing: border-box; padding: 0.5rem; }
 @media screen and (min-width: 0) and (max-width: 1179px) { main > section > article { padding: 10px; } }
 main > section > article.pad-no { padding: 0; }
 

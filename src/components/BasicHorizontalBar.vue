@@ -1,184 +1,144 @@
 <script setup>
-import { ref, watchEffect, inject, computed } from 'vue';
+import { ref, watchEffect, inject, computed } from 'vue'
 
+const props = defineProps({
+  signalId: Number,
+  title: String,
+  unit: String,
+  scaleBottom: Number,
+  scaleTop: Number,
+  scaleStep: Number,
+  displayScale: Boolean,
+  valueMode: {
+    type: String,
+    default: 'raw'
+  },
+  color: {
+    type: String,
+    default: '#1ec2a4'
+  }
+})
 
-const props = defineProps([
-    'signalId',
-    'unit',
-    'title',
-    'displayScale',
-    'displayCapacity',
-    'color',
-    'scaleBottom',
-    'scaleTop',
-    'scaleStep',
-    'scaleSegments',
-    'size',
-    'limitFlag',
-    'showLimits',
-    'valueMode',
-    'orientation'
-])
 const getSignalValueRaw = inject('getSignalValueRaw')
 const getSignalValueEscalated = inject('getSignalValueEscalated')
-const getLimits = inject('getLimits')
 
-const value = ref(null)
-const limits = ref(null)
-const HH = ref(null)
-const H = ref(null)
-const L = ref(null)
-const LL = ref(null)
-const positionHH = ref(null)
-const positionH = ref(null)
-const positionL = ref(null)
-const positionLL = ref(null)
-const barClass = ref('')
+const value = ref(0)
 
+const percentage = computed(() => {
+  const range = props.scaleTop - props.scaleBottom
+  const clamped = Math.max(props.scaleBottom, Math.min(value.value, props.scaleTop))
+  return ((clamped - props.scaleBottom) * 100) / range
+})
 
-const sizeClass = computed(() => {
-    let classOutput;
-    if (props.size === 'regular') {
-        classOutput = 'size-lg header-sm-x1 footer-lg-x1';
-    } else if (props.size === 'small') {
-        classOutput = 'size-mini  header-mini-x1 footer-mini-x1';
-    } else if (props.size === 'medium') {
-        classOutput = 'size-mini header-mini-x1 footer-mini-x1';
-    } else if (props.orientation === 'horizontal') {
-        classOutput = 'size-mini header-mini-x1 footer-mini-x1';
-    }
-    return classOutput;
-});
-
-const scaleCode = computed(() => {
-    let codeResult = ''
-    for (let i = props.scaleBottom; i <= props.scaleTop; i += props.scaleStep) {
-        codeResult = codeResult + '<li><div>' + i + '</div></li>'
-    }
-    return codeResult
-});
-
-const labelCode = computed(() => {
-    let codeResult = ''
-    for (let i = 0; i <= props.scaleSegments; i++) {
-        codeResult = codeResult + '<li></li>'
-    }
-    return codeResult
-});
-
-const barStyle = computed(() => {
-    return {
-        'flex-basis': percentage(value.value) + '%',
-    };
-});
-
-const percentage = (sentValue) => {
-    let range;
-    if (parseInt(props.scaleBottom) >= 0) {
-        range = Number(props.scaleTop) - Number(props.scaleBottom)
-    } else {
-        range = Number(props.scaleTop) + Math.abs(props.scaleBottom)
-    }
-    var result = (parseInt(sentValue) * 100) / parseInt(range);
-    return result.toFixed(2)
-}
+const scaleTicks = computed(() => {
+  const ticks = []
+  for (let i = props.scaleBottom; i <= props.scaleTop; i += props.scaleStep) {
+    ticks.push(i)
+  }
+  return ticks
+})
 
 watchEffect(() => {
+  const raw = props.valueMode === 'escalated'
+    ? getSignalValueEscalated?.(props.signalId)
+    : getSignalValueRaw?.(props.signalId)
 
-    if (value.value == null) {
-        value.value = 'N/A'
-    }
-
-    switch (props.valueMode) {
-        case "escalated":
-            value.value = getSignalValueEscalated(props.signalId);
-            break;
-        default:
-        case "raw":
-            value.value = getSignalValueRaw(props.signalId);
-            break;
-    }
-    value.value = Math.round(value.value)
-
-    if (!isNaN(value.value)) {
-
-        limits.value = getLimits(props.signalId)
-
-        HH.value = limits.value.HH
-        H.value = limits.value.H
-        L.value = limits.value.L
-        LL.value = limits.value.LL
-
-        positionHH.value = { 'flex-basis': percentage(HH.value) + '%' }
-        positionH.value = { 'flex-basis': percentage(H.value) + '%' }
-        positionL.value = { 'flex-basis': percentage(L.value) + '%' }
-        positionLL.value = { 'flex-basis': percentage(LL.value) + '%' }
-
-        if (props.limitFlag === 'onBar') {
-            if (value.value >= HH.value && HH.value != null) {
-                barClass.value = 'color-fl-red glow';
-            } else if (value.value >= H.value && value.value < HH.value && HH.value != null && H.value != null) {
-                barClass.value = 'color-fl-yellow glow';
-            } else if (value.value > L.value && value.value < H.value) {
-                barClass.value = props.color;
-            } else if (value.value <= L.value && value.value > LL.value && L.value != null && LL.value != null) {
-                barClass.value = 'color-fl-yellow glow';
-            } else if (value.value <= LL.value && LL.value != null) {
-                barClass.value = 'color-fl-red glow';
-            }
-        }
-    } else {
-        value.value = 0
-    }
-
-});
-
+  value.value = isNaN(raw) ? 0 : Math.round(raw)
+})
 </script>
 
 <template>
-
-    <div class="ui col pad-med">
-        <div class="ui pbar pbar-1 horizontal label divider value-2" :class='[sizeClass]'>
-            <header>
-                <h5 class="font-semibold">{{ title }}</h5>
-            </header>
-            <div class="pbar--container" style="margin-top: 2px">
-                <ul class="ui pbar--label" v-if="displayScale" v-html="scaleCode">
-                </ul>
-                <ul class="ui pbar--label-divider" v-html="labelCode">
-                </ul>
-                <div class="ui pbar--item">
-                    <div :class="[barClass]" :style="barStyle"></div>
-                </div>
-                <ul class="pbar--value">
-                    <li class="value-yellow" v-if="H && showLimits" :style="positionH">
-                        <div>H</div>
-                    </li>
-                </ul>
-                <ul class="pbar--value">
-                    <li class="value-red" v-if="HH && showLimits" :style="positionHH">
-                        <div>HH</div>
-                    </li>
-                </ul>
-                <ul class="pbar--value">
-                    <li class="value-yellow" v-if="L && showLimits" :style="positionL">
-                        <div>L</div>
-                    </li>
-                </ul>
-                <ul class="pbar--value">
-                    <li class="value-red" v-if="LL && showLimits" :style="positionLL">
-                        <div>LL</div>
-                    </li>
-                </ul>
-            </div>
-            <footer>
-                <div className="font-regular">
-                    <h5 class="font-bold mg-left-10"> {{ value }} <small
-                            class="font-regular text-size-mini-7 clr-subvalue-ui"> {{ unit }} </small></h5>
-                </div>
-            </footer>
-            
-        </div>
+  <div class="industrial-bar">
+    <div class="bar-header">
+      <span class="bar-title">{{ title }}</span>
+      <span class="bar-value">
+        {{ value }}
+        <span class="bar-unit">{{ unit }}</span>
+      </span>
     </div>
 
+    <div class="bar-container">
+      <div class="bar-fill" :style="{ width: percentage + '%', backgroundColor: color }"></div>
+    </div>
+
+    <div v-if="displayScale" class="bar-scale">
+      <span v-for="tick in scaleTicks" :key="tick" class="bar-tick">{{ tick }}</span>
+    </div>
+  </div>
 </template>
+
+<style scoped>
+.industrial-bar {
+  background-color: #0a1e2b;
+  padding: 1rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.bar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+
+.bar-title {
+  font-size: 0.9rem;
+  color: #ffffff;
+  font-weight: 500;
+  flex: 1 1 auto;
+  min-width: 120px;
+}
+
+.bar-value {
+  font-size: 1.2rem;
+  color: #ffffff;
+  font-weight: bold;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.bar-unit {
+  font-size: 0.75rem;
+  color: #aaaaaa;
+  margin-left: 0.3rem;
+}
+
+.bar-container {
+  height: 1.5rem;
+  background-color: #22323c;
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.bar-fill {
+  height: 100%;
+  transition: width 0.3s ease;
+}
+
+.bar-scale {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.7rem;
+  color: #7c8b9a;
+  padding: 0 2px;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.bar-tick {
+  flex: 1 1 auto;
+  text-align: center;
+  min-width: 20px;
+}
+</style>
