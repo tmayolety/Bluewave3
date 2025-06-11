@@ -9,7 +9,7 @@ const activeIndex = ref(null)
 const activeLabel = useActiveLabel()
 
 watch(() => route.path, (newPath) => {
-  const index = menuItems.headers.findIndex(item => item.path === newPath)
+  const index = menuItems.headers.findIndex(item => newPath.startsWith(item.path))
   if (index !== -1) {
     activeIndex.value = index
     activeLabel.value = menuItems.headers[index].label

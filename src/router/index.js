@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
 import SingleLine from '../views/SingleLine.vue'
 import Generators from '../views/Generators.vue'
 import Generators2 from '../views/Generators2.vue'
@@ -26,14 +25,12 @@ import NavigationEquipment from '../views/NavigationEquipment.vue'
 import Settings from '../views/Settings.vue'
 import Alarms from '../views/Alarms.vue'
 
-
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: HomeView
+      redirect: '/singleLine'
     },
     {
       path: '/singleLine',
