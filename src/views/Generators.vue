@@ -28,7 +28,7 @@ import GeneratorsMenu from '../submenus/GeneratorsMenu.vue'
                     </div>
 
                     <div class="ui grid type1 resp  pad-no gap-mini col mini-2">
-                        <BasicHorizontalBar :signalId="4391" title="Main Engine RPM" unit="rpm" :scaleBottom="0"
+                        <BasicHorizontalBar :signalId="4391" title="Engine RPM" unit="rpm" :scaleBottom="0"
                             :scaleTop="3000" :scaleStep="500" :displayScale="true" color="#3498db" />
                     </div>
 
@@ -63,7 +63,7 @@ import GeneratorsMenu from '../submenus/GeneratorsMenu.vue'
                     </div>
 
                     <div class="ui grid type1 resp  pad-no gap-mini col mini-2">
-                        <BasicHorizontalBar :signalId="4391" title="Main Engine RPM" unit="rpm" :scaleBottom="0"
+                        <BasicHorizontalBar :signalId="4391" title="Engine RPM" unit="rpm" :scaleBottom="0"
                             :scaleTop="3000" :scaleStep="500" :displayScale="true" color="#3498db" />
                     </div>
 
