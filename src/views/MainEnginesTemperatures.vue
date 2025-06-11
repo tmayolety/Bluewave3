@@ -17,24 +17,20 @@ import MainEnginesMenu from '../submenus/MainEnginesMenu.vue'
                 <!--PORT MAIN ENGINE-->
                 <div class="ui grid cols-mini-2 col mini-1 gap-sm pad-no">
 
-
-                    <div class="ui grid type1 cols-mini-3 col mini-2">
+                    <div class="ui grid type1 cols-mini-5 col mini-2">
 
                         <div class="ui col mini-1  flex-center">
-                            <VerticalBar :signalId="4391" title="Oil Press" unit="bar" :scaleBottom="0" :scaleTop="3000"
+                            <VerticalBar :signalId="4391" title="Engine Oil Pressure" unit="bar" :scaleBottom="0" :scaleTop="3000"
                                 :scaleStep="500" :displayScale="true" color="#3498db" />
                         </div>
 
-                        <div class="ui col mini-1  flex-center">
-                            <GaugeRender v-bind="{
-                                signalId: 4011, unit: 'rpm', marginTopValue: 'mg-top-40',
-                                textSizeClass: 'text-size-30', unitSizeClass: 'text-size-15',
-                                valueMode: 'escalated', scaleInterval: 20
-                            }" />
+                        <div class="ui col mini-3 ">
+                            <GaugeRender :signalId="4011" unit="rpm" textSizeClass="text-size-20"
+                                unitSizeClass="text-size-15" :scaleInterval="100" :height="'220px'" :centerY="'94%'" :radius="'120'" />
                         </div>
 
                         <div class="ui col mini-1  flex-center">
-                            <VerticalBar :signalId="4391" title="Coolant Temp" unit="C" :scaleBottom="0"
+                            <VerticalBar :signalId="4391" title="Coolant Temperature" unit="C" :scaleBottom="0"
                                 :scaleTop="3000" :scaleStep="500" :displayScale="true" color="#3498db" />
                         </div>
 
@@ -87,23 +83,20 @@ import MainEnginesMenu from '../submenus/MainEnginesMenu.vue'
                 <div class="ui grid cols-mini-2 col mini-1 gap-sm pad-no">
 
 
-                    <div class="ui grid type1 cols-mini-3 col mini-2">
+                    <div class="ui grid type1 cols-mini-5 col mini-2">
 
                         <div class="ui col mini-1  flex-center">
-                            <VerticalBar :signalId="4391" title="Oil Press" unit="bar" :scaleBottom="0" :scaleTop="3000"
+                            <VerticalBar :signalId="4391" title="Engine Oil Pressure" unit="bar" :scaleBottom="0" :scaleTop="3000"
                                 :scaleStep="500" :displayScale="true" color="#3498db" />
                         </div>
 
-                        <div class="ui col mini-1  flex-center">
-                            <GaugeRender v-bind="{
-                                signalId: 4011, unit: 'rpm', marginTopValue: 'mg-top-40',
-                                textSizeClass: 'text-size-30', unitSizeClass: 'text-size-15',
-                                valueMode: 'escalated', scaleInterval: 20
-                            }" />
+                        <div class="ui col mini-3 ">
+                            <GaugeRender :signalId="4011" unit="rpm" textSizeClass="text-size-20"
+                                unitSizeClass="text-size-15" :scaleInterval="100" :height="'220px'" :centerY="'94%'" :radius="'120'" />
                         </div>
 
                         <div class="ui col mini-1  flex-center">
-                            <VerticalBar :signalId="4391" title="Coolant Temp" unit="C" :scaleBottom="0"
+                            <VerticalBar :signalId="4391" title="Coolant Temperature" unit="C" :scaleBottom="0"
                                 :scaleTop="3000" :scaleStep="500" :displayScale="true" color="#3498db" />
                         </div>
 

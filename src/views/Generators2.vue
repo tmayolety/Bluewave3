@@ -21,11 +21,8 @@ import IconTextValueDigitalLine from '../components/IconTextValueDigitalLine.vue
                         class="ui grid type1 cols-mini-1 col mini-2 gap-no pad-no align-baseline radius shadow has-col-header-sm">
                         <header class="col-header size-med" style="height: 30px;">Emergency Generator</header>
                         <div class="ui col mini-1 align-top" style="height: 200px;">
-                            <GaugeRender v-bind="{
-                                signalId: 4011, unit: 'kw', marginTopValue: 'mg-top-30', textSizeClass: 'text-size-30',
-                                unitSizeClass: 'text-size-15', valueMode: 'escalated', scaleInterval: 20
-                            }">
-                            </GaugeRender>
+                             <GaugeRender :signalId="4011" unit="kw" textSizeClass="text-size-30"
+                                unitSizeClass="text-size-15" :scaleInterval="100" :height="'200px'" />
                         </div>
                     </div>
 

@@ -4,6 +4,8 @@ import { createApp } from 'vue';
 import App from './App.vue';
 import router from './router';
 import { startWebSocketBridge } from './ws-bridge.js';
+import VueECharts from 'vue-echarts'
+import 'echarts'
 
 import {
   valueRaw,
@@ -13,6 +15,7 @@ import {
 } from '../src/services/signalStore.js';
 
 const app = createApp(App);
+app.component('v-chart', VueECharts)
 
 startWebSocketBridge();
 
