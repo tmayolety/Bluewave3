@@ -3,7 +3,6 @@ import HomeView from '../views/HomeView.vue'
 import SingleLine from '../views/SingleLine.vue'
 import Generators from '../views/Generators.vue'
 import Generators2 from '../views/Generators2.vue'
-import ShorePower from '../views/ShorePower.vue'
 import MainEngines from '../views/MainEngines.vue'
 import EnginesTemperatures from '@/views/MainEnginesTemperatures.vue'
 import WaterTanks from '../views/WaterTanks.vue'
@@ -50,11 +49,6 @@ const router = createRouter({
       path: '/generators2',
       name: 'generators2',
       component: Generators2
-    },
-    {
-      path: '/shorePower',
-      name: 'shorePower',
-      component: ShorePower
     },
     {
       path: '/valveSystem',

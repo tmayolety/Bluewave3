@@ -44,7 +44,7 @@ const width = props.gaugeSizeWidth
 const colorIconRender = () => {
   if (HH.value == 0 && H.value == 0 && L.value == 0 && LL.value == 0) {
   
-    valueRangeColor.value = "#27ae60";
+    valueRangeColor.value = "#3498db";
   } else if (value.value <= LL.value || value.value >= HH.value) {
    
     valueRangeColor.value = "#ff0000";
@@ -53,7 +53,7 @@ const colorIconRender = () => {
     valueRangeColor.value = "#f3e330";
   } else {
 
-    valueRangeColor.value = "#27ae60";
+    valueRangeColor.value = "#3498db";
   }
 }
 
