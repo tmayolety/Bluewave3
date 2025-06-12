@@ -4,7 +4,6 @@ import VerticalBar from '../components/VerticalBar.vue'
 import VerticalBarTotal from '../components/VerticalBarTotal.vue'
 import TankSvgMap from '../components/TankSvgMap.vue'
 import RealTimeTrendChart from '../components/RealTimeTrendChart.vue'
-
 </script>
 
 <template>
@@ -14,22 +13,22 @@ import RealTimeTrendChart from '../components/RealTimeTrendChart.vue'
             <div class="ui grid type1 cols-mini-4 gap-med">
 
                 <div class="ui col mini-1 flex-center" data-tank-index="0">
-                    <VerticalBar :signalId="2" title="Tank 20" unit="L" :scaleBottom="0" :scaleTop="3000"
+                    <VerticalBar :signalId="105" title="Tank 20" unit="L" :scaleBottom="0" :scaleTop="3000"
                         :scaleStep="500" :displayScale="true" color="#3498db" />
                 </div>
 
                 <div class="ui col mini-1 flex-center" data-tank-index="1">
-                    <VerticalBar :signalId="4385" title="Tank 22" unit="L" :scaleBottom="0" :scaleTop="3000"
+                    <VerticalBar :signalId="106" title="Tank 22" unit="L" :scaleBottom="0" :scaleTop="3000"
                         :scaleStep="500" :displayScale="true" color="#3498db" />
                 </div>
 
                 <div class="ui col mini-1 flex-center" data-tank-index="2">
-                    <VerticalBar :signalId="4388" title="Tank 22W" unit="L" :scaleBottom="0" :scaleTop="3000"
+                    <VerticalBar :signalId="107" title="Tank 22W" unit="L" :scaleBottom="0" :scaleTop="3000"
                         :scaleStep="500" :displayScale="true" color="#3498db" />
                 </div>
 
                 <div class="ui col mini-1 flex-center">
-                    <VerticalBarTotal :signalIds="[4391, 4385, 4388]" title="Total Water" unit="L" :scaleBottom="0"
+                    <VerticalBarTotal :signalIds="[105, 106, 107]" title="Total Water" unit="L" :scaleBottom="0"
                         :scaleTop="9000" :scaleStep="1000" :displayScale="true" color="#3498db" />
                 </div>
 
@@ -38,9 +37,8 @@ import RealTimeTrendChart from '../components/RealTimeTrendChart.vue'
                 </div>
 
                 <div class="ui col mini-2" style="height: 220px;">
-                    <RealTimeTrendChart :signalIds="[4391, 4385, 4388]" title="Total Water Trend" valueMode="raw"
+                    <RealTimeTrendChart :signalIds="[105, 106, 107]" title="Total Water Trend" valueMode="raw"
                         :maxPoints="60" color="#3498db" />
-
                 </div>
 
             </div>

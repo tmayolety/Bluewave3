@@ -1,56 +1,4402 @@
 {
-  "1":  { "address": 1,  "description": "Tank 1 Level",         "type": "analogue" },
-  "2":  { "address": 2,  "description": "Tank 2 Level",         "type": "analogue" },
-  "3":  { "address": 3,  "description": "Pump 1 Pressure",      "type": "analogue" },
-  "4":  { "address": 4,  "description": "Pump 2 Pressure",      "type": "analogue" },
-  "5":  { "address": 5,  "description": "Flow Sensor 1",        "type": "analogue" },
-  "6":  { "address": 6,  "description": "Flow Sensor 2",        "type": "analogue" },
-  "7":  { "address": 7,  "description": "Temperature Sensor 1", "type": "analogue" },
-  "8":  { "address": 8,  "description": "Temperature Sensor 2", "type": "analogue" },
-  "9":  { "address": 9,  "description": "Humidity Sensor",      "type": "analogue" },
-  "10": { "address": 10, "description": "pH Sensor",            "type": "analogue" },
-
-  "11": { "address": 11, "bit": 0, "description": "Pump 1 Running",     "type": "digital" },
-  "12": { "address": 11, "bit": 1, "description": "Pump 2 Running",     "type": "digital" },
-  "13": { "address": 11, "bit": 2, "description": "Valve 1 Open",       "type": "digital" },
-  "14": { "address": 11, "bit": 3, "description": "Valve 2 Open",       "type": "digital" },
-  "15": { "address": 11, "bit": 4, "description": "Alarm High Temp",    "type": "digital" },
-  "16": { "address": 11, "bit": 5, "description": "Alarm Low Temp",     "type": "digital" },
-  "17": { "address": 11, "bit": 6, "description": "Alarm High Pressure","type": "digital" },
-  "18": { "address": 11, "bit": 7, "description": "Alarm Low Pressure", "type": "digital" },
-
-  "19": { "address": 12, "bit": 0, "description": "Motor 1 Fault",      "type": "digital" },
-  "20": { "address": 12, "bit": 1, "description": "Motor 2 Fault",      "type": "digital" },
-  "21": { "address": 12, "bit": 2, "description": "Power On",           "type": "digital" },
-  "22": { "address": 12, "bit": 3, "description": "System Ready",       "type": "digital" },
-  "23": { "address": 12, "bit": 4, "description": "Emergency Stop",     "type": "digital" },
-  "24": { "address": 12, "bit": 5, "description": "Remote Control",     "type": "digital" },
-  "25": { "address": 12, "bit": 6, "description": "Manual Control",     "type": "digital" },
-  "26": { "address": 12, "bit": 7, "description": "Maintenance Mode",   "type": "digital" },
-
-  "27": { "address": 13, "bit": 0, "description": "Valve 3 Open",       "type": "digital" },
-  "28": { "address": 13, "bit": 1, "description": "Valve 4 Open",       "type": "digital" },
-  "29": { "address": 13, "bit": 2, "description": "Heater On",          "type": "digital" },
-  "30": { "address": 13, "bit": 3, "description": "Cooler On",          "type": "digital" },
-  "31": { "address": 13, "bit": 4, "description": "Alarm High pH",      "type": "digital" },
-  "32": { "address": 13, "bit": 5, "description": "Alarm Low pH",       "type": "digital" },
-  "33": { "address": 13, "bit": 6, "description": "Alarm High Humidity","type": "digital" },
-  "34": { "address": 13, "bit": 7, "description": "Alarm Low Humidity", "type": "digital" },
-
-  "35": { "address": 14, "description": "Tank 3 Level",         "type": "analogue" },
-  "36": { "address": 15, "description": "Tank 4 Level",         "type": "analogue" },
-  "37": { "address": 16, "description": "Flow Sensor 3",        "type": "analogue" },
-  "38": { "address": 17, "description": "Flow Sensor 4",        "type": "analogue" },
-  "39": { "address": 18, "description": "Temperature Sensor 3", "type": "analogue" },
-  "40": { "address": 19, "description": "Temperature Sensor 4", "type": "analogue" },
-  "41": { "address": 20, "description": "Humidity Sensor 2",    "type": "analogue" },
-  "42": { "address": 21, "description": "Conductivity Sensor",  "type": "analogue" },
-  "43": { "address": 22, "description": "ORP Sensor",           "type": "analogue" },
-  "44": { "address": 23, "bit": 0, "description": "Level Switch",         "type": "digital"},
-  "45": { "address": 23, "bit": 1,  "description": "Overflow Switch",      "type": "digital"},
-  "46": { "address": 24, "bit": 0, "description": "Door Open",            "type": "digital" },
-  "47": { "address": 24, "bit": 1, "description": "Fire Alarm",           "type": "digital"},
-  "48": { "address": 25, "description": "Vibration Sensor",     "type": "analogue" },
-  "49": { "address": 26, "description": "Current Sensor",       "type": "analogue" },
-  "50": { "address": 27, "description": "Voltage Sensor",       "type": "analogue" }
+  "1": {
+    "address": 1,
+    "description": "Sensor 1 Analogue",
+    "type": "analogue"
+  },
+  "2": {
+    "address": 2,
+    "description": "Sensor 2 Analogue",
+    "type": "analogue"
+  },
+  "3": {
+    "address": 3,
+    "description": "Sensor 3 Analogue",
+    "type": "analogue"
+  },
+  "4": {
+    "address": 4,
+    "description": "Sensor 4 Analogue",
+    "type": "analogue"
+  },
+  "5": {
+    "address": 5,
+    "description": "Sensor 5 Analogue",
+    "type": "analogue"
+  },
+  "6": {
+    "address": 6,
+    "description": "Sensor 6 Analogue",
+    "type": "analogue"
+  },
+  "7": {
+    "address": 7,
+    "description": "Sensor 7 Analogue",
+    "type": "analogue"
+  },
+  "8": {
+    "address": 8,
+    "description": "Sensor 8 Analogue",
+    "type": "analogue"
+  },
+  "9": {
+    "address": 9,
+    "description": "Sensor 9 Analogue",
+    "type": "analogue"
+  },
+  "10": {
+    "address": 10,
+    "description": "Sensor 10 Analogue",
+    "type": "analogue"
+  },
+  "11": {
+    "address": 11,
+    "description": "Sensor 11 Analogue",
+    "type": "analogue"
+  },
+  "12": {
+    "address": 12,
+    "description": "Sensor 12 Analogue",
+    "type": "analogue"
+  },
+  "13": {
+    "address": 13,
+    "description": "Sensor 13 Analogue",
+    "type": "analogue"
+  },
+  "14": {
+    "address": 14,
+    "description": "Sensor 14 Analogue",
+    "type": "analogue"
+  },
+  "15": {
+    "address": 15,
+    "description": "Sensor 15 Analogue",
+    "type": "analogue"
+  },
+  "16": {
+    "address": 16,
+    "description": "Sensor 16 Analogue",
+    "type": "analogue"
+  },
+  "17": {
+    "address": 17,
+    "description": "Sensor 17 Analogue",
+    "type": "analogue"
+  },
+  "18": {
+    "address": 18,
+    "description": "Sensor 18 Analogue",
+    "type": "analogue"
+  },
+  "19": {
+    "address": 19,
+    "description": "Sensor 19 Analogue",
+    "type": "analogue"
+  },
+  "20": {
+    "address": 20,
+    "description": "Sensor 20 Analogue",
+    "type": "analogue"
+  },
+  "21": {
+    "address": 21,
+    "description": "Sensor 21 Analogue",
+    "type": "analogue"
+  },
+  "22": {
+    "address": 22,
+    "description": "Sensor 22 Analogue",
+    "type": "analogue"
+  },
+  "23": {
+    "address": 23,
+    "description": "Sensor 23 Analogue",
+    "type": "analogue"
+  },
+  "24": {
+    "address": 24,
+    "description": "Sensor 24 Analogue",
+    "type": "analogue"
+  },
+  "25": {
+    "address": 25,
+    "description": "Sensor 25 Analogue",
+    "type": "analogue"
+  },
+  "26": {
+    "address": 26,
+    "description": "Sensor 26 Analogue",
+    "type": "analogue"
+  },
+  "27": {
+    "address": 27,
+    "description": "Sensor 27 Analogue",
+    "type": "analogue"
+  },
+  "28": {
+    "address": 28,
+    "description": "Sensor 28 Analogue",
+    "type": "analogue"
+  },
+  "29": {
+    "address": 29,
+    "description": "Sensor 29 Analogue",
+    "type": "analogue"
+  },
+  "30": {
+    "address": 30,
+    "description": "Sensor 30 Analogue",
+    "type": "analogue"
+  },
+  "31": {
+    "address": 31,
+    "description": "Sensor 31 Analogue",
+    "type": "analogue"
+  },
+  "32": {
+    "address": 32,
+    "description": "Sensor 32 Analogue",
+    "type": "analogue"
+  },
+  "33": {
+    "address": 33,
+    "description": "Sensor 33 Analogue",
+    "type": "analogue"
+  },
+  "34": {
+    "address": 34,
+    "description": "Sensor 34 Analogue",
+    "type": "analogue"
+  },
+  "35": {
+    "address": 35,
+    "description": "Sensor 35 Analogue",
+    "type": "analogue"
+  },
+  "36": {
+    "address": 36,
+    "description": "Sensor 36 Analogue",
+    "type": "analogue"
+  },
+  "37": {
+    "address": 37,
+    "description": "Sensor 37 Analogue",
+    "type": "analogue"
+  },
+  "38": {
+    "address": 38,
+    "description": "Sensor 38 Analogue",
+    "type": "analogue"
+  },
+  "39": {
+    "address": 39,
+    "description": "Sensor 39 Analogue",
+    "type": "analogue"
+  },
+  "40": {
+    "address": 40,
+    "description": "Sensor 40 Analogue",
+    "type": "analogue"
+  },
+  "41": {
+    "address": 41,
+    "description": "Sensor 41 Analogue",
+    "type": "analogue"
+  },
+  "42": {
+    "address": 42,
+    "description": "Sensor 42 Analogue",
+    "type": "analogue"
+  },
+  "43": {
+    "address": 43,
+    "description": "Sensor 43 Analogue",
+    "type": "analogue"
+  },
+  "44": {
+    "address": 44,
+    "description": "Sensor 44 Analogue",
+    "type": "analogue"
+  },
+  "45": {
+    "address": 45,
+    "description": "Sensor 45 Analogue",
+    "type": "analogue"
+  },
+  "46": {
+    "address": 46,
+    "description": "Sensor 46 Analogue",
+    "type": "analogue"
+  },
+  "47": {
+    "address": 47,
+    "description": "Sensor 47 Analogue",
+    "type": "analogue"
+  },
+  "48": {
+    "address": 48,
+    "description": "Sensor 48 Analogue",
+    "type": "analogue"
+  },
+  "49": {
+    "address": 49,
+    "description": "Sensor 49 Analogue",
+    "type": "analogue"
+  },
+  "50": {
+    "address": 50,
+    "description": "Sensor 50 Analogue",
+    "type": "analogue"
+  },
+  "51": {
+    "address": 51,
+    "description": "Sensor 51 Analogue",
+    "type": "analogue"
+  },
+  "52": {
+    "address": 52,
+    "description": "Sensor 52 Analogue",
+    "type": "analogue"
+  },
+  "53": {
+    "address": 53,
+    "description": "Sensor 53 Analogue",
+    "type": "analogue"
+  },
+  "54": {
+    "address": 54,
+    "description": "Sensor 54 Analogue",
+    "type": "analogue"
+  },
+  "55": {
+    "address": 55,
+    "description": "Sensor 55 Analogue",
+    "type": "analogue"
+  },
+  "56": {
+    "address": 56,
+    "description": "Sensor 56 Analogue",
+    "type": "analogue"
+  },
+  "57": {
+    "address": 57,
+    "description": "Sensor 57 Analogue",
+    "type": "analogue"
+  },
+  "58": {
+    "address": 58,
+    "description": "Sensor 58 Analogue",
+    "type": "analogue"
+  },
+  "59": {
+    "address": 59,
+    "description": "Sensor 59 Analogue",
+    "type": "analogue"
+  },
+  "60": {
+    "address": 60,
+    "description": "Sensor 60 Analogue",
+    "type": "analogue"
+  },
+  "61": {
+    "address": 61,
+    "description": "Sensor 61 Analogue",
+    "type": "analogue"
+  },
+  "62": {
+    "address": 62,
+    "description": "Sensor 62 Analogue",
+    "type": "analogue"
+  },
+  "63": {
+    "address": 63,
+    "description": "Sensor 63 Analogue",
+    "type": "analogue"
+  },
+  "64": {
+    "address": 64,
+    "description": "Sensor 64 Analogue",
+    "type": "analogue"
+  },
+  "65": {
+    "address": 65,
+    "description": "Sensor 65 Analogue",
+    "type": "analogue"
+  },
+  "66": {
+    "address": 66,
+    "description": "Sensor 66 Analogue",
+    "type": "analogue"
+  },
+  "67": {
+    "address": 67,
+    "description": "Sensor 67 Analogue",
+    "type": "analogue"
+  },
+  "68": {
+    "address": 68,
+    "description": "Sensor 68 Analogue",
+    "type": "analogue"
+  },
+  "69": {
+    "address": 69,
+    "description": "Sensor 69 Analogue",
+    "type": "analogue"
+  },
+  "70": {
+    "address": 70,
+    "description": "Sensor 70 Analogue",
+    "type": "analogue"
+  },
+  "71": {
+    "address": 71,
+    "description": "Sensor 71 Analogue",
+    "type": "analogue"
+  },
+  "72": {
+    "address": 72,
+    "description": "Sensor 72 Analogue",
+    "type": "analogue"
+  },
+  "73": {
+    "address": 73,
+    "description": "Sensor 73 Analogue",
+    "type": "analogue"
+  },
+  "74": {
+    "address": 74,
+    "description": "Sensor 74 Analogue",
+    "type": "analogue"
+  },
+  "75": {
+    "address": 75,
+    "description": "Sensor 75 Analogue",
+    "type": "analogue"
+  },
+  "76": {
+    "address": 76,
+    "description": "Sensor 76 Analogue",
+    "type": "analogue"
+  },
+  "77": {
+    "address": 77,
+    "description": "Sensor 77 Analogue",
+    "type": "analogue"
+  },
+  "78": {
+    "address": 78,
+    "description": "Sensor 78 Analogue",
+    "type": "analogue"
+  },
+  "79": {
+    "address": 79,
+    "description": "Sensor 79 Analogue",
+    "type": "analogue"
+  },
+  "80": {
+    "address": 80,
+    "description": "Sensor 80 Analogue",
+    "type": "analogue"
+  },
+  "81": {
+    "address": 81,
+    "description": "Sensor 81 Analogue",
+    "type": "analogue"
+  },
+  "82": {
+    "address": 82,
+    "description": "Sensor 82 Analogue",
+    "type": "analogue"
+  },
+  "83": {
+    "address": 83,
+    "description": "Sensor 83 Analogue",
+    "type": "analogue"
+  },
+  "84": {
+    "address": 84,
+    "description": "Sensor 84 Analogue",
+    "type": "analogue"
+  },
+  "85": {
+    "address": 85,
+    "description": "Sensor 85 Analogue",
+    "type": "analogue"
+  },
+  "86": {
+    "address": 86,
+    "description": "Sensor 86 Analogue",
+    "type": "analogue"
+  },
+  "87": {
+    "address": 87,
+    "description": "Sensor 87 Analogue",
+    "type": "analogue"
+  },
+  "88": {
+    "address": 88,
+    "description": "Sensor 88 Analogue",
+    "type": "analogue"
+  },
+  "89": {
+    "address": 89,
+    "description": "Sensor 89 Analogue",
+    "type": "analogue"
+  },
+  "90": {
+    "address": 90,
+    "description": "Sensor 90 Analogue",
+    "type": "analogue"
+  },
+  "91": {
+    "address": 91,
+    "description": "Sensor 91 Analogue",
+    "type": "analogue"
+  },
+  "92": {
+    "address": 92,
+    "description": "Sensor 92 Analogue",
+    "type": "analogue"
+  },
+  "93": {
+    "address": 93,
+    "description": "Sensor 93 Analogue",
+    "type": "analogue"
+  },
+  "94": {
+    "address": 94,
+    "description": "Sensor 94 Analogue",
+    "type": "analogue"
+  },
+  "95": {
+    "address": 95,
+    "description": "Sensor 95 Analogue",
+    "type": "analogue"
+  },
+  "96": {
+    "address": 96,
+    "description": "Sensor 96 Analogue",
+    "type": "analogue"
+  },
+  "97": {
+    "address": 97,
+    "description": "Sensor 97 Analogue",
+    "type": "analogue"
+  },
+  "98": {
+    "address": 98,
+    "description": "Sensor 98 Analogue",
+    "type": "analogue"
+  },
+  "99": {
+    "address": 99,
+    "description": "Sensor 99 Analogue",
+    "type": "analogue"
+  },
+  "100": {
+    "address": 100,
+    "description": "Sensor 100 Analogue",
+    "type": "analogue"
+  },
+  "101": {
+    "address": 101,
+    "description": "Sensor 101 Analogue",
+    "type": "analogue"
+  },
+  "102": {
+    "address": 102,
+    "description": "Sensor 102 Analogue",
+    "type": "analogue"
+  },
+  "103": {
+    "address": 103,
+    "description": "Sensor 103 Analogue",
+    "type": "analogue"
+  },
+  "104": {
+    "address": 104,
+    "description": "Sensor 104 Analogue",
+    "type": "analogue"
+  },
+  "105": {
+    "address": 105,
+    "description": "Sensor 105 Analogue",
+    "type": "analogue"
+  },
+  "106": {
+    "address": 106,
+    "description": "Sensor 106 Analogue",
+    "type": "analogue"
+  },
+  "107": {
+    "address": 107,
+    "description": "Sensor 107 Analogue",
+    "type": "analogue"
+  },
+  "108": {
+    "address": 108,
+    "description": "Sensor 108 Analogue",
+    "type": "analogue"
+  },
+  "109": {
+    "address": 109,
+    "description": "Sensor 109 Analogue",
+    "type": "analogue"
+  },
+  "110": {
+    "address": 110,
+    "description": "Sensor 110 Analogue",
+    "type": "analogue"
+  },
+  "111": {
+    "address": 111,
+    "description": "Sensor 111 Analogue",
+    "type": "analogue"
+  },
+  "112": {
+    "address": 112,
+    "description": "Sensor 112 Analogue",
+    "type": "analogue"
+  },
+  "113": {
+    "address": 113,
+    "description": "Sensor 113 Analogue",
+    "type": "analogue"
+  },
+  "114": {
+    "address": 114,
+    "description": "Sensor 114 Analogue",
+    "type": "analogue"
+  },
+  "115": {
+    "address": 115,
+    "description": "Sensor 115 Analogue",
+    "type": "analogue"
+  },
+  "116": {
+    "address": 116,
+    "description": "Sensor 116 Analogue",
+    "type": "analogue"
+  },
+  "117": {
+    "address": 117,
+    "description": "Sensor 117 Analogue",
+    "type": "analogue"
+  },
+  "118": {
+    "address": 118,
+    "description": "Sensor 118 Analogue",
+    "type": "analogue"
+  },
+  "119": {
+    "address": 119,
+    "description": "Sensor 119 Analogue",
+    "type": "analogue"
+  },
+  "120": {
+    "address": 120,
+    "description": "Sensor 120 Analogue",
+    "type": "analogue"
+  },
+  "121": {
+    "address": 121,
+    "description": "Sensor 121 Analogue",
+    "type": "analogue"
+  },
+  "122": {
+    "address": 122,
+    "description": "Sensor 122 Analogue",
+    "type": "analogue"
+  },
+  "123": {
+    "address": 123,
+    "description": "Sensor 123 Analogue",
+    "type": "analogue"
+  },
+  "124": {
+    "address": 124,
+    "description": "Sensor 124 Analogue",
+    "type": "analogue"
+  },
+  "125": {
+    "address": 125,
+    "description": "Sensor 125 Analogue",
+    "type": "analogue"
+  },
+  "126": {
+    "address": 126,
+    "description": "Sensor 126 Analogue",
+    "type": "analogue"
+  },
+  "127": {
+    "address": 127,
+    "description": "Sensor 127 Analogue",
+    "type": "analogue"
+  },
+  "128": {
+    "address": 128,
+    "description": "Sensor 128 Analogue",
+    "type": "analogue"
+  },
+  "129": {
+    "address": 129,
+    "description": "Sensor 129 Analogue",
+    "type": "analogue"
+  },
+  "130": {
+    "address": 130,
+    "description": "Sensor 130 Analogue",
+    "type": "analogue"
+  },
+  "131": {
+    "address": 131,
+    "description": "Sensor 131 Analogue",
+    "type": "analogue"
+  },
+  "132": {
+    "address": 132,
+    "description": "Sensor 132 Analogue",
+    "type": "analogue"
+  },
+  "133": {
+    "address": 133,
+    "description": "Sensor 133 Analogue",
+    "type": "analogue"
+  },
+  "134": {
+    "address": 134,
+    "description": "Sensor 134 Analogue",
+    "type": "analogue"
+  },
+  "135": {
+    "address": 135,
+    "description": "Sensor 135 Analogue",
+    "type": "analogue"
+  },
+  "136": {
+    "address": 136,
+    "description": "Sensor 136 Analogue",
+    "type": "analogue"
+  },
+  "137": {
+    "address": 137,
+    "description": "Sensor 137 Analogue",
+    "type": "analogue"
+  },
+  "138": {
+    "address": 138,
+    "description": "Sensor 138 Analogue",
+    "type": "analogue"
+  },
+  "139": {
+    "address": 139,
+    "description": "Sensor 139 Analogue",
+    "type": "analogue"
+  },
+  "140": {
+    "address": 140,
+    "description": "Sensor 140 Analogue",
+    "type": "analogue"
+  },
+  "141": {
+    "address": 141,
+    "description": "Sensor 141 Analogue",
+    "type": "analogue"
+  },
+  "142": {
+    "address": 142,
+    "description": "Sensor 142 Analogue",
+    "type": "analogue"
+  },
+  "143": {
+    "address": 143,
+    "description": "Sensor 143 Analogue",
+    "type": "analogue"
+  },
+  "144": {
+    "address": 144,
+    "description": "Sensor 144 Analogue",
+    "type": "analogue"
+  },
+  "145": {
+    "address": 145,
+    "description": "Sensor 145 Analogue",
+    "type": "analogue"
+  },
+  "146": {
+    "address": 146,
+    "description": "Sensor 146 Analogue",
+    "type": "analogue"
+  },
+  "147": {
+    "address": 147,
+    "description": "Sensor 147 Analogue",
+    "type": "analogue"
+  },
+  "148": {
+    "address": 148,
+    "description": "Sensor 148 Analogue",
+    "type": "analogue"
+  },
+  "149": {
+    "address": 149,
+    "description": "Sensor 149 Analogue",
+    "type": "analogue"
+  },
+  "150": {
+    "address": 150,
+    "description": "Sensor 150 Analogue",
+    "type": "analogue"
+  },
+  "151": {
+    "address": 151,
+    "description": "Sensor 151 Analogue",
+    "type": "analogue"
+  },
+  "152": {
+    "address": 152,
+    "description": "Sensor 152 Analogue",
+    "type": "analogue"
+  },
+  "153": {
+    "address": 153,
+    "description": "Sensor 153 Analogue",
+    "type": "analogue"
+  },
+  "154": {
+    "address": 154,
+    "description": "Sensor 154 Analogue",
+    "type": "analogue"
+  },
+  "155": {
+    "address": 155,
+    "description": "Sensor 155 Analogue",
+    "type": "analogue"
+  },
+  "156": {
+    "address": 156,
+    "description": "Sensor 156 Analogue",
+    "type": "analogue"
+  },
+  "157": {
+    "address": 157,
+    "description": "Sensor 157 Analogue",
+    "type": "analogue"
+  },
+  "158": {
+    "address": 158,
+    "description": "Sensor 158 Analogue",
+    "type": "analogue"
+  },
+  "159": {
+    "address": 159,
+    "description": "Sensor 159 Analogue",
+    "type": "analogue"
+  },
+  "160": {
+    "address": 160,
+    "description": "Sensor 160 Analogue",
+    "type": "analogue"
+  },
+  "161": {
+    "address": 161,
+    "description": "Sensor 161 Analogue",
+    "type": "analogue"
+  },
+  "162": {
+    "address": 162,
+    "description": "Sensor 162 Analogue",
+    "type": "analogue"
+  },
+  "163": {
+    "address": 163,
+    "description": "Sensor 163 Analogue",
+    "type": "analogue"
+  },
+  "164": {
+    "address": 164,
+    "description": "Sensor 164 Analogue",
+    "type": "analogue"
+  },
+  "165": {
+    "address": 165,
+    "description": "Sensor 165 Analogue",
+    "type": "analogue"
+  },
+  "166": {
+    "address": 166,
+    "description": "Sensor 166 Analogue",
+    "type": "analogue"
+  },
+  "167": {
+    "address": 167,
+    "description": "Sensor 167 Analogue",
+    "type": "analogue"
+  },
+  "168": {
+    "address": 168,
+    "description": "Sensor 168 Analogue",
+    "type": "analogue"
+  },
+  "169": {
+    "address": 169,
+    "description": "Sensor 169 Analogue",
+    "type": "analogue"
+  },
+  "170": {
+    "address": 170,
+    "description": "Sensor 170 Analogue",
+    "type": "analogue"
+  },
+  "171": {
+    "address": 171,
+    "description": "Sensor 171 Analogue",
+    "type": "analogue"
+  },
+  "172": {
+    "address": 172,
+    "description": "Sensor 172 Analogue",
+    "type": "analogue"
+  },
+  "173": {
+    "address": 173,
+    "description": "Sensor 173 Analogue",
+    "type": "analogue"
+  },
+  "174": {
+    "address": 174,
+    "description": "Sensor 174 Analogue",
+    "type": "analogue"
+  },
+  "175": {
+    "address": 175,
+    "description": "Sensor 175 Analogue",
+    "type": "analogue"
+  },
+  "176": {
+    "address": 176,
+    "description": "Sensor 176 Analogue",
+    "type": "analogue"
+  },
+  "177": {
+    "address": 177,
+    "description": "Sensor 177 Analogue",
+    "type": "analogue"
+  },
+  "178": {
+    "address": 178,
+    "description": "Sensor 178 Analogue",
+    "type": "analogue"
+  },
+  "179": {
+    "address": 179,
+    "description": "Sensor 179 Analogue",
+    "type": "analogue"
+  },
+  "180": {
+    "address": 180,
+    "description": "Sensor 180 Analogue",
+    "type": "analogue"
+  },
+  "181": {
+    "address": 181,
+    "description": "Sensor 181 Analogue",
+    "type": "analogue"
+  },
+  "182": {
+    "address": 182,
+    "description": "Sensor 182 Analogue",
+    "type": "analogue"
+  },
+  "183": {
+    "address": 183,
+    "description": "Sensor 183 Analogue",
+    "type": "analogue"
+  },
+  "184": {
+    "address": 184,
+    "description": "Sensor 184 Analogue",
+    "type": "analogue"
+  },
+  "185": {
+    "address": 185,
+    "description": "Sensor 185 Analogue",
+    "type": "analogue"
+  },
+  "186": {
+    "address": 186,
+    "description": "Sensor 186 Analogue",
+    "type": "analogue"
+  },
+  "187": {
+    "address": 187,
+    "description": "Sensor 187 Analogue",
+    "type": "analogue"
+  },
+  "188": {
+    "address": 188,
+    "description": "Sensor 188 Analogue",
+    "type": "analogue"
+  },
+  "189": {
+    "address": 189,
+    "description": "Sensor 189 Analogue",
+    "type": "analogue"
+  },
+  "190": {
+    "address": 190,
+    "description": "Sensor 190 Analogue",
+    "type": "analogue"
+  },
+  "191": {
+    "address": 191,
+    "description": "Sensor 191 Analogue",
+    "type": "analogue"
+  },
+  "192": {
+    "address": 192,
+    "description": "Sensor 192 Analogue",
+    "type": "analogue"
+  },
+  "193": {
+    "address": 193,
+    "description": "Sensor 193 Analogue",
+    "type": "analogue"
+  },
+  "194": {
+    "address": 194,
+    "description": "Sensor 194 Analogue",
+    "type": "analogue"
+  },
+  "195": {
+    "address": 195,
+    "description": "Sensor 195 Analogue",
+    "type": "analogue"
+  },
+  "196": {
+    "address": 196,
+    "description": "Sensor 196 Analogue",
+    "type": "analogue"
+  },
+  "197": {
+    "address": 197,
+    "description": "Sensor 197 Analogue",
+    "type": "analogue"
+  },
+  "198": {
+    "address": 198,
+    "description": "Sensor 198 Analogue",
+    "type": "analogue"
+  },
+  "199": {
+    "address": 199,
+    "description": "Sensor 199 Analogue",
+    "type": "analogue"
+  },
+  "200": {
+    "address": 200,
+    "description": "Sensor 200 Analogue",
+    "type": "analogue"
+  },
+  "201": {
+    "address": 201,
+    "description": "Sensor 201 Analogue",
+    "type": "analogue"
+  },
+  "202": {
+    "address": 202,
+    "description": "Sensor 202 Analogue",
+    "type": "analogue"
+  },
+  "203": {
+    "address": 203,
+    "description": "Sensor 203 Analogue",
+    "type": "analogue"
+  },
+  "204": {
+    "address": 204,
+    "description": "Sensor 204 Analogue",
+    "type": "analogue"
+  },
+  "205": {
+    "address": 205,
+    "description": "Sensor 205 Analogue",
+    "type": "analogue"
+  },
+  "206": {
+    "address": 206,
+    "description": "Sensor 206 Analogue",
+    "type": "analogue"
+  },
+  "207": {
+    "address": 207,
+    "description": "Sensor 207 Analogue",
+    "type": "analogue"
+  },
+  "208": {
+    "address": 208,
+    "description": "Sensor 208 Analogue",
+    "type": "analogue"
+  },
+  "209": {
+    "address": 209,
+    "description": "Sensor 209 Analogue",
+    "type": "analogue"
+  },
+  "210": {
+    "address": 210,
+    "description": "Sensor 210 Analogue",
+    "type": "analogue"
+  },
+  "211": {
+    "address": 211,
+    "description": "Sensor 211 Analogue",
+    "type": "analogue"
+  },
+  "212": {
+    "address": 212,
+    "description": "Sensor 212 Analogue",
+    "type": "analogue"
+  },
+  "213": {
+    "address": 213,
+    "description": "Sensor 213 Analogue",
+    "type": "analogue"
+  },
+  "214": {
+    "address": 214,
+    "description": "Sensor 214 Analogue",
+    "type": "analogue"
+  },
+  "215": {
+    "address": 215,
+    "description": "Sensor 215 Analogue",
+    "type": "analogue"
+  },
+  "216": {
+    "address": 216,
+    "description": "Sensor 216 Analogue",
+    "type": "analogue"
+  },
+  "217": {
+    "address": 217,
+    "description": "Sensor 217 Analogue",
+    "type": "analogue"
+  },
+  "218": {
+    "address": 218,
+    "description": "Sensor 218 Analogue",
+    "type": "analogue"
+  },
+  "219": {
+    "address": 219,
+    "description": "Sensor 219 Analogue",
+    "type": "analogue"
+  },
+  "220": {
+    "address": 220,
+    "description": "Sensor 220 Analogue",
+    "type": "analogue"
+  },
+  "221": {
+    "address": 221,
+    "description": "Sensor 221 Analogue",
+    "type": "analogue"
+  },
+  "222": {
+    "address": 222,
+    "description": "Sensor 222 Analogue",
+    "type": "analogue"
+  },
+  "223": {
+    "address": 223,
+    "description": "Sensor 223 Analogue",
+    "type": "analogue"
+  },
+  "224": {
+    "address": 224,
+    "description": "Sensor 224 Analogue",
+    "type": "analogue"
+  },
+  "225": {
+    "address": 225,
+    "description": "Sensor 225 Analogue",
+    "type": "analogue"
+  },
+  "226": {
+    "address": 226,
+    "description": "Sensor 226 Analogue",
+    "type": "analogue"
+  },
+  "227": {
+    "address": 227,
+    "description": "Sensor 227 Analogue",
+    "type": "analogue"
+  },
+  "228": {
+    "address": 228,
+    "description": "Sensor 228 Analogue",
+    "type": "analogue"
+  },
+  "229": {
+    "address": 229,
+    "description": "Sensor 229 Analogue",
+    "type": "analogue"
+  },
+  "230": {
+    "address": 230,
+    "description": "Sensor 230 Analogue",
+    "type": "analogue"
+  },
+  "231": {
+    "address": 231,
+    "description": "Sensor 231 Analogue",
+    "type": "analogue"
+  },
+  "232": {
+    "address": 232,
+    "description": "Sensor 232 Analogue",
+    "type": "analogue"
+  },
+  "233": {
+    "address": 233,
+    "description": "Sensor 233 Analogue",
+    "type": "analogue"
+  },
+  "234": {
+    "address": 234,
+    "description": "Sensor 234 Analogue",
+    "type": "analogue"
+  },
+  "235": {
+    "address": 235,
+    "description": "Sensor 235 Analogue",
+    "type": "analogue"
+  },
+  "236": {
+    "address": 236,
+    "description": "Sensor 236 Analogue",
+    "type": "analogue"
+  },
+  "237": {
+    "address": 237,
+    "description": "Sensor 237 Analogue",
+    "type": "analogue"
+  },
+  "238": {
+    "address": 238,
+    "description": "Sensor 238 Analogue",
+    "type": "analogue"
+  },
+  "239": {
+    "address": 239,
+    "description": "Sensor 239 Analogue",
+    "type": "analogue"
+  },
+  "240": {
+    "address": 240,
+    "description": "Sensor 240 Analogue",
+    "type": "analogue"
+  },
+  "241": {
+    "address": 241,
+    "description": "Sensor 241 Analogue",
+    "type": "analogue"
+  },
+  "242": {
+    "address": 242,
+    "description": "Sensor 242 Analogue",
+    "type": "analogue"
+  },
+  "243": {
+    "address": 243,
+    "description": "Sensor 243 Analogue",
+    "type": "analogue"
+  },
+  "244": {
+    "address": 244,
+    "description": "Sensor 244 Analogue",
+    "type": "analogue"
+  },
+  "245": {
+    "address": 245,
+    "description": "Sensor 245 Analogue",
+    "type": "analogue"
+  },
+  "246": {
+    "address": 246,
+    "description": "Sensor 246 Analogue",
+    "type": "analogue"
+  },
+  "247": {
+    "address": 247,
+    "description": "Sensor 247 Analogue",
+    "type": "analogue"
+  },
+  "248": {
+    "address": 248,
+    "description": "Sensor 248 Analogue",
+    "type": "analogue"
+  },
+  "249": {
+    "address": 249,
+    "description": "Sensor 249 Analogue",
+    "type": "analogue"
+  },
+  "250": {
+    "address": 250,
+    "description": "Sensor 250 Analogue",
+    "type": "analogue"
+  },
+  "251": {
+    "address": 251,
+    "description": "Sensor 251 Analogue",
+    "type": "analogue"
+  },
+  "252": {
+    "address": 252,
+    "description": "Sensor 252 Analogue",
+    "type": "analogue"
+  },
+  "253": {
+    "address": 253,
+    "description": "Sensor 253 Analogue",
+    "type": "analogue"
+  },
+  "254": {
+    "address": 254,
+    "description": "Sensor 254 Analogue",
+    "type": "analogue"
+  },
+  "255": {
+    "address": 255,
+    "description": "Sensor 255 Analogue",
+    "type": "analogue"
+  },
+  "256": {
+    "address": 256,
+    "description": "Sensor 256 Analogue",
+    "type": "analogue"
+  },
+  "257": {
+    "address": 257,
+    "description": "Sensor 257 Analogue",
+    "type": "analogue"
+  },
+  "258": {
+    "address": 258,
+    "description": "Sensor 258 Analogue",
+    "type": "analogue"
+  },
+  "259": {
+    "address": 259,
+    "description": "Sensor 259 Analogue",
+    "type": "analogue"
+  },
+  "260": {
+    "address": 260,
+    "description": "Sensor 260 Analogue",
+    "type": "analogue"
+  },
+  "261": {
+    "address": 261,
+    "description": "Sensor 261 Analogue",
+    "type": "analogue"
+  },
+  "262": {
+    "address": 262,
+    "description": "Sensor 262 Analogue",
+    "type": "analogue"
+  },
+  "263": {
+    "address": 263,
+    "description": "Sensor 263 Analogue",
+    "type": "analogue"
+  },
+  "264": {
+    "address": 264,
+    "description": "Sensor 264 Analogue",
+    "type": "analogue"
+  },
+  "265": {
+    "address": 265,
+    "description": "Sensor 265 Analogue",
+    "type": "analogue"
+  },
+  "266": {
+    "address": 266,
+    "description": "Sensor 266 Analogue",
+    "type": "analogue"
+  },
+  "267": {
+    "address": 267,
+    "description": "Sensor 267 Analogue",
+    "type": "analogue"
+  },
+  "268": {
+    "address": 268,
+    "description": "Sensor 268 Analogue",
+    "type": "analogue"
+  },
+  "269": {
+    "address": 269,
+    "description": "Sensor 269 Analogue",
+    "type": "analogue"
+  },
+  "270": {
+    "address": 270,
+    "description": "Sensor 270 Analogue",
+    "type": "analogue"
+  },
+  "271": {
+    "address": 271,
+    "description": "Sensor 271 Analogue",
+    "type": "analogue"
+  },
+  "272": {
+    "address": 272,
+    "description": "Sensor 272 Analogue",
+    "type": "analogue"
+  },
+  "273": {
+    "address": 273,
+    "description": "Sensor 273 Analogue",
+    "type": "analogue"
+  },
+  "274": {
+    "address": 274,
+    "description": "Sensor 274 Analogue",
+    "type": "analogue"
+  },
+  "275": {
+    "address": 275,
+    "description": "Sensor 275 Analogue",
+    "type": "analogue"
+  },
+  "276": {
+    "address": 276,
+    "description": "Sensor 276 Analogue",
+    "type": "analogue"
+  },
+  "277": {
+    "address": 277,
+    "description": "Sensor 277 Analogue",
+    "type": "analogue"
+  },
+  "278": {
+    "address": 278,
+    "description": "Sensor 278 Analogue",
+    "type": "analogue"
+  },
+  "279": {
+    "address": 279,
+    "description": "Sensor 279 Analogue",
+    "type": "analogue"
+  },
+  "280": {
+    "address": 280,
+    "description": "Sensor 280 Analogue",
+    "type": "analogue"
+  },
+  "281": {
+    "address": 281,
+    "description": "Sensor 281 Analogue",
+    "type": "analogue"
+  },
+  "282": {
+    "address": 282,
+    "description": "Sensor 282 Analogue",
+    "type": "analogue"
+  },
+  "283": {
+    "address": 283,
+    "description": "Sensor 283 Analogue",
+    "type": "analogue"
+  },
+  "284": {
+    "address": 284,
+    "description": "Sensor 284 Analogue",
+    "type": "analogue"
+  },
+  "285": {
+    "address": 285,
+    "description": "Sensor 285 Analogue",
+    "type": "analogue"
+  },
+  "286": {
+    "address": 286,
+    "description": "Sensor 286 Analogue",
+    "type": "analogue"
+  },
+  "287": {
+    "address": 287,
+    "description": "Sensor 287 Analogue",
+    "type": "analogue"
+  },
+  "288": {
+    "address": 288,
+    "description": "Sensor 288 Analogue",
+    "type": "analogue"
+  },
+  "289": {
+    "address": 289,
+    "description": "Sensor 289 Analogue",
+    "type": "analogue"
+  },
+  "290": {
+    "address": 290,
+    "description": "Sensor 290 Analogue",
+    "type": "analogue"
+  },
+  "291": {
+    "address": 291,
+    "description": "Sensor 291 Analogue",
+    "type": "analogue"
+  },
+  "292": {
+    "address": 292,
+    "description": "Sensor 292 Analogue",
+    "type": "analogue"
+  },
+  "293": {
+    "address": 293,
+    "description": "Sensor 293 Analogue",
+    "type": "analogue"
+  },
+  "294": {
+    "address": 294,
+    "description": "Sensor 294 Analogue",
+    "type": "analogue"
+  },
+  "295": {
+    "address": 295,
+    "description": "Sensor 295 Analogue",
+    "type": "analogue"
+  },
+  "296": {
+    "address": 296,
+    "description": "Sensor 296 Analogue",
+    "type": "analogue"
+  },
+  "297": {
+    "address": 297,
+    "description": "Sensor 297 Analogue",
+    "type": "analogue"
+  },
+  "298": {
+    "address": 298,
+    "description": "Sensor 298 Analogue",
+    "type": "analogue"
+  },
+  "299": {
+    "address": 299,
+    "description": "Sensor 299 Analogue",
+    "type": "analogue"
+  },
+  "300": {
+    "address": 300,
+    "description": "Sensor 300 Analogue",
+    "type": "analogue"
+  },
+  "301": {
+    "address": 301,
+    "description": "Sensor 301 Analogue",
+    "type": "analogue"
+  },
+  "302": {
+    "address": 302,
+    "description": "Sensor 302 Analogue",
+    "type": "analogue"
+  },
+  "303": {
+    "address": 303,
+    "description": "Sensor 303 Analogue",
+    "type": "analogue"
+  },
+  "304": {
+    "address": 304,
+    "description": "Sensor 304 Analogue",
+    "type": "analogue"
+  },
+  "305": {
+    "address": 305,
+    "description": "Sensor 305 Analogue",
+    "type": "analogue"
+  },
+  "306": {
+    "address": 306,
+    "description": "Sensor 306 Analogue",
+    "type": "analogue"
+  },
+  "307": {
+    "address": 307,
+    "description": "Sensor 307 Analogue",
+    "type": "analogue"
+  },
+  "308": {
+    "address": 308,
+    "description": "Sensor 308 Analogue",
+    "type": "analogue"
+  },
+  "309": {
+    "address": 309,
+    "description": "Sensor 309 Analogue",
+    "type": "analogue"
+  },
+  "310": {
+    "address": 310,
+    "description": "Sensor 310 Analogue",
+    "type": "analogue"
+  },
+  "311": {
+    "address": 311,
+    "description": "Sensor 311 Analogue",
+    "type": "analogue"
+  },
+  "312": {
+    "address": 312,
+    "description": "Sensor 312 Analogue",
+    "type": "analogue"
+  },
+  "313": {
+    "address": 313,
+    "description": "Sensor 313 Analogue",
+    "type": "analogue"
+  },
+  "314": {
+    "address": 314,
+    "description": "Sensor 314 Analogue",
+    "type": "analogue"
+  },
+  "315": {
+    "address": 315,
+    "description": "Sensor 315 Analogue",
+    "type": "analogue"
+  },
+  "316": {
+    "address": 316,
+    "description": "Sensor 316 Analogue",
+    "type": "analogue"
+  },
+  "317": {
+    "address": 317,
+    "description": "Sensor 317 Analogue",
+    "type": "analogue"
+  },
+  "318": {
+    "address": 318,
+    "description": "Sensor 318 Analogue",
+    "type": "analogue"
+  },
+  "319": {
+    "address": 319,
+    "description": "Sensor 319 Analogue",
+    "type": "analogue"
+  },
+  "320": {
+    "address": 320,
+    "description": "Sensor 320 Analogue",
+    "type": "analogue"
+  },
+  "321": {
+    "address": 321,
+    "description": "Sensor 321 Analogue",
+    "type": "analogue"
+  },
+  "322": {
+    "address": 322,
+    "description": "Sensor 322 Analogue",
+    "type": "analogue"
+  },
+  "323": {
+    "address": 323,
+    "description": "Sensor 323 Analogue",
+    "type": "analogue"
+  },
+  "324": {
+    "address": 324,
+    "description": "Sensor 324 Analogue",
+    "type": "analogue"
+  },
+  "325": {
+    "address": 325,
+    "description": "Sensor 325 Analogue",
+    "type": "analogue"
+  },
+  "326": {
+    "address": 326,
+    "description": "Sensor 326 Analogue",
+    "type": "analogue"
+  },
+  "327": {
+    "address": 327,
+    "description": "Sensor 327 Analogue",
+    "type": "analogue"
+  },
+  "328": {
+    "address": 328,
+    "description": "Sensor 328 Analogue",
+    "type": "analogue"
+  },
+  "329": {
+    "address": 329,
+    "description": "Sensor 329 Analogue",
+    "type": "analogue"
+  },
+  "330": {
+    "address": 330,
+    "description": "Sensor 330 Analogue",
+    "type": "analogue"
+  },
+  "331": {
+    "address": 331,
+    "description": "Sensor 331 Analogue",
+    "type": "analogue"
+  },
+  "332": {
+    "address": 332,
+    "description": "Sensor 332 Analogue",
+    "type": "analogue"
+  },
+  "333": {
+    "address": 333,
+    "description": "Sensor 333 Analogue",
+    "type": "analogue"
+  },
+  "334": {
+    "address": 334,
+    "description": "Sensor 334 Analogue",
+    "type": "analogue"
+  },
+  "335": {
+    "address": 335,
+    "description": "Sensor 335 Analogue",
+    "type": "analogue"
+  },
+  "336": {
+    "address": 336,
+    "description": "Sensor 336 Analogue",
+    "type": "analogue"
+  },
+  "337": {
+    "address": 337,
+    "description": "Sensor 337 Analogue",
+    "type": "analogue"
+  },
+  "338": {
+    "address": 338,
+    "description": "Sensor 338 Analogue",
+    "type": "analogue"
+  },
+  "339": {
+    "address": 339,
+    "description": "Sensor 339 Analogue",
+    "type": "analogue"
+  },
+  "340": {
+    "address": 340,
+    "description": "Sensor 340 Analogue",
+    "type": "analogue"
+  },
+  "341": {
+    "address": 341,
+    "description": "Sensor 341 Analogue",
+    "type": "analogue"
+  },
+  "342": {
+    "address": 342,
+    "description": "Sensor 342 Analogue",
+    "type": "analogue"
+  },
+  "343": {
+    "address": 343,
+    "description": "Sensor 343 Analogue",
+    "type": "analogue"
+  },
+  "344": {
+    "address": 344,
+    "description": "Sensor 344 Analogue",
+    "type": "analogue"
+  },
+  "345": {
+    "address": 345,
+    "description": "Sensor 345 Analogue",
+    "type": "analogue"
+  },
+  "346": {
+    "address": 346,
+    "description": "Sensor 346 Analogue",
+    "type": "analogue"
+  },
+  "347": {
+    "address": 347,
+    "description": "Sensor 347 Analogue",
+    "type": "analogue"
+  },
+  "348": {
+    "address": 348,
+    "description": "Sensor 348 Analogue",
+    "type": "analogue"
+  },
+  "349": {
+    "address": 349,
+    "description": "Sensor 349 Analogue",
+    "type": "analogue"
+  },
+  "350": {
+    "address": 350,
+    "description": "Sensor 350 Analogue",
+    "type": "analogue"
+  },
+  "351": {
+    "address": 351,
+    "description": "Sensor 351 Analogue",
+    "type": "analogue"
+  },
+  "352": {
+    "address": 352,
+    "description": "Sensor 352 Analogue",
+    "type": "analogue"
+  },
+  "353": {
+    "address": 353,
+    "description": "Sensor 353 Analogue",
+    "type": "analogue"
+  },
+  "354": {
+    "address": 354,
+    "description": "Sensor 354 Analogue",
+    "type": "analogue"
+  },
+  "355": {
+    "address": 355,
+    "description": "Sensor 355 Analogue",
+    "type": "analogue"
+  },
+  "356": {
+    "address": 356,
+    "description": "Sensor 356 Analogue",
+    "type": "analogue"
+  },
+  "357": {
+    "address": 357,
+    "description": "Sensor 357 Analogue",
+    "type": "analogue"
+  },
+  "358": {
+    "address": 358,
+    "description": "Sensor 358 Analogue",
+    "type": "analogue"
+  },
+  "359": {
+    "address": 359,
+    "description": "Sensor 359 Analogue",
+    "type": "analogue"
+  },
+  "360": {
+    "address": 360,
+    "description": "Sensor 360 Analogue",
+    "type": "analogue"
+  },
+  "361": {
+    "address": 361,
+    "description": "Sensor 361 Analogue",
+    "type": "analogue"
+  },
+  "362": {
+    "address": 362,
+    "description": "Sensor 362 Analogue",
+    "type": "analogue"
+  },
+  "363": {
+    "address": 363,
+    "description": "Sensor 363 Analogue",
+    "type": "analogue"
+  },
+  "364": {
+    "address": 364,
+    "description": "Sensor 364 Analogue",
+    "type": "analogue"
+  },
+  "365": {
+    "address": 365,
+    "description": "Sensor 365 Analogue",
+    "type": "analogue"
+  },
+  "366": {
+    "address": 366,
+    "description": "Sensor 366 Analogue",
+    "type": "analogue"
+  },
+  "367": {
+    "address": 367,
+    "description": "Sensor 367 Analogue",
+    "type": "analogue"
+  },
+  "368": {
+    "address": 368,
+    "description": "Sensor 368 Analogue",
+    "type": "analogue"
+  },
+  "369": {
+    "address": 369,
+    "description": "Sensor 369 Analogue",
+    "type": "analogue"
+  },
+  "370": {
+    "address": 370,
+    "description": "Sensor 370 Analogue",
+    "type": "analogue"
+  },
+  "371": {
+    "address": 371,
+    "description": "Sensor 371 Analogue",
+    "type": "analogue"
+  },
+  "372": {
+    "address": 372,
+    "description": "Sensor 372 Analogue",
+    "type": "analogue"
+  },
+  "373": {
+    "address": 373,
+    "description": "Sensor 373 Analogue",
+    "type": "analogue"
+  },
+  "374": {
+    "address": 374,
+    "description": "Sensor 374 Analogue",
+    "type": "analogue"
+  },
+  "375": {
+    "address": 375,
+    "description": "Sensor 375 Analogue",
+    "type": "analogue"
+  },
+  "376": {
+    "address": 376,
+    "description": "Sensor 376 Analogue",
+    "type": "analogue"
+  },
+  "377": {
+    "address": 377,
+    "description": "Sensor 377 Analogue",
+    "type": "analogue"
+  },
+  "378": {
+    "address": 378,
+    "description": "Sensor 378 Analogue",
+    "type": "analogue"
+  },
+  "379": {
+    "address": 379,
+    "description": "Sensor 379 Analogue",
+    "type": "analogue"
+  },
+  "380": {
+    "address": 380,
+    "description": "Sensor 380 Analogue",
+    "type": "analogue"
+  },
+  "381": {
+    "address": 381,
+    "description": "Sensor 381 Analogue",
+    "type": "analogue"
+  },
+  "382": {
+    "address": 382,
+    "description": "Sensor 382 Analogue",
+    "type": "analogue"
+  },
+  "383": {
+    "address": 383,
+    "description": "Sensor 383 Analogue",
+    "type": "analogue"
+  },
+  "384": {
+    "address": 384,
+    "description": "Sensor 384 Analogue",
+    "type": "analogue"
+  },
+  "385": {
+    "address": 385,
+    "description": "Sensor 385 Analogue",
+    "type": "analogue"
+  },
+  "386": {
+    "address": 386,
+    "description": "Sensor 386 Analogue",
+    "type": "analogue"
+  },
+  "387": {
+    "address": 387,
+    "description": "Sensor 387 Analogue",
+    "type": "analogue"
+  },
+  "388": {
+    "address": 388,
+    "description": "Sensor 388 Analogue",
+    "type": "analogue"
+  },
+  "389": {
+    "address": 389,
+    "description": "Sensor 389 Analogue",
+    "type": "analogue"
+  },
+  "390": {
+    "address": 390,
+    "description": "Sensor 390 Analogue",
+    "type": "analogue"
+  },
+  "391": {
+    "address": 391,
+    "description": "Sensor 391 Analogue",
+    "type": "analogue"
+  },
+  "392": {
+    "address": 392,
+    "description": "Sensor 392 Analogue",
+    "type": "analogue"
+  },
+  "393": {
+    "address": 393,
+    "description": "Sensor 393 Analogue",
+    "type": "analogue"
+  },
+  "394": {
+    "address": 394,
+    "description": "Sensor 394 Analogue",
+    "type": "analogue"
+  },
+  "395": {
+    "address": 395,
+    "description": "Sensor 395 Analogue",
+    "type": "analogue"
+  },
+  "396": {
+    "address": 396,
+    "description": "Sensor 396 Analogue",
+    "type": "analogue"
+  },
+  "397": {
+    "address": 397,
+    "description": "Sensor 397 Analogue",
+    "type": "analogue"
+  },
+  "398": {
+    "address": 398,
+    "description": "Sensor 398 Analogue",
+    "type": "analogue"
+  },
+  "399": {
+    "address": 399,
+    "description": "Sensor 399 Analogue",
+    "type": "analogue"
+  },
+  "400": {
+    "address": 400,
+    "description": "Sensor 400 Analogue",
+    "type": "analogue"
+  },
+  "401": {
+    "address": 401,
+    "bit": 0,
+    "description": "Digital Signal 401",
+    "type": "digital"
+  },
+  "402": {
+    "address": 401,
+    "bit": 1,
+    "description": "Digital Signal 402",
+    "type": "digital"
+  },
+  "403": {
+    "address": 401,
+    "bit": 2,
+    "description": "Digital Signal 403",
+    "type": "digital"
+  },
+  "404": {
+    "address": 401,
+    "bit": 3,
+    "description": "Digital Signal 404",
+    "type": "digital"
+  },
+  "405": {
+    "address": 401,
+    "bit": 4,
+    "description": "Digital Signal 405",
+    "type": "digital"
+  },
+  "406": {
+    "address": 401,
+    "bit": 5,
+    "description": "Digital Signal 406",
+    "type": "digital"
+  },
+  "407": {
+    "address": 401,
+    "bit": 6,
+    "description": "Digital Signal 407",
+    "type": "digital"
+  },
+  "408": {
+    "address": 401,
+    "bit": 7,
+    "description": "Digital Signal 408",
+    "type": "digital"
+  },
+  "409": {
+    "address": 401,
+    "bit": 8,
+    "description": "Digital Signal 409",
+    "type": "digital"
+  },
+  "410": {
+    "address": 401,
+    "bit": 9,
+    "description": "Digital Signal 410",
+    "type": "digital"
+  },
+  "411": {
+    "address": 401,
+    "bit": 10,
+    "description": "Digital Signal 411",
+    "type": "digital"
+  },
+  "412": {
+    "address": 401,
+    "bit": 11,
+    "description": "Digital Signal 412",
+    "type": "digital"
+  },
+  "413": {
+    "address": 401,
+    "bit": 12,
+    "description": "Digital Signal 413",
+    "type": "digital"
+  },
+  "414": {
+    "address": 401,
+    "bit": 13,
+    "description": "Digital Signal 414",
+    "type": "digital"
+  },
+  "415": {
+    "address": 401,
+    "bit": 14,
+    "description": "Digital Signal 415",
+    "type": "digital"
+  },
+  "416": {
+    "address": 401,
+    "bit": 15,
+    "description": "Digital Signal 416",
+    "type": "digital"
+  },
+  "417": {
+    "address": 402,
+    "bit": 0,
+    "description": "Digital Signal 417",
+    "type": "digital"
+  },
+  "418": {
+    "address": 402,
+    "bit": 1,
+    "description": "Digital Signal 418",
+    "type": "digital"
+  },
+  "419": {
+    "address": 402,
+    "bit": 2,
+    "description": "Digital Signal 419",
+    "type": "digital"
+  },
+  "420": {
+    "address": 402,
+    "bit": 3,
+    "description": "Digital Signal 420",
+    "type": "digital"
+  },
+  "421": {
+    "address": 402,
+    "bit": 4,
+    "description": "Digital Signal 421",
+    "type": "digital"
+  },
+  "422": {
+    "address": 402,
+    "bit": 5,
+    "description": "Digital Signal 422",
+    "type": "digital"
+  },
+  "423": {
+    "address": 402,
+    "bit": 6,
+    "description": "Digital Signal 423",
+    "type": "digital"
+  },
+  "424": {
+    "address": 402,
+    "bit": 7,
+    "description": "Digital Signal 424",
+    "type": "digital"
+  },
+  "425": {
+    "address": 402,
+    "bit": 8,
+    "description": "Digital Signal 425",
+    "type": "digital"
+  },
+  "426": {
+    "address": 402,
+    "bit": 9,
+    "description": "Digital Signal 426",
+    "type": "digital"
+  },
+  "427": {
+    "address": 402,
+    "bit": 10,
+    "description": "Digital Signal 427",
+    "type": "digital"
+  },
+  "428": {
+    "address": 402,
+    "bit": 11,
+    "description": "Digital Signal 428",
+    "type": "digital"
+  },
+  "429": {
+    "address": 402,
+    "bit": 12,
+    "description": "Digital Signal 429",
+    "type": "digital"
+  },
+  "430": {
+    "address": 402,
+    "bit": 13,
+    "description": "Digital Signal 430",
+    "type": "digital"
+  },
+  "431": {
+    "address": 402,
+    "bit": 14,
+    "description": "Digital Signal 431",
+    "type": "digital"
+  },
+  "432": {
+    "address": 402,
+    "bit": 15,
+    "description": "Digital Signal 432",
+    "type": "digital"
+  },
+  "433": {
+    "address": 403,
+    "bit": 0,
+    "description": "Digital Signal 433",
+    "type": "digital"
+  },
+  "434": {
+    "address": 403,
+    "bit": 1,
+    "description": "Digital Signal 434",
+    "type": "digital"
+  },
+  "435": {
+    "address": 403,
+    "bit": 2,
+    "description": "Digital Signal 435",
+    "type": "digital"
+  },
+  "436": {
+    "address": 403,
+    "bit": 3,
+    "description": "Digital Signal 436",
+    "type": "digital"
+  },
+  "437": {
+    "address": 403,
+    "bit": 4,
+    "description": "Digital Signal 437",
+    "type": "digital"
+  },
+  "438": {
+    "address": 403,
+    "bit": 5,
+    "description": "Digital Signal 438",
+    "type": "digital"
+  },
+  "439": {
+    "address": 403,
+    "bit": 6,
+    "description": "Digital Signal 439",
+    "type": "digital"
+  },
+  "440": {
+    "address": 403,
+    "bit": 7,
+    "description": "Digital Signal 440",
+    "type": "digital"
+  },
+  "441": {
+    "address": 403,
+    "bit": 8,
+    "description": "Digital Signal 441",
+    "type": "digital"
+  },
+  "442": {
+    "address": 403,
+    "bit": 9,
+    "description": "Digital Signal 442",
+    "type": "digital"
+  },
+  "443": {
+    "address": 403,
+    "bit": 10,
+    "description": "Digital Signal 443",
+    "type": "digital"
+  },
+  "444": {
+    "address": 403,
+    "bit": 11,
+    "description": "Digital Signal 444",
+    "type": "digital"
+  },
+  "445": {
+    "address": 403,
+    "bit": 12,
+    "description": "Digital Signal 445",
+    "type": "digital"
+  },
+  "446": {
+    "address": 403,
+    "bit": 13,
+    "description": "Digital Signal 446",
+    "type": "digital"
+  },
+  "447": {
+    "address": 403,
+    "bit": 14,
+    "description": "Digital Signal 447",
+    "type": "digital"
+  },
+  "448": {
+    "address": 403,
+    "bit": 15,
+    "description": "Digital Signal 448",
+    "type": "digital"
+  },
+  "449": {
+    "address": 404,
+    "bit": 0,
+    "description": "Digital Signal 449",
+    "type": "digital"
+  },
+  "450": {
+    "address": 404,
+    "bit": 1,
+    "description": "Digital Signal 450",
+    "type": "digital"
+  },
+  "451": {
+    "address": 404,
+    "bit": 2,
+    "description": "Digital Signal 451",
+    "type": "digital"
+  },
+  "452": {
+    "address": 404,
+    "bit": 3,
+    "description": "Digital Signal 452",
+    "type": "digital"
+  },
+  "453": {
+    "address": 404,
+    "bit": 4,
+    "description": "Digital Signal 453",
+    "type": "digital"
+  },
+  "454": {
+    "address": 404,
+    "bit": 5,
+    "description": "Digital Signal 454",
+    "type": "digital"
+  },
+  "455": {
+    "address": 404,
+    "bit": 6,
+    "description": "Digital Signal 455",
+    "type": "digital"
+  },
+  "456": {
+    "address": 404,
+    "bit": 7,
+    "description": "Digital Signal 456",
+    "type": "digital"
+  },
+  "457": {
+    "address": 404,
+    "bit": 8,
+    "description": "Digital Signal 457",
+    "type": "digital"
+  },
+  "458": {
+    "address": 404,
+    "bit": 9,
+    "description": "Digital Signal 458",
+    "type": "digital"
+  },
+  "459": {
+    "address": 404,
+    "bit": 10,
+    "description": "Digital Signal 459",
+    "type": "digital"
+  },
+  "460": {
+    "address": 404,
+    "bit": 11,
+    "description": "Digital Signal 460",
+    "type": "digital"
+  },
+  "461": {
+    "address": 404,
+    "bit": 12,
+    "description": "Digital Signal 461",
+    "type": "digital"
+  },
+  "462": {
+    "address": 404,
+    "bit": 13,
+    "description": "Digital Signal 462",
+    "type": "digital"
+  },
+  "463": {
+    "address": 404,
+    "bit": 14,
+    "description": "Digital Signal 463",
+    "type": "digital"
+  },
+  "464": {
+    "address": 404,
+    "bit": 15,
+    "description": "Digital Signal 464",
+    "type": "digital"
+  },
+  "465": {
+    "address": 405,
+    "bit": 0,
+    "description": "Digital Signal 465",
+    "type": "digital"
+  },
+  "466": {
+    "address": 405,
+    "bit": 1,
+    "description": "Digital Signal 466",
+    "type": "digital"
+  },
+  "467": {
+    "address": 405,
+    "bit": 2,
+    "description": "Digital Signal 467",
+    "type": "digital"
+  },
+  "468": {
+    "address": 405,
+    "bit": 3,
+    "description": "Digital Signal 468",
+    "type": "digital"
+  },
+  "469": {
+    "address": 405,
+    "bit": 4,
+    "description": "Digital Signal 469",
+    "type": "digital"
+  },
+  "470": {
+    "address": 405,
+    "bit": 5,
+    "description": "Digital Signal 470",
+    "type": "digital"
+  },
+  "471": {
+    "address": 405,
+    "bit": 6,
+    "description": "Digital Signal 471",
+    "type": "digital"
+  },
+  "472": {
+    "address": 405,
+    "bit": 7,
+    "description": "Digital Signal 472",
+    "type": "digital"
+  },
+  "473": {
+    "address": 405,
+    "bit": 8,
+    "description": "Digital Signal 473",
+    "type": "digital"
+  },
+  "474": {
+    "address": 405,
+    "bit": 9,
+    "description": "Digital Signal 474",
+    "type": "digital"
+  },
+  "475": {
+    "address": 405,
+    "bit": 10,
+    "description": "Digital Signal 475",
+    "type": "digital"
+  },
+  "476": {
+    "address": 405,
+    "bit": 11,
+    "description": "Digital Signal 476",
+    "type": "digital"
+  },
+  "477": {
+    "address": 405,
+    "bit": 12,
+    "description": "Digital Signal 477",
+    "type": "digital"
+  },
+  "478": {
+    "address": 405,
+    "bit": 13,
+    "description": "Digital Signal 478",
+    "type": "digital"
+  },
+  "479": {
+    "address": 405,
+    "bit": 14,
+    "description": "Digital Signal 479",
+    "type": "digital"
+  },
+  "480": {
+    "address": 405,
+    "bit": 15,
+    "description": "Digital Signal 480",
+    "type": "digital"
+  },
+  "481": {
+    "address": 406,
+    "bit": 0,
+    "description": "Digital Signal 481",
+    "type": "digital"
+  },
+  "482": {
+    "address": 406,
+    "bit": 1,
+    "description": "Digital Signal 482",
+    "type": "digital"
+  },
+  "483": {
+    "address": 406,
+    "bit": 2,
+    "description": "Digital Signal 483",
+    "type": "digital"
+  },
+  "484": {
+    "address": 406,
+    "bit": 3,
+    "description": "Digital Signal 484",
+    "type": "digital"
+  },
+  "485": {
+    "address": 406,
+    "bit": 4,
+    "description": "Digital Signal 485",
+    "type": "digital"
+  },
+  "486": {
+    "address": 406,
+    "bit": 5,
+    "description": "Digital Signal 486",
+    "type": "digital"
+  },
+  "487": {
+    "address": 406,
+    "bit": 6,
+    "description": "Digital Signal 487",
+    "type": "digital"
+  },
+  "488": {
+    "address": 406,
+    "bit": 7,
+    "description": "Digital Signal 488",
+    "type": "digital"
+  },
+  "489": {
+    "address": 406,
+    "bit": 8,
+    "description": "Digital Signal 489",
+    "type": "digital"
+  },
+  "490": {
+    "address": 406,
+    "bit": 9,
+    "description": "Digital Signal 490",
+    "type": "digital"
+  },
+  "491": {
+    "address": 406,
+    "bit": 10,
+    "description": "Digital Signal 491",
+    "type": "digital"
+  },
+  "492": {
+    "address": 406,
+    "bit": 11,
+    "description": "Digital Signal 492",
+    "type": "digital"
+  },
+  "493": {
+    "address": 406,
+    "bit": 12,
+    "description": "Digital Signal 493",
+    "type": "digital"
+  },
+  "494": {
+    "address": 406,
+    "bit": 13,
+    "description": "Digital Signal 494",
+    "type": "digital"
+  },
+  "495": {
+    "address": 406,
+    "bit": 14,
+    "description": "Digital Signal 495",
+    "type": "digital"
+  },
+  "496": {
+    "address": 406,
+    "bit": 15,
+    "description": "Digital Signal 496",
+    "type": "digital"
+  },
+  "497": {
+    "address": 407,
+    "bit": 0,
+    "description": "Digital Signal 497",
+    "type": "digital"
+  },
+  "498": {
+    "address": 407,
+    "bit": 1,
+    "description": "Digital Signal 498",
+    "type": "digital"
+  },
+  "499": {
+    "address": 407,
+    "bit": 2,
+    "description": "Digital Signal 499",
+    "type": "digital"
+  },
+  "500": {
+    "address": 407,
+    "bit": 3,
+    "description": "Digital Signal 500",
+    "type": "digital"
+  },
+  "501": {
+    "address": 407,
+    "bit": 4,
+    "description": "Digital Signal 501",
+    "type": "digital"
+  },
+  "502": {
+    "address": 407,
+    "bit": 5,
+    "description": "Digital Signal 502",
+    "type": "digital"
+  },
+  "503": {
+    "address": 407,
+    "bit": 6,
+    "description": "Digital Signal 503",
+    "type": "digital"
+  },
+  "504": {
+    "address": 407,
+    "bit": 7,
+    "description": "Digital Signal 504",
+    "type": "digital"
+  },
+  "505": {
+    "address": 407,
+    "bit": 8,
+    "description": "Digital Signal 505",
+    "type": "digital"
+  },
+  "506": {
+    "address": 407,
+    "bit": 9,
+    "description": "Digital Signal 506",
+    "type": "digital"
+  },
+  "507": {
+    "address": 407,
+    "bit": 10,
+    "description": "Digital Signal 507",
+    "type": "digital"
+  },
+  "508": {
+    "address": 407,
+    "bit": 11,
+    "description": "Digital Signal 508",
+    "type": "digital"
+  },
+  "509": {
+    "address": 407,
+    "bit": 12,
+    "description": "Digital Signal 509",
+    "type": "digital"
+  },
+  "510": {
+    "address": 407,
+    "bit": 13,
+    "description": "Digital Signal 510",
+    "type": "digital"
+  },
+  "511": {
+    "address": 407,
+    "bit": 14,
+    "description": "Digital Signal 511",
+    "type": "digital"
+  },
+  "512": {
+    "address": 407,
+    "bit": 15,
+    "description": "Digital Signal 512",
+    "type": "digital"
+  },
+  "513": {
+    "address": 408,
+    "bit": 0,
+    "description": "Digital Signal 513",
+    "type": "digital"
+  },
+  "514": {
+    "address": 408,
+    "bit": 1,
+    "description": "Digital Signal 514",
+    "type": "digital"
+  },
+  "515": {
+    "address": 408,
+    "bit": 2,
+    "description": "Digital Signal 515",
+    "type": "digital"
+  },
+  "516": {
+    "address": 408,
+    "bit": 3,
+    "description": "Digital Signal 516",
+    "type": "digital"
+  },
+  "517": {
+    "address": 408,
+    "bit": 4,
+    "description": "Digital Signal 517",
+    "type": "digital"
+  },
+  "518": {
+    "address": 408,
+    "bit": 5,
+    "description": "Digital Signal 518",
+    "type": "digital"
+  },
+  "519": {
+    "address": 408,
+    "bit": 6,
+    "description": "Digital Signal 519",
+    "type": "digital"
+  },
+  "520": {
+    "address": 408,
+    "bit": 7,
+    "description": "Digital Signal 520",
+    "type": "digital"
+  },
+  "521": {
+    "address": 408,
+    "bit": 8,
+    "description": "Digital Signal 521",
+    "type": "digital"
+  },
+  "522": {
+    "address": 408,
+    "bit": 9,
+    "description": "Digital Signal 522",
+    "type": "digital"
+  },
+  "523": {
+    "address": 408,
+    "bit": 10,
+    "description": "Digital Signal 523",
+    "type": "digital"
+  },
+  "524": {
+    "address": 408,
+    "bit": 11,
+    "description": "Digital Signal 524",
+    "type": "digital"
+  },
+  "525": {
+    "address": 408,
+    "bit": 12,
+    "description": "Digital Signal 525",
+    "type": "digital"
+  },
+  "526": {
+    "address": 408,
+    "bit": 13,
+    "description": "Digital Signal 526",
+    "type": "digital"
+  },
+  "527": {
+    "address": 408,
+    "bit": 14,
+    "description": "Digital Signal 527",
+    "type": "digital"
+  },
+  "528": {
+    "address": 408,
+    "bit": 15,
+    "description": "Digital Signal 528",
+    "type": "digital"
+  },
+  "529": {
+    "address": 409,
+    "bit": 0,
+    "description": "Digital Signal 529",
+    "type": "digital"
+  },
+  "530": {
+    "address": 409,
+    "bit": 1,
+    "description": "Digital Signal 530",
+    "type": "digital"
+  },
+  "531": {
+    "address": 409,
+    "bit": 2,
+    "description": "Digital Signal 531",
+    "type": "digital"
+  },
+  "532": {
+    "address": 409,
+    "bit": 3,
+    "description": "Digital Signal 532",
+    "type": "digital"
+  },
+  "533": {
+    "address": 409,
+    "bit": 4,
+    "description": "Digital Signal 533",
+    "type": "digital"
+  },
+  "534": {
+    "address": 409,
+    "bit": 5,
+    "description": "Digital Signal 534",
+    "type": "digital"
+  },
+  "535": {
+    "address": 409,
+    "bit": 6,
+    "description": "Digital Signal 535",
+    "type": "digital"
+  },
+  "536": {
+    "address": 409,
+    "bit": 7,
+    "description": "Digital Signal 536",
+    "type": "digital"
+  },
+  "537": {
+    "address": 409,
+    "bit": 8,
+    "description": "Digital Signal 537",
+    "type": "digital"
+  },
+  "538": {
+    "address": 409,
+    "bit": 9,
+    "description": "Digital Signal 538",
+    "type": "digital"
+  },
+  "539": {
+    "address": 409,
+    "bit": 10,
+    "description": "Digital Signal 539",
+    "type": "digital"
+  },
+  "540": {
+    "address": 409,
+    "bit": 11,
+    "description": "Digital Signal 540",
+    "type": "digital"
+  },
+  "541": {
+    "address": 409,
+    "bit": 12,
+    "description": "Digital Signal 541",
+    "type": "digital"
+  },
+  "542": {
+    "address": 409,
+    "bit": 13,
+    "description": "Digital Signal 542",
+    "type": "digital"
+  },
+  "543": {
+    "address": 409,
+    "bit": 14,
+    "description": "Digital Signal 543",
+    "type": "digital"
+  },
+  "544": {
+    "address": 409,
+    "bit": 15,
+    "description": "Digital Signal 544",
+    "type": "digital"
+  },
+  "545": {
+    "address": 410,
+    "bit": 0,
+    "description": "Digital Signal 545",
+    "type": "digital"
+  },
+  "546": {
+    "address": 410,
+    "bit": 1,
+    "description": "Digital Signal 546",
+    "type": "digital"
+  },
+  "547": {
+    "address": 410,
+    "bit": 2,
+    "description": "Digital Signal 547",
+    "type": "digital"
+  },
+  "548": {
+    "address": 410,
+    "bit": 3,
+    "description": "Digital Signal 548",
+    "type": "digital"
+  },
+  "549": {
+    "address": 410,
+    "bit": 4,
+    "description": "Digital Signal 549",
+    "type": "digital"
+  },
+  "550": {
+    "address": 410,
+    "bit": 5,
+    "description": "Digital Signal 550",
+    "type": "digital"
+  },
+  "551": {
+    "address": 410,
+    "bit": 6,
+    "description": "Digital Signal 551",
+    "type": "digital"
+  },
+  "552": {
+    "address": 410,
+    "bit": 7,
+    "description": "Digital Signal 552",
+    "type": "digital"
+  },
+  "553": {
+    "address": 410,
+    "bit": 8,
+    "description": "Digital Signal 553",
+    "type": "digital"
+  },
+  "554": {
+    "address": 410,
+    "bit": 9,
+    "description": "Digital Signal 554",
+    "type": "digital"
+  },
+  "555": {
+    "address": 410,
+    "bit": 10,
+    "description": "Digital Signal 555",
+    "type": "digital"
+  },
+  "556": {
+    "address": 410,
+    "bit": 11,
+    "description": "Digital Signal 556",
+    "type": "digital"
+  },
+  "557": {
+    "address": 410,
+    "bit": 12,
+    "description": "Digital Signal 557",
+    "type": "digital"
+  },
+  "558": {
+    "address": 410,
+    "bit": 13,
+    "description": "Digital Signal 558",
+    "type": "digital"
+  },
+  "559": {
+    "address": 410,
+    "bit": 14,
+    "description": "Digital Signal 559",
+    "type": "digital"
+  },
+  "560": {
+    "address": 410,
+    "bit": 15,
+    "description": "Digital Signal 560",
+    "type": "digital"
+  },
+  "561": {
+    "address": 411,
+    "bit": 0,
+    "description": "Digital Signal 561",
+    "type": "digital"
+  },
+  "562": {
+    "address": 411,
+    "bit": 1,
+    "description": "Digital Signal 562",
+    "type": "digital"
+  },
+  "563": {
+    "address": 411,
+    "bit": 2,
+    "description": "Digital Signal 563",
+    "type": "digital"
+  },
+  "564": {
+    "address": 411,
+    "bit": 3,
+    "description": "Digital Signal 564",
+    "type": "digital"
+  },
+  "565": {
+    "address": 411,
+    "bit": 4,
+    "description": "Digital Signal 565",
+    "type": "digital"
+  },
+  "566": {
+    "address": 411,
+    "bit": 5,
+    "description": "Digital Signal 566",
+    "type": "digital"
+  },
+  "567": {
+    "address": 411,
+    "bit": 6,
+    "description": "Digital Signal 567",
+    "type": "digital"
+  },
+  "568": {
+    "address": 411,
+    "bit": 7,
+    "description": "Digital Signal 568",
+    "type": "digital"
+  },
+  "569": {
+    "address": 411,
+    "bit": 8,
+    "description": "Digital Signal 569",
+    "type": "digital"
+  },
+  "570": {
+    "address": 411,
+    "bit": 9,
+    "description": "Digital Signal 570",
+    "type": "digital"
+  },
+  "571": {
+    "address": 411,
+    "bit": 10,
+    "description": "Digital Signal 571",
+    "type": "digital"
+  },
+  "572": {
+    "address": 411,
+    "bit": 11,
+    "description": "Digital Signal 572",
+    "type": "digital"
+  },
+  "573": {
+    "address": 411,
+    "bit": 12,
+    "description": "Digital Signal 573",
+    "type": "digital"
+  },
+  "574": {
+    "address": 411,
+    "bit": 13,
+    "description": "Digital Signal 574",
+    "type": "digital"
+  },
+  "575": {
+    "address": 411,
+    "bit": 14,
+    "description": "Digital Signal 575",
+    "type": "digital"
+  },
+  "576": {
+    "address": 411,
+    "bit": 15,
+    "description": "Digital Signal 576",
+    "type": "digital"
+  },
+  "577": {
+    "address": 412,
+    "bit": 0,
+    "description": "Digital Signal 577",
+    "type": "digital"
+  },
+  "578": {
+    "address": 412,
+    "bit": 1,
+    "description": "Digital Signal 578",
+    "type": "digital"
+  },
+  "579": {
+    "address": 412,
+    "bit": 2,
+    "description": "Digital Signal 579",
+    "type": "digital"
+  },
+  "580": {
+    "address": 412,
+    "bit": 3,
+    "description": "Digital Signal 580",
+    "type": "digital"
+  },
+  "581": {
+    "address": 412,
+    "bit": 4,
+    "description": "Digital Signal 581",
+    "type": "digital"
+  },
+  "582": {
+    "address": 412,
+    "bit": 5,
+    "description": "Digital Signal 582",
+    "type": "digital"
+  },
+  "583": {
+    "address": 412,
+    "bit": 6,
+    "description": "Digital Signal 583",
+    "type": "digital"
+  },
+  "584": {
+    "address": 412,
+    "bit": 7,
+    "description": "Digital Signal 584",
+    "type": "digital"
+  },
+  "585": {
+    "address": 412,
+    "bit": 8,
+    "description": "Digital Signal 585",
+    "type": "digital"
+  },
+  "586": {
+    "address": 412,
+    "bit": 9,
+    "description": "Digital Signal 586",
+    "type": "digital"
+  },
+  "587": {
+    "address": 412,
+    "bit": 10,
+    "description": "Digital Signal 587",
+    "type": "digital"
+  },
+  "588": {
+    "address": 412,
+    "bit": 11,
+    "description": "Digital Signal 588",
+    "type": "digital"
+  },
+  "589": {
+    "address": 412,
+    "bit": 12,
+    "description": "Digital Signal 589",
+    "type": "digital"
+  },
+  "590": {
+    "address": 412,
+    "bit": 13,
+    "description": "Digital Signal 590",
+    "type": "digital"
+  },
+  "591": {
+    "address": 412,
+    "bit": 14,
+    "description": "Digital Signal 591",
+    "type": "digital"
+  },
+  "592": {
+    "address": 412,
+    "bit": 15,
+    "description": "Digital Signal 592",
+    "type": "digital"
+  },
+  "593": {
+    "address": 413,
+    "bit": 0,
+    "description": "Digital Signal 593",
+    "type": "digital"
+  },
+  "594": {
+    "address": 413,
+    "bit": 1,
+    "description": "Digital Signal 594",
+    "type": "digital"
+  },
+  "595": {
+    "address": 413,
+    "bit": 2,
+    "description": "Digital Signal 595",
+    "type": "digital"
+  },
+  "596": {
+    "address": 413,
+    "bit": 3,
+    "description": "Digital Signal 596",
+    "type": "digital"
+  },
+  "597": {
+    "address": 413,
+    "bit": 4,
+    "description": "Digital Signal 597",
+    "type": "digital"
+  },
+  "598": {
+    "address": 413,
+    "bit": 5,
+    "description": "Digital Signal 598",
+    "type": "digital"
+  },
+  "599": {
+    "address": 413,
+    "bit": 6,
+    "description": "Digital Signal 599",
+    "type": "digital"
+  },
+  "600": {
+    "address": 413,
+    "bit": 7,
+    "description": "Digital Signal 600",
+    "type": "digital"
+  },
+  "601": {
+    "address": 413,
+    "bit": 8,
+    "description": "Digital Signal 601",
+    "type": "digital"
+  },
+  "602": {
+    "address": 413,
+    "bit": 9,
+    "description": "Digital Signal 602",
+    "type": "digital"
+  },
+  "603": {
+    "address": 413,
+    "bit": 10,
+    "description": "Digital Signal 603",
+    "type": "digital"
+  },
+  "604": {
+    "address": 413,
+    "bit": 11,
+    "description": "Digital Signal 604",
+    "type": "digital"
+  },
+  "605": {
+    "address": 413,
+    "bit": 12,
+    "description": "Digital Signal 605",
+    "type": "digital"
+  },
+  "606": {
+    "address": 413,
+    "bit": 13,
+    "description": "Digital Signal 606",
+    "type": "digital"
+  },
+  "607": {
+    "address": 413,
+    "bit": 14,
+    "description": "Digital Signal 607",
+    "type": "digital"
+  },
+  "608": {
+    "address": 413,
+    "bit": 15,
+    "description": "Digital Signal 608",
+    "type": "digital"
+  },
+  "609": {
+    "address": 414,
+    "bit": 0,
+    "description": "Digital Signal 609",
+    "type": "digital"
+  },
+  "610": {
+    "address": 414,
+    "bit": 1,
+    "description": "Digital Signal 610",
+    "type": "digital"
+  },
+  "611": {
+    "address": 414,
+    "bit": 2,
+    "description": "Digital Signal 611",
+    "type": "digital"
+  },
+  "612": {
+    "address": 414,
+    "bit": 3,
+    "description": "Digital Signal 612",
+    "type": "digital"
+  },
+  "613": {
+    "address": 414,
+    "bit": 4,
+    "description": "Digital Signal 613",
+    "type": "digital"
+  },
+  "614": {
+    "address": 414,
+    "bit": 5,
+    "description": "Digital Signal 614",
+    "type": "digital"
+  },
+  "615": {
+    "address": 414,
+    "bit": 6,
+    "description": "Digital Signal 615",
+    "type": "digital"
+  },
+  "616": {
+    "address": 414,
+    "bit": 7,
+    "description": "Digital Signal 616",
+    "type": "digital"
+  },
+  "617": {
+    "address": 414,
+    "bit": 8,
+    "description": "Digital Signal 617",
+    "type": "digital"
+  },
+  "618": {
+    "address": 414,
+    "bit": 9,
+    "description": "Digital Signal 618",
+    "type": "digital"
+  },
+  "619": {
+    "address": 414,
+    "bit": 10,
+    "description": "Digital Signal 619",
+    "type": "digital"
+  },
+  "620": {
+    "address": 414,
+    "bit": 11,
+    "description": "Digital Signal 620",
+    "type": "digital"
+  },
+  "621": {
+    "address": 414,
+    "bit": 12,
+    "description": "Digital Signal 621",
+    "type": "digital"
+  },
+  "622": {
+    "address": 414,
+    "bit": 13,
+    "description": "Digital Signal 622",
+    "type": "digital"
+  },
+  "623": {
+    "address": 414,
+    "bit": 14,
+    "description": "Digital Signal 623",
+    "type": "digital"
+  },
+  "624": {
+    "address": 414,
+    "bit": 15,
+    "description": "Digital Signal 624",
+    "type": "digital"
+  },
+  "625": {
+    "address": 415,
+    "bit": 0,
+    "description": "Digital Signal 625",
+    "type": "digital"
+  },
+  "626": {
+    "address": 415,
+    "bit": 1,
+    "description": "Digital Signal 626",
+    "type": "digital"
+  },
+  "627": {
+    "address": 415,
+    "bit": 2,
+    "description": "Digital Signal 627",
+    "type": "digital"
+  },
+  "628": {
+    "address": 415,
+    "bit": 3,
+    "description": "Digital Signal 628",
+    "type": "digital"
+  },
+  "629": {
+    "address": 415,
+    "bit": 4,
+    "description": "Digital Signal 629",
+    "type": "digital"
+  },
+  "630": {
+    "address": 415,
+    "bit": 5,
+    "description": "Digital Signal 630",
+    "type": "digital"
+  },
+  "631": {
+    "address": 415,
+    "bit": 6,
+    "description": "Digital Signal 631",
+    "type": "digital"
+  },
+  "632": {
+    "address": 415,
+    "bit": 7,
+    "description": "Digital Signal 632",
+    "type": "digital"
+  },
+  "633": {
+    "address": 415,
+    "bit": 8,
+    "description": "Digital Signal 633",
+    "type": "digital"
+  },
+  "634": {
+    "address": 415,
+    "bit": 9,
+    "description": "Digital Signal 634",
+    "type": "digital"
+  },
+  "635": {
+    "address": 415,
+    "bit": 10,
+    "description": "Digital Signal 635",
+    "type": "digital"
+  },
+  "636": {
+    "address": 415,
+    "bit": 11,
+    "description": "Digital Signal 636",
+    "type": "digital"
+  },
+  "637": {
+    "address": 415,
+    "bit": 12,
+    "description": "Digital Signal 637",
+    "type": "digital"
+  },
+  "638": {
+    "address": 415,
+    "bit": 13,
+    "description": "Digital Signal 638",
+    "type": "digital"
+  },
+  "639": {
+    "address": 415,
+    "bit": 14,
+    "description": "Digital Signal 639",
+    "type": "digital"
+  },
+  "640": {
+    "address": 415,
+    "bit": 15,
+    "description": "Digital Signal 640",
+    "type": "digital"
+  },
+  "641": {
+    "address": 416,
+    "bit": 0,
+    "description": "Digital Signal 641",
+    "type": "digital"
+  },
+  "642": {
+    "address": 416,
+    "bit": 1,
+    "description": "Digital Signal 642",
+    "type": "digital"
+  },
+  "643": {
+    "address": 416,
+    "bit": 2,
+    "description": "Digital Signal 643",
+    "type": "digital"
+  },
+  "644": {
+    "address": 416,
+    "bit": 3,
+    "description": "Digital Signal 644",
+    "type": "digital"
+  },
+  "645": {
+    "address": 416,
+    "bit": 4,
+    "description": "Digital Signal 645",
+    "type": "digital"
+  },
+  "646": {
+    "address": 416,
+    "bit": 5,
+    "description": "Digital Signal 646",
+    "type": "digital"
+  },
+  "647": {
+    "address": 416,
+    "bit": 6,
+    "description": "Digital Signal 647",
+    "type": "digital"
+  },
+  "648": {
+    "address": 416,
+    "bit": 7,
+    "description": "Digital Signal 648",
+    "type": "digital"
+  },
+  "649": {
+    "address": 416,
+    "bit": 8,
+    "description": "Digital Signal 649",
+    "type": "digital"
+  },
+  "650": {
+    "address": 416,
+    "bit": 9,
+    "description": "Digital Signal 650",
+    "type": "digital"
+  },
+  "651": {
+    "address": 416,
+    "bit": 10,
+    "description": "Digital Signal 651",
+    "type": "digital"
+  },
+  "652": {
+    "address": 416,
+    "bit": 11,
+    "description": "Digital Signal 652",
+    "type": "digital"
+  },
+  "653": {
+    "address": 416,
+    "bit": 12,
+    "description": "Digital Signal 653",
+    "type": "digital"
+  },
+  "654": {
+    "address": 416,
+    "bit": 13,
+    "description": "Digital Signal 654",
+    "type": "digital"
+  },
+  "655": {
+    "address": 416,
+    "bit": 14,
+    "description": "Digital Signal 655",
+    "type": "digital"
+  },
+  "656": {
+    "address": 416,
+    "bit": 15,
+    "description": "Digital Signal 656",
+    "type": "digital"
+  },
+  "657": {
+    "address": 417,
+    "bit": 0,
+    "description": "Digital Signal 657",
+    "type": "digital"
+  },
+  "658": {
+    "address": 417,
+    "bit": 1,
+    "description": "Digital Signal 658",
+    "type": "digital"
+  },
+  "659": {
+    "address": 417,
+    "bit": 2,
+    "description": "Digital Signal 659",
+    "type": "digital"
+  },
+  "660": {
+    "address": 417,
+    "bit": 3,
+    "description": "Digital Signal 660",
+    "type": "digital"
+  },
+  "661": {
+    "address": 417,
+    "bit": 4,
+    "description": "Digital Signal 661",
+    "type": "digital"
+  },
+  "662": {
+    "address": 417,
+    "bit": 5,
+    "description": "Digital Signal 662",
+    "type": "digital"
+  },
+  "663": {
+    "address": 417,
+    "bit": 6,
+    "description": "Digital Signal 663",
+    "type": "digital"
+  },
+  "664": {
+    "address": 417,
+    "bit": 7,
+    "description": "Digital Signal 664",
+    "type": "digital"
+  },
+  "665": {
+    "address": 417,
+    "bit": 8,
+    "description": "Digital Signal 665",
+    "type": "digital"
+  },
+  "666": {
+    "address": 417,
+    "bit": 9,
+    "description": "Digital Signal 666",
+    "type": "digital"
+  },
+  "667": {
+    "address": 417,
+    "bit": 10,
+    "description": "Digital Signal 667",
+    "type": "digital"
+  },
+  "668": {
+    "address": 417,
+    "bit": 11,
+    "description": "Digital Signal 668",
+    "type": "digital"
+  },
+  "669": {
+    "address": 417,
+    "bit": 12,
+    "description": "Digital Signal 669",
+    "type": "digital"
+  },
+  "670": {
+    "address": 417,
+    "bit": 13,
+    "description": "Digital Signal 670",
+    "type": "digital"
+  },
+  "671": {
+    "address": 417,
+    "bit": 14,
+    "description": "Digital Signal 671",
+    "type": "digital"
+  },
+  "672": {
+    "address": 417,
+    "bit": 15,
+    "description": "Digital Signal 672",
+    "type": "digital"
+  },
+  "673": {
+    "address": 418,
+    "bit": 0,
+    "description": "Digital Signal 673",
+    "type": "digital"
+  },
+  "674": {
+    "address": 418,
+    "bit": 1,
+    "description": "Digital Signal 674",
+    "type": "digital"
+  },
+  "675": {
+    "address": 418,
+    "bit": 2,
+    "description": "Digital Signal 675",
+    "type": "digital"
+  },
+  "676": {
+    "address": 418,
+    "bit": 3,
+    "description": "Digital Signal 676",
+    "type": "digital"
+  },
+  "677": {
+    "address": 418,
+    "bit": 4,
+    "description": "Digital Signal 677",
+    "type": "digital"
+  },
+  "678": {
+    "address": 418,
+    "bit": 5,
+    "description": "Digital Signal 678",
+    "type": "digital"
+  },
+  "679": {
+    "address": 418,
+    "bit": 6,
+    "description": "Digital Signal 679",
+    "type": "digital"
+  },
+  "680": {
+    "address": 418,
+    "bit": 7,
+    "description": "Digital Signal 680",
+    "type": "digital"
+  },
+  "681": {
+    "address": 418,
+    "bit": 8,
+    "description": "Digital Signal 681",
+    "type": "digital"
+  },
+  "682": {
+    "address": 418,
+    "bit": 9,
+    "description": "Digital Signal 682",
+    "type": "digital"
+  },
+  "683": {
+    "address": 418,
+    "bit": 10,
+    "description": "Digital Signal 683",
+    "type": "digital"
+  },
+  "684": {
+    "address": 418,
+    "bit": 11,
+    "description": "Digital Signal 684",
+    "type": "digital"
+  },
+  "685": {
+    "address": 418,
+    "bit": 12,
+    "description": "Digital Signal 685",
+    "type": "digital"
+  },
+  "686": {
+    "address": 418,
+    "bit": 13,
+    "description": "Digital Signal 686",
+    "type": "digital"
+  },
+  "687": {
+    "address": 418,
+    "bit": 14,
+    "description": "Digital Signal 687",
+    "type": "digital"
+  },
+  "688": {
+    "address": 418,
+    "bit": 15,
+    "description": "Digital Signal 688",
+    "type": "digital"
+  },
+  "689": {
+    "address": 419,
+    "bit": 0,
+    "description": "Digital Signal 689",
+    "type": "digital"
+  },
+  "690": {
+    "address": 419,
+    "bit": 1,
+    "description": "Digital Signal 690",
+    "type": "digital"
+  },
+  "691": {
+    "address": 419,
+    "bit": 2,
+    "description": "Digital Signal 691",
+    "type": "digital"
+  },
+  "692": {
+    "address": 419,
+    "bit": 3,
+    "description": "Digital Signal 692",
+    "type": "digital"
+  },
+  "693": {
+    "address": 419,
+    "bit": 4,
+    "description": "Digital Signal 693",
+    "type": "digital"
+  },
+  "694": {
+    "address": 419,
+    "bit": 5,
+    "description": "Digital Signal 694",
+    "type": "digital"
+  },
+  "695": {
+    "address": 419,
+    "bit": 6,
+    "description": "Digital Signal 695",
+    "type": "digital"
+  },
+  "696": {
+    "address": 419,
+    "bit": 7,
+    "description": "Digital Signal 696",
+    "type": "digital"
+  },
+  "697": {
+    "address": 419,
+    "bit": 8,
+    "description": "Digital Signal 697",
+    "type": "digital"
+  },
+  "698": {
+    "address": 419,
+    "bit": 9,
+    "description": "Digital Signal 698",
+    "type": "digital"
+  },
+  "699": {
+    "address": 419,
+    "bit": 10,
+    "description": "Digital Signal 699",
+    "type": "digital"
+  },
+  "700": {
+    "address": 419,
+    "bit": 11,
+    "description": "Digital Signal 700",
+    "type": "digital"
+  },
+  "701": {
+    "address": 419,
+    "bit": 12,
+    "description": "Digital Signal 701",
+    "type": "digital"
+  },
+  "702": {
+    "address": 419,
+    "bit": 13,
+    "description": "Digital Signal 702",
+    "type": "digital"
+  },
+  "703": {
+    "address": 419,
+    "bit": 14,
+    "description": "Digital Signal 703",
+    "type": "digital"
+  },
+  "704": {
+    "address": 419,
+    "bit": 15,
+    "description": "Digital Signal 704",
+    "type": "digital"
+  },
+  "705": {
+    "address": 420,
+    "bit": 0,
+    "description": "Digital Signal 705",
+    "type": "digital"
+  },
+  "706": {
+    "address": 420,
+    "bit": 1,
+    "description": "Digital Signal 706",
+    "type": "digital"
+  },
+  "707": {
+    "address": 420,
+    "bit": 2,
+    "description": "Digital Signal 707",
+    "type": "digital"
+  },
+  "708": {
+    "address": 420,
+    "bit": 3,
+    "description": "Digital Signal 708",
+    "type": "digital"
+  },
+  "709": {
+    "address": 420,
+    "bit": 4,
+    "description": "Digital Signal 709",
+    "type": "digital"
+  },
+  "710": {
+    "address": 420,
+    "bit": 5,
+    "description": "Digital Signal 710",
+    "type": "digital"
+  },
+  "711": {
+    "address": 420,
+    "bit": 6,
+    "description": "Digital Signal 711",
+    "type": "digital"
+  },
+  "712": {
+    "address": 420,
+    "bit": 7,
+    "description": "Digital Signal 712",
+    "type": "digital"
+  },
+  "713": {
+    "address": 420,
+    "bit": 8,
+    "description": "Digital Signal 713",
+    "type": "digital"
+  },
+  "714": {
+    "address": 420,
+    "bit": 9,
+    "description": "Digital Signal 714",
+    "type": "digital"
+  },
+  "715": {
+    "address": 420,
+    "bit": 10,
+    "description": "Digital Signal 715",
+    "type": "digital"
+  },
+  "716": {
+    "address": 420,
+    "bit": 11,
+    "description": "Digital Signal 716",
+    "type": "digital"
+  },
+  "717": {
+    "address": 420,
+    "bit": 12,
+    "description": "Digital Signal 717",
+    "type": "digital"
+  },
+  "718": {
+    "address": 420,
+    "bit": 13,
+    "description": "Digital Signal 718",
+    "type": "digital"
+  },
+  "719": {
+    "address": 420,
+    "bit": 14,
+    "description": "Digital Signal 719",
+    "type": "digital"
+  },
+  "720": {
+    "address": 420,
+    "bit": 15,
+    "description": "Digital Signal 720",
+    "type": "digital"
+  },
+  "721": {
+    "address": 421,
+    "bit": 0,
+    "description": "Digital Signal 721",
+    "type": "digital"
+  },
+  "722": {
+    "address": 421,
+    "bit": 1,
+    "description": "Digital Signal 722",
+    "type": "digital"
+  },
+  "723": {
+    "address": 421,
+    "bit": 2,
+    "description": "Digital Signal 723",
+    "type": "digital"
+  },
+  "724": {
+    "address": 421,
+    "bit": 3,
+    "description": "Digital Signal 724",
+    "type": "digital"
+  },
+  "725": {
+    "address": 421,
+    "bit": 4,
+    "description": "Digital Signal 725",
+    "type": "digital"
+  },
+  "726": {
+    "address": 421,
+    "bit": 5,
+    "description": "Digital Signal 726",
+    "type": "digital"
+  },
+  "727": {
+    "address": 421,
+    "bit": 6,
+    "description": "Digital Signal 727",
+    "type": "digital"
+  },
+  "728": {
+    "address": 421,
+    "bit": 7,
+    "description": "Digital Signal 728",
+    "type": "digital"
+  },
+  "729": {
+    "address": 421,
+    "bit": 8,
+    "description": "Digital Signal 729",
+    "type": "digital"
+  },
+  "730": {
+    "address": 421,
+    "bit": 9,
+    "description": "Digital Signal 730",
+    "type": "digital"
+  },
+  "731": {
+    "address": 421,
+    "bit": 10,
+    "description": "Digital Signal 731",
+    "type": "digital"
+  },
+  "732": {
+    "address": 421,
+    "bit": 11,
+    "description": "Digital Signal 732",
+    "type": "digital"
+  },
+  "733": {
+    "address": 421,
+    "bit": 12,
+    "description": "Digital Signal 733",
+    "type": "digital"
+  },
+  "734": {
+    "address": 421,
+    "bit": 13,
+    "description": "Digital Signal 734",
+    "type": "digital"
+  },
+  "735": {
+    "address": 421,
+    "bit": 14,
+    "description": "Digital Signal 735",
+    "type": "digital"
+  },
+  "736": {
+    "address": 421,
+    "bit": 15,
+    "description": "Digital Signal 736",
+    "type": "digital"
+  },
+  "737": {
+    "address": 422,
+    "bit": 0,
+    "description": "Digital Signal 737",
+    "type": "digital"
+  },
+  "738": {
+    "address": 422,
+    "bit": 1,
+    "description": "Digital Signal 738",
+    "type": "digital"
+  },
+  "739": {
+    "address": 422,
+    "bit": 2,
+    "description": "Digital Signal 739",
+    "type": "digital"
+  },
+  "740": {
+    "address": 422,
+    "bit": 3,
+    "description": "Digital Signal 740",
+    "type": "digital"
+  },
+  "741": {
+    "address": 422,
+    "bit": 4,
+    "description": "Digital Signal 741",
+    "type": "digital"
+  },
+  "742": {
+    "address": 422,
+    "bit": 5,
+    "description": "Digital Signal 742",
+    "type": "digital"
+  },
+  "743": {
+    "address": 422,
+    "bit": 6,
+    "description": "Digital Signal 743",
+    "type": "digital"
+  },
+  "744": {
+    "address": 422,
+    "bit": 7,
+    "description": "Digital Signal 744",
+    "type": "digital"
+  },
+  "745": {
+    "address": 422,
+    "bit": 8,
+    "description": "Digital Signal 745",
+    "type": "digital"
+  },
+  "746": {
+    "address": 422,
+    "bit": 9,
+    "description": "Digital Signal 746",
+    "type": "digital"
+  },
+  "747": {
+    "address": 422,
+    "bit": 10,
+    "description": "Digital Signal 747",
+    "type": "digital"
+  },
+  "748": {
+    "address": 422,
+    "bit": 11,
+    "description": "Digital Signal 748",
+    "type": "digital"
+  },
+  "749": {
+    "address": 422,
+    "bit": 12,
+    "description": "Digital Signal 749",
+    "type": "digital"
+  },
+  "750": {
+    "address": 422,
+    "bit": 13,
+    "description": "Digital Signal 750",
+    "type": "digital"
+  },
+  "751": {
+    "address": 422,
+    "bit": 14,
+    "description": "Digital Signal 751",
+    "type": "digital"
+  },
+  "752": {
+    "address": 422,
+    "bit": 15,
+    "description": "Digital Signal 752",
+    "type": "digital"
+  },
+  "753": {
+    "address": 423,
+    "bit": 0,
+    "description": "Digital Signal 753",
+    "type": "digital"
+  },
+  "754": {
+    "address": 423,
+    "bit": 1,
+    "description": "Digital Signal 754",
+    "type": "digital"
+  },
+  "755": {
+    "address": 423,
+    "bit": 2,
+    "description": "Digital Signal 755",
+    "type": "digital"
+  },
+  "756": {
+    "address": 423,
+    "bit": 3,
+    "description": "Digital Signal 756",
+    "type": "digital"
+  },
+  "757": {
+    "address": 423,
+    "bit": 4,
+    "description": "Digital Signal 757",
+    "type": "digital"
+  },
+  "758": {
+    "address": 423,
+    "bit": 5,
+    "description": "Digital Signal 758",
+    "type": "digital"
+  },
+  "759": {
+    "address": 423,
+    "bit": 6,
+    "description": "Digital Signal 759",
+    "type": "digital"
+  },
+  "760": {
+    "address": 423,
+    "bit": 7,
+    "description": "Digital Signal 760",
+    "type": "digital"
+  },
+  "761": {
+    "address": 423,
+    "bit": 8,
+    "description": "Digital Signal 761",
+    "type": "digital"
+  },
+  "762": {
+    "address": 423,
+    "bit": 9,
+    "description": "Digital Signal 762",
+    "type": "digital"
+  },
+  "763": {
+    "address": 423,
+    "bit": 10,
+    "description": "Digital Signal 763",
+    "type": "digital"
+  },
+  "764": {
+    "address": 423,
+    "bit": 11,
+    "description": "Digital Signal 764",
+    "type": "digital"
+  },
+  "765": {
+    "address": 423,
+    "bit": 12,
+    "description": "Digital Signal 765",
+    "type": "digital"
+  },
+  "766": {
+    "address": 423,
+    "bit": 13,
+    "description": "Digital Signal 766",
+    "type": "digital"
+  },
+  "767": {
+    "address": 423,
+    "bit": 14,
+    "description": "Digital Signal 767",
+    "type": "digital"
+  },
+  "768": {
+    "address": 423,
+    "bit": 15,
+    "description": "Digital Signal 768",
+    "type": "digital"
+  },
+  "769": {
+    "address": 424,
+    "bit": 0,
+    "description": "Digital Signal 769",
+    "type": "digital"
+  },
+  "770": {
+    "address": 424,
+    "bit": 1,
+    "description": "Digital Signal 770",
+    "type": "digital"
+  },
+  "771": {
+    "address": 424,
+    "bit": 2,
+    "description": "Digital Signal 771",
+    "type": "digital"
+  },
+  "772": {
+    "address": 424,
+    "bit": 3,
+    "description": "Digital Signal 772",
+    "type": "digital"
+  },
+  "773": {
+    "address": 424,
+    "bit": 4,
+    "description": "Digital Signal 773",
+    "type": "digital"
+  },
+  "774": {
+    "address": 424,
+    "bit": 5,
+    "description": "Digital Signal 774",
+    "type": "digital"
+  },
+  "775": {
+    "address": 424,
+    "bit": 6,
+    "description": "Digital Signal 775",
+    "type": "digital"
+  },
+  "776": {
+    "address": 424,
+    "bit": 7,
+    "description": "Digital Signal 776",
+    "type": "digital"
+  },
+  "777": {
+    "address": 424,
+    "bit": 8,
+    "description": "Digital Signal 777",
+    "type": "digital"
+  },
+  "778": {
+    "address": 424,
+    "bit": 9,
+    "description": "Digital Signal 778",
+    "type": "digital"
+  },
+  "779": {
+    "address": 424,
+    "bit": 10,
+    "description": "Digital Signal 779",
+    "type": "digital"
+  },
+  "780": {
+    "address": 424,
+    "bit": 11,
+    "description": "Digital Signal 780",
+    "type": "digital"
+  },
+  "781": {
+    "address": 424,
+    "bit": 12,
+    "description": "Digital Signal 781",
+    "type": "digital"
+  },
+  "782": {
+    "address": 424,
+    "bit": 13,
+    "description": "Digital Signal 782",
+    "type": "digital"
+  },
+  "783": {
+    "address": 424,
+    "bit": 14,
+    "description": "Digital Signal 783",
+    "type": "digital"
+  },
+  "784": {
+    "address": 424,
+    "bit": 15,
+    "description": "Digital Signal 784",
+    "type": "digital"
+  },
+  "785": {
+    "address": 425,
+    "bit": 0,
+    "description": "Digital Signal 785",
+    "type": "digital"
+  },
+  "786": {
+    "address": 425,
+    "bit": 1,
+    "description": "Digital Signal 786",
+    "type": "digital"
+  },
+  "787": {
+    "address": 425,
+    "bit": 2,
+    "description": "Digital Signal 787",
+    "type": "digital"
+  },
+  "788": {
+    "address": 425,
+    "bit": 3,
+    "description": "Digital Signal 788",
+    "type": "digital"
+  },
+  "789": {
+    "address": 425,
+    "bit": 4,
+    "description": "Digital Signal 789",
+    "type": "digital"
+  },
+  "790": {
+    "address": 425,
+    "bit": 5,
+    "description": "Digital Signal 790",
+    "type": "digital"
+  },
+  "791": {
+    "address": 425,
+    "bit": 6,
+    "description": "Digital Signal 791",
+    "type": "digital"
+  },
+  "792": {
+    "address": 425,
+    "bit": 7,
+    "description": "Digital Signal 792",
+    "type": "digital"
+  },
+  "793": {
+    "address": 425,
+    "bit": 8,
+    "description": "Digital Signal 793",
+    "type": "digital"
+  },
+  "794": {
+    "address": 425,
+    "bit": 9,
+    "description": "Digital Signal 794",
+    "type": "digital"
+  },
+  "795": {
+    "address": 425,
+    "bit": 10,
+    "description": "Digital Signal 795",
+    "type": "digital"
+  },
+  "796": {
+    "address": 425,
+    "bit": 11,
+    "description": "Digital Signal 796",
+    "type": "digital"
+  },
+  "797": {
+    "address": 425,
+    "bit": 12,
+    "description": "Digital Signal 797",
+    "type": "digital"
+  },
+  "798": {
+    "address": 425,
+    "bit": 13,
+    "description": "Digital Signal 798",
+    "type": "digital"
+  },
+  "799": {
+    "address": 425,
+    "bit": 14,
+    "description": "Digital Signal 799",
+    "type": "digital"
+  },
+  "800": {
+    "address": 425,
+    "bit": 15,
+    "description": "Digital Signal 800",
+    "type": "digital"
+  }
 }

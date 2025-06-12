@@ -21,17 +21,17 @@ import MainEnginesMenu from '../submenus/MainEnginesMenu.vue'
                     <div class="ui grid type1 cols-mini-5 col mini-2">
 
                         <div class="ui col mini-1  flex-center">
-                            <VerticalBar :signalId="4391" title="Engine Oil Pressure" unit="bar" :scaleBottom="0" :scaleTop="3000"
+                            <VerticalBar :signalId="63" title="Engine Oil Pressure" unit="bar" :scaleBottom="0" :scaleTop="3000"
                                 :scaleStep="500" :displayScale="true" color="#3498db" />
                         </div>
 
                         <div class="ui col mini-3 ">
-                            <GaugeRender :signalId="4011" unit="rpm" textSizeClass="text-size-20"
+                            <GaugeRender :signalId="64" unit="rpm" textSizeClass="text-size-20"
                                 unitSizeClass="text-size-15" :scaleInterval="100" :height="'220px'" :centerY="'94%'" :radius="'120'" />
                         </div>
 
                         <div class="ui col mini-1  flex-center">
-                            <VerticalBar :signalId="4391" title="Coolant Temperature" unit="C" :scaleBottom="0"
+                            <VerticalBar :signalId="65" title="Coolant Temperature" unit="C" :scaleBottom="0"
                                 :scaleTop="3000" :scaleStep="500" :displayScale="true" color="#3498db" />
                         </div>
 
@@ -40,74 +40,74 @@ import MainEnginesMenu from '../submenus/MainEnginesMenu.vue'
                     <div class="ui grid type1 cols-mini-3 col mini-2">
 
                         <div class="ui col mini-1">
-                            <TextAnalogueValue :signalId="4398" title="Battery Voltage" unit="V" valueMode="raw" />
+                            <TextAnalogueValue :signalId="66" title="Battery Voltage" unit="V" valueMode="raw" />
                         </div>
 
                         <div class="ui col mini-1">
-                            <TextAnalogueValue :signalId="4398" title="Engine Hours" unit="h" valueMode="raw" />
+                            <TextAnalogueValue :signalId="67" title="Engine Hours" unit="h" valueMode="raw" />
                         </div>
 
                         <div class="ui col mini-1">
-                            <TextAnalogueValue :signalId="4398" title="Filtered Fuel Press." unit="bar"
+                            <TextAnalogueValue :signalId="68" title="Filtered Fuel Press." unit="bar"
                                 valueMode="raw" />
                         </div>
 
                         <div class="ui col mini-1">
-                            <TextAnalogueValue :signalId="4001" title="Left Exhaust Temp." unit="C" valueMode="raw" />
+                            <TextAnalogueValue :signalId="69" title="Left Exhaust Temp." unit="C" valueMode="raw" />
                         </div>
 
                         <div class="ui col mini-1">
-                            <TextAnalogueValue :signalId="4399" title="Right Exhaust Temp." unit="C" valueMode="raw" />
+                            <TextAnalogueValue :signalId="70" title="Right Exhaust Temp." unit="C" valueMode="raw" />
                         </div>
 
                         <div class="ui col mini-1">
-                            <TextAnalogueValue :signalId="4390" title="Fuel Consumption" unit="l/h" valueMode="raw" />
+                            <TextAnalogueValue :signalId="71" title="Fuel Consumption" unit="l/h" valueMode="raw" />
                         </div>
 
                         <div class="ui col mini-1">
-                            <TextAnalogueValue :signalId="4391" title="Boost Press." unit="KPa" valueMode="raw" />
+                            <TextAnalogueValue :signalId="72" title="Boost Press." unit="KPa" valueMode="raw" />
                         </div>
 
                         <div class="ui col mini-1">
-                            <TextAnalogueValue :signalId="4392" title="Engine Oil Press. Diff." unit="KPa"
+                            <TextAnalogueValue :signalId="73" title="Engine Oil Press. Diff." unit="KPa"
                                 valueMode="raw" />
                         </div>
 
                         <div class="ui col mini-1">
-                            <TextAnalogueValue :signalId="4393" title="Engine Fuel Press. Diff." unit="KPa"
+                            <TextAnalogueValue :signalId="74" title="Engine Fuel Press. Diff." unit="KPa"
                                 valueMode="raw" />
                         </div>
 
                         <div class="ui col mini-1">
-                            <TextAnalogueValue :signalId="4394" title="Coolant Temp." unit="C" valueMode="raw" />
+                            <TextAnalogueValue :signalId="75" title="Coolant Temp." unit="C" valueMode="raw" />
                         </div>
 
                         <div class="ui col mini-1">
-                            <TextAnalogueValue :signalId="4395" title="Right Air Filter Restriction" unit="KPa"
+                            <TextAnalogueValue :signalId="76" title="Right Air Filter Restriction" unit="KPa"
                                 valueMode="raw" />
                         </div>
                         <div class="ui col mini-1">
-                            <TextAnalogueValue :signalId="4396" title="Left Air Filter Restriction" unit="KPa"
+                            <TextAnalogueValue :signalId="77" title="Left Air Filter Restriction" unit="KPa"
                                 valueMode="raw" />
                         </div>
                         <div class="ui col mini-1">
-                            <TextAnalogueValue :signalId="4397" title="Transsmission Oil Temp." unit="C"
+                            <TextAnalogueValue :signalId="78" title="Transsmission Oil Temp." unit="C"
                                 valueMode="raw" />
                         </div>
                         <div class="ui col mini-1">
-                            <TextAnalogueValue :signalId="4398" title="Transmission Oil Press." unit="KPa"
+                            <TextAnalogueValue :signalId="79" title="Transmission Oil Press." unit="KPa"
                                 valueMode="raw" />
                         </div>
                         <div class="ui col mini-1">
-                            <TextAnalogueValue :signalId="4399" title="Engine Oil Temp." unit="C" valueMode="raw" />
+                            <TextAnalogueValue :signalId="80" title="Engine Oil Temp." unit="C" valueMode="raw" />
                         </div>
 
                         <div class="ui col mini-3">
                             <ul class="ui table size-mini resp">
                                 <IconTextValueDigitalLine
-                                    v-bind="{ signalId: 2049, title: 'CCM Communication Fault', icon: 'tripping', size: '20', zeroText: 'OK', zeroColor: 'success', oneText: 'Alarm', oneColor: 'danger' }" />
+                                    v-bind="{ signalId: 430, title: 'CCM Communication Fault', icon: 'tripping', size: '20', zeroText: 'OK', zeroColor: 'success', oneText: 'Alarm', oneColor: 'danger' }" />
                                 <IconTextValueDigitalLine
-                                    v-bind="{ signalId: 2049, title: 'Port Engine Common Alarm', icon: 'tripping', size: '20', zeroText: 'OK', zeroColor: 'success', oneText: 'Alarm', oneColor: 'danger' }" />
+                                    v-bind="{ signalId: 431, title: 'Port Engine Common Alarm', icon: 'tripping', size: '20', zeroText: 'OK', zeroColor: 'success', oneText: 'Alarm', oneColor: 'danger' }" />
                             </ul>
                         </div>
 
@@ -123,17 +123,17 @@ import MainEnginesMenu from '../submenus/MainEnginesMenu.vue'
                     <div class="ui grid type1 cols-mini-5 col mini-2">
 
                         <div class="ui col mini-1  flex-center">
-                            <VerticalBar :signalId="4391" title="Engine Oil Pressure" unit="bar" :scaleBottom="0" :scaleTop="3000"
+                            <VerticalBar :signalId="81" title="Engine Oil Pressure" unit="bar" :scaleBottom="0" :scaleTop="3000"
                                 :scaleStep="500" :displayScale="true" color="#3498db" />
                         </div>
 
                         <div class="ui col mini-3 ">
-                            <GaugeRender :signalId="4011" unit="rpm" textSizeClass="text-size-20"
+                            <GaugeRender :signalId="82" unit="rpm" textSizeClass="text-size-20"
                                 unitSizeClass="text-size-15" :scaleInterval="100" :height="'220px'" :centerY="'94%'" :radius="'120'" />
                         </div>
 
                         <div class="ui col mini-1  flex-center">
-                            <VerticalBar :signalId="4391" title="Coolant Temperature" unit="C" :scaleBottom="0"
+                            <VerticalBar :signalId="83" title="Coolant Temperature" unit="C" :scaleBottom="0"
                                 :scaleTop="3000" :scaleStep="500" :displayScale="true" color="#3498db" />
                         </div>
 
@@ -142,74 +142,74 @@ import MainEnginesMenu from '../submenus/MainEnginesMenu.vue'
                     <div class="ui grid type1 cols-mini-3 col mini-2">
 
                         <div class="ui col mini-1">
-                            <TextAnalogueValue :signalId="4398" title="Battery Voltage" unit="V" valueMode="raw" />
+                            <TextAnalogueValue :signalId="84" title="Battery Voltage" unit="V" valueMode="raw" />
                         </div>
 
                         <div class="ui col mini-1">
-                            <TextAnalogueValue :signalId="4398" title="Engine Hours" unit="h" valueMode="raw" />
+                            <TextAnalogueValue :signalId="85" title="Engine Hours" unit="h" valueMode="raw" />
                         </div>
 
                         <div class="ui col mini-1">
-                            <TextAnalogueValue :signalId="4398" title="Filtered Fuel Press." unit="bar"
+                            <TextAnalogueValue :signalId="86" title="Filtered Fuel Press." unit="bar"
                                 valueMode="raw" />
                         </div>
 
                         <div class="ui col mini-1">
-                            <TextAnalogueValue :signalId="4001" title="Left Exhaust Temp." unit="C" valueMode="raw" />
+                            <TextAnalogueValue :signalId="87" title="Left Exhaust Temp." unit="C" valueMode="raw" />
                         </div>
 
                         <div class="ui col mini-1">
-                            <TextAnalogueValue :signalId="4399" title="Right Exhaust Temp." unit="C" valueMode="raw" />
+                            <TextAnalogueValue :signalId="88" title="Right Exhaust Temp." unit="C" valueMode="raw" />
                         </div>
 
                         <div class="ui col mini-1">
-                            <TextAnalogueValue :signalId="4390" title="Fuel Consumption" unit="l/h" valueMode="raw" />
+                            <TextAnalogueValue :signalId="89" title="Fuel Consumption" unit="l/h" valueMode="raw" />
                         </div>
 
                         <div class="ui col mini-1">
-                            <TextAnalogueValue :signalId="4391" title="Boost Press." unit="KPa" valueMode="raw" />
+                            <TextAnalogueValue :signalId="90" title="Boost Press." unit="KPa" valueMode="raw" />
                         </div>
 
                         <div class="ui col mini-1">
-                            <TextAnalogueValue :signalId="4392" title="Engine Oil Press. Diff." unit="KPa"
+                            <TextAnalogueValue :signalId="91" title="Engine Oil Press. Diff." unit="KPa"
                                 valueMode="raw" />
                         </div>
 
                         <div class="ui col mini-1">
-                            <TextAnalogueValue :signalId="4393" title="Engine Fuel Press. Diff." unit="KPa"
+                            <TextAnalogueValue :signalId="92" title="Engine Fuel Press. Diff." unit="KPa"
                                 valueMode="raw" />
                         </div>
 
                         <div class="ui col mini-1">
-                            <TextAnalogueValue :signalId="4394" title="Coolant Temp." unit="C" valueMode="raw" />
+                            <TextAnalogueValue :signalId="93" title="Coolant Temp." unit="C" valueMode="raw" />
                         </div>
 
                         <div class="ui col mini-1">
-                            <TextAnalogueValue :signalId="4395" title="Right Air Filter Restriction" unit="KPa"
+                            <TextAnalogueValue :signalId="94" title="Right Air Filter Restriction" unit="KPa"
                                 valueMode="raw" />
                         </div>
                         <div class="ui col mini-1">
-                            <TextAnalogueValue :signalId="4396" title="Left Air Filter Restriction" unit="KPa"
+                            <TextAnalogueValue :signalId="95" title="Left Air Filter Restriction" unit="KPa"
                                 valueMode="raw" />
                         </div>
                         <div class="ui col mini-1">
-                            <TextAnalogueValue :signalId="4397" title="Transsmission Oil Temp." unit="C"
+                            <TextAnalogueValue :signalId="96" title="Transsmission Oil Temp." unit="C"
                                 valueMode="raw" />
                         </div>
                         <div class="ui col mini-1">
-                            <TextAnalogueValue :signalId="4398" title="Transmission Oil Press." unit="KPa"
+                            <TextAnalogueValue :signalId="97" title="Transmission Oil Press." unit="KPa"
                                 valueMode="raw" />
                         </div>
                         <div class="ui col mini-1">
-                            <TextAnalogueValue :signalId="4399" title="Engine Oil Temp." unit="C" valueMode="raw" />
+                            <TextAnalogueValue :signalId="98" title="Engine Oil Temp." unit="C" valueMode="raw" />
                         </div>
 
                         <div class="ui col mini-3">
                             <ul class="ui table size-mini resp">
                                 <IconTextValueDigitalLine
-                                    v-bind="{ signalId: 2049, title: 'CCM Communication Fault', icon: 'tripping', size: '20', zeroText: 'OK', zeroColor: 'success', oneText: 'Alarm', oneColor: 'danger' }" />
+                                    v-bind="{ signalId: 432, title: 'CCM Communication Fault', icon: 'tripping', size: '20', zeroText: 'OK', zeroColor: 'success', oneText: 'Alarm', oneColor: 'danger' }" />
                                 <IconTextValueDigitalLine
-                                    v-bind="{ signalId: 2049, title: 'Stbd Engine Common Alarm', icon: 'tripping', size: '20', zeroText: 'OK', zeroColor: 'success', oneText: 'Alarm', oneColor: 'danger' }" />
+                                    v-bind="{ signalId: 433, title: 'Stbd Engine Common Alarm', icon: 'tripping', size: '20', zeroText: 'OK', zeroColor: 'success', oneText: 'Alarm', oneColor: 'danger' }" />
                             </ul>
                         </div>
 

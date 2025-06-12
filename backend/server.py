@@ -3,9 +3,11 @@ import websockets
 import json
 import logging
 from pyModbusTCP.client import ModbusClient
-from typing import Dict, Any, Optional
+from typing import Dict, Any, Optional, List, Tuple
 import time
 import os
+from concurrent.futures import ThreadPoolExecutor
+import threading
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
@@ -18,84 +20,179 @@ def load_signals_config(path: str) -> Dict[str, Any]:
 
 class PLCWebSocketServer:
     def __init__(self, plc_ip: str = '192.168.11.12', plc_port: int = 502, 
-                 websocket_port: int = 8765, poll_interval: float = 3.0):
+                 websocket_port: int = 8765, poll_interval: float = 3.0, 
+                 max_chunk_size: int = 125, max_workers: int = 4):
         self.plc_ip = plc_ip
         self.plc_port = plc_port
         self.websocket_port = websocket_port
         self.poll_interval = poll_interval
+        self.max_chunk_size = max_chunk_size
+        self.max_workers = max_workers
 
         self.signals_config = load_signals_config(SIGNALS_FILE)
-
         self.required_addresses = sorted(set(
             int(cfg["address"]) for cfg in self.signals_config.values()
         ))
 
-        self.modbus_client = ModbusClient(
-            host=self.plc_ip, 
-            port=self.plc_port, 
-            auto_open=True, 
-            auto_close=False,
-            timeout=5.0
-        )
+        # Preparar chunks para lectura concurrente
+        self.chunks = self._prepare_chunks()
+        
+        # Thread pool para lecturas concurrentes
+        self.executor = ThreadPoolExecutor(max_workers=self.max_workers)
+        
+        # Crear múltiples clientes Modbus para concurrencia
+        self.modbus_clients = []
+        self._init_modbus_clients()
+        
         self.connection_status = False
 
-    async def connect_to_plc(self) -> bool:
+    def _init_modbus_clients(self):
+        """Inicializa múltiples clientes Modbus para concurrencia"""
+        for i in range(self.max_workers):
+            client = ModbusClient(
+                host=self.plc_ip, 
+                port=self.plc_port, 
+                auto_open=True, 
+                auto_close=False,
+                timeout=5.0
+            )
+            self.modbus_clients.append(client)
+            logger.debug(f"Created Modbus client {i+1}/{self.max_workers}")
+
+    def _prepare_chunks(self) -> List[Dict[str, int]]:
+        """Prepara los chunks de lectura basados en las direcciones requeridas"""
+        if not self.required_addresses:
+            return []
+        
+        chunks = []
+        min_addr = min(self.required_addresses) - 1  # Modbus offset
+        max_addr = max(self.required_addresses) - 1
+        total_range = max_addr - min_addr + 1
+        
+        # Dividir en chunks
+        for start in range(min_addr, max_addr + 1, self.max_chunk_size):
+            count = min(self.max_chunk_size, max_addr - start + 1)
+            chunks.append({
+                'start_address': start,
+                'count': count,
+                'end_address': start + count - 1
+            })
+        
+        logger.info(f"📊 Prepared {len(chunks)} chunks for {total_range} registers")
+        return chunks
+
+    def _get_client_for_thread(self) -> ModbusClient:
+        """Obtiene un cliente Modbus específico para el hilo actual"""
+        thread_id = threading.get_ident()
+        client_index = thread_id % len(self.modbus_clients)
+        return self.modbus_clients[client_index]
+
+    def _read_modbus_chunk(self, chunk: Dict[str, int]) -> Tuple[Dict[str, int], Optional[List[int]]]:
+        """Lee un chunk específico de registros Modbus"""
         try:
-            if not self.modbus_client.is_open:
-                success = self.modbus_client.open()
-                if success:
-                    self.connection_status = True
-                    logger.info(f"✅ Connected to PLC at {self.plc_ip}:{self.plc_port}")
-                    return True
+            client = self._get_client_for_thread()
+            
+            # Asegurar conexión
+            if not client.is_open:
+                success = client.open()
+                if not success:
+                    logger.error(f"❌ Failed to open client for chunk {chunk['start_address']}")
+                    return chunk, None
+            
+            # Leer el chunk
+            result = client.read_input_registers(chunk['start_address'], chunk['count'])
+            
+            if result is None:
+                logger.error(f"❌ Failed to read chunk {chunk['start_address']}-{chunk['end_address']}")
+                return chunk, None
+            
+            logger.debug(f"✅ Read chunk {chunk['start_address']}-{chunk['end_address']}: {len(result)} registers")
+            return chunk, result
+            
+        except Exception as e:
+            logger.error(f"❌ Exception reading chunk {chunk['start_address']}: {e}")
+            return chunk, None
+
+    async def connect_to_plc(self) -> bool:
+        """Conecta todos los clientes Modbus"""
+        try:
+            success_count = 0
+            for i, client in enumerate(self.modbus_clients):
+                if not client.is_open:
+                    success = client.open()
+                    if success:
+                        success_count += 1
+                    else:
+                        logger.error(f"❌ Failed to connect client {i+1}")
                 else:
-                    logger.error(f"❌ Failed to connect to PLC {self.plc_ip}:{self.plc_port}")
-                    return False
-            return True
+                    success_count += 1
+            
+            if success_count > 0:
+                self.connection_status = True
+                logger.info(f"✅ Connected {success_count}/{len(self.modbus_clients)} clients to PLC at {self.plc_ip}:{self.plc_port}")
+                return True
+            else:
+                logger.error(f"❌ Failed to connect any client to PLC {self.plc_ip}:{self.plc_port}")
+                return False
+                
         except Exception as e:
             logger.error(f"❌ Exception connecting to PLC: {e}")
             return False
 
-    def read_plc_data(self) -> Optional[Dict[str, Any]]:
+    async def read_plc_data(self) -> Optional[Dict[str, Any]]:
+        """Lee datos del PLC usando chunks concurrentes"""
         if not self.connection_status:
             return None
 
         result = {}
         try:
-
-            if self.required_addresses:
-                min_addr = min(self.required_addresses) - 1  # Modbus offset
-                max_addr = max(self.required_addresses) - 1
-                count = max_addr - min_addr + 1
-                
-                input_registers = self.modbus_client.read_input_registers(min_addr, count)
-                
-                if input_registers is None:
-                    logger.error("❌ Failed to read input registers from PLC")
-                    return None
-            else:
-                input_registers = []
-
+            # Ejecutar lecturas concurrentes
+            loop = asyncio.get_event_loop()
+            futures = []
+            
+            for chunk in self.chunks:
+                future = loop.run_in_executor(self.executor, self._read_modbus_chunk, chunk)
+                futures.append(future)
+            
+            # Esperar a que todas las lecturas terminen
+            chunk_results = await asyncio.gather(*futures)
+            
+            # Reconstruir el mapa completo de registros
+            register_map = {}
+            successful_chunks = 0
+            
+            for chunk_info, registers in chunk_results:
+                if registers is not None:
+                    successful_chunks += 1
+                    for i, value in enumerate(registers):
+                        register_address = chunk_info['start_address'] + i
+                        register_map[register_address] = value
+                else:
+                    logger.warning(f"⚠️ Chunk {chunk_info['start_address']}-{chunk_info['end_address']} failed")
+            
+            logger.debug(f"📊 Successfully read {successful_chunks}/{len(self.chunks)} chunks")
+            
+            if successful_chunks == 0:
+                logger.error("❌ All chunks failed to read")
+                return None
+            
+            # Procesar señales configuradas
             timestamp = time.time()
             
-            # Procesar todas las señales configuradas
             for sid, cfg in self.signals_config.items():
                 addr = int(cfg["address"]) - 1  # Modbus offset
                 
-                # Verificar que el registro está en el rango leído
-                if min_addr <= addr <= max_addr:
-                    reg_value = input_registers[addr - min_addr]
+                if addr in register_map:
+                    reg_value = register_map[addr]
                     
                     if cfg["type"] == "analogue":
-                        # Para analógicas: usar el valor completo del registro
                         value = reg_value
                         
                     elif cfg["type"] == "digital":
-                        # Para digitales: extraer el bit específico
                         bit = int(cfg.get("bit", 0))
                         value = (reg_value >> bit) & 1
-                        
                     else:
-                        continue  # Tipo no reconocido
+                        continue
                     
                     result[sid] = {
                         "value": value,
@@ -106,7 +203,7 @@ class PLCWebSocketServer:
                         "timestamp": timestamp
                     }
                 else:
-                    logger.warning(f"⚠️ Signal {sid} address {cfg['address']} not in read range")
+                    logger.warning(f"⚠️ Signal {sid} address {cfg['address']} not found in read data")
             
             return result
 
@@ -133,7 +230,7 @@ class PLCWebSocketServer:
                             await asyncio.sleep(self.poll_interval)
                         continue
 
-                signals = self.read_plc_data()
+                signals = await self.read_plc_data()
 
                 if signals is not None:
                     websocket_data = {
@@ -141,6 +238,7 @@ class PLCWebSocketServer:
                         "plc_status": {
                             "connected": self.connection_status,
                             "ip": self.plc_ip,
+                            "chunks": len(self.chunks),
                             "timestamp": time.time()
                         }
                     }
@@ -186,16 +284,23 @@ class PLCWebSocketServer:
             await asyncio.Future()
 
     def __del__(self):
-        if hasattr(self, 'modbus_client') and self.modbus_client.is_open:
-            self.modbus_client.close()
-            logger.info("🔒 Modbus connection closed")
+        """Cleanup de recursos"""
+        if hasattr(self, 'modbus_clients'):
+            for client in self.modbus_clients:
+                if client.is_open:
+                    client.close()
+        if hasattr(self, 'executor'):
+            self.executor.shutdown(wait=True)
+        logger.info("🔒 All Modbus connections closed")
 
 async def main():
     server = PLCWebSocketServer(
         plc_ip='192.168.11.12',
         plc_port=502,
         websocket_port=8765,
-        poll_interval=3.0
+        poll_interval=3.0,
+        max_chunk_size=125,  # Registros por chunk
+        max_workers=1       # Hilos concurrentes
     )
     try:
         await server.start_server()
@@ -204,8 +309,12 @@ async def main():
     except Exception as e:
         logger.error(f"❌ Critical error: {e}")
     finally:
-        if hasattr(server, 'modbus_client') and server.modbus_client.is_open:
-            server.modbus_client.close()
+        if hasattr(server, 'modbus_clients'):
+            for client in server.modbus_clients:
+                if client.is_open:
+                    client.close()
+        if hasattr(server, 'executor'):
+            server.executor.shutdown(wait=True)
 
 if __name__ == '__main__':
     asyncio.run(main())

@@ -13,69 +13,69 @@ import TextAnalogueValue from '../components/TextAnalogueValue.vue'
 
             <div class="ui grid type1 cols-mini-1">
 
-                <SingleLineBusBar :gen1BreakerSignalId="11" :gen2BreakerSignalId="4338"
-                    :genEmergencyBreakerSignalId="4699" :shorePowerBreakerSignalId="12"
-                    :busTideBreakerSignalId="2049" />
+                <SingleLineBusBar :gen1BreakerSignalId="401" :gen2BreakerSignalId="402"
+                    :genEmergencyBreakerSignalId="403" :shorePowerBreakerSignalId="404"
+                    :busTideBreakerSignalId="405" />
 
                 <div class="ui grid type1 cols-mini-4 pad-no gap-med">
 
                     <!-- GENERATOR 1 -->
                     <div class="ui col mini-1 phone-1 gap-no pad-sm radius-top grid cols-mini-1">
-                        <SingleLineHeader componentTitle="GENERATOR 1" :signalIdBox="11" :NC="1" />
+                        <SingleLineHeader componentTitle="GENERATOR 1" :signalIdBox="401" :NC="1" />
                     </div>
 
                     <!--SHORE -->
                     <div class="ui col mini-1 phone-1 gap-no pad-sm radius-top grid cols-mini-1">
-                        <SingleLineHeader componentTitle="SHORE POWER" :signalIdBox="12" :NC="1" />
+                        <SingleLineHeader componentTitle="SHORE POWER" :signalIdBox="404" :NC="1" />
                     </div>
 
                     <!-- GENERATOR 2 -->
                     <div class="ui col mini-1 phone-1 gap-no pad-sm radius-top grid cols-mini-1">
-                        <SingleLineHeader componentTitle="GENERATOR 2" :signalIdBox="4338" :NC="1" />
+                        <SingleLineHeader componentTitle="GENERATOR 2" :signalIdBox="402" :NC="1" />
                     </div>
 
                     <!-- EMERGENCY GENERATOR -->
                     <div class="ui col mini-1 phone-1 gap-no pad-sm radius-top grid cols-mini-1">
-                        <SingleLineHeader componentTitle="EMERGENCY GENERATOR" :signalIdBox="4699" :NC="1" />
+                        <SingleLineHeader componentTitle="EMERGENCY GENERATOR" :signalIdBox="403" :NC="1" />
                     </div>
 
                     <!-- GENERATOR 1 -->
                     <div class="ui grid type1 cols-mini-6 pad-no gap-sm mini-1">
 
                         <div class="ui col mini-3">
-                            <TextAnalogueValue :signalId="4001" title="Current" unit="A" valueMode="raw" />
+                            <TextAnalogueValue :signalId="1" title="Current" unit="A" valueMode="raw" />
                         </div>
 
                         <div class="ui col mini-3">
-                            <TextAnalogueValue :signalId="4398" title="Reactive Power" unit="KVAr" valueMode="raw" />
+                            <TextAnalogueValue :signalId="2" title="Reactive Power" unit="KVAr" valueMode="raw" />
                         </div>
 
                         <div class="ui col mini-3">
-                            <TextAnalogueValue :signalId="4001" title="Voltage" unit="V" valueMode="raw" />
+                            <TextAnalogueValue :signalId="3" title="Voltage" unit="V" valueMode="raw" />
                         </div>
 
                         <div class="ui col mini-3">
-                            <TextAnalogueValue :signalId="4399" title="Apparent Power" unit="KVA" valueMode="raw" />
+                            <TextAnalogueValue :signalId="4" title="Apparent Power" unit="KVA" valueMode="raw" />
                         </div>
 
                         <div class="ui col mini-3">
-                            <TextAnalogueValue :signalId="4001" title="Frequency" unit="Hz" valueMode="raw" />
+                            <TextAnalogueValue :signalId="5" title="Frequency" unit="Hz" valueMode="raw" />
                         </div>
 
                         <div class="ui col mini-3">
-                            <TextAnalogueValue :signalId="4399" title="Active Power" unit="Kw" valueMode="raw" />
+                            <TextAnalogueValue :signalId="6" title="Active Power" unit="Kw" valueMode="raw" />
                         </div>
 
                         <div class="ui col mini-2">
-                            <TextAnalogueValue :signalId="4399" title="L1" unit="A" valueMode="raw" />
+                            <TextAnalogueValue :signalId="7" title="L1" unit="A" valueMode="raw" />
                         </div>
 
                         <div class="ui col mini-2">
-                            <TextAnalogueValue :signalId="4001" title="L2" unit="A" valueMode="raw" />
+                            <TextAnalogueValue :signalId="8" title="L2" unit="A" valueMode="raw" />
                         </div>
 
                         <div class="ui col mini-2">
-                            <TextAnalogueValue :signalId="4399" title="L3" unit="A" valueMode="raw" />
+                            <TextAnalogueValue :signalId="9" title="L3" unit="A" valueMode="raw" />
                         </div>
 
                     </div>
@@ -84,39 +84,39 @@ import TextAnalogueValue from '../components/TextAnalogueValue.vue'
                     <div class="ui grid type1 cols-mini-6 pad-no gap-sm mini-1">
 
                         <div class="ui col mini-3">
-                            <TextAnalogueValue :signalId="4001" title="Current" unit="A" valueMode="raw" />
+                            <TextAnalogueValue :signalId="10" title="Current" unit="A" valueMode="raw" />
                         </div>
 
                         <div class="ui col mini-3">
-                            <TextAnalogueValue :signalId="4398" title="Reactive Power" unit="KVAr" valueMode="raw" />
+                            <TextAnalogueValue :signalId="11" title="Reactive Power" unit="KVAr" valueMode="raw" />
                         </div>
 
                         <div class="ui col mini-3">
-                            <TextAnalogueValue :signalId="4001" title="Voltage" unit="V" valueMode="raw" />
+                            <TextAnalogueValue :signalId="12" title="Voltage" unit="V" valueMode="raw" />
                         </div>
 
                         <div class="ui col mini-3">
-                            <TextAnalogueValue :signalId="4399" title="Apparent Power" unit="KVA" valueMode="raw" />
+                            <TextAnalogueValue :signalId="13" title="Apparent Power" unit="KVA" valueMode="raw" />
                         </div>
 
                         <div class="ui col mini-3">
-                            <TextAnalogueValue :signalId="4001" title="Frequency" unit="Hz" valueMode="raw" />
+                            <TextAnalogueValue :signalId="14" title="Frequency" unit="Hz" valueMode="raw" />
                         </div>
 
                         <div class="ui col mini-3">
-                            <TextAnalogueValue :signalId="4399" title="Active Power" unit="Kw" valueMode="raw" />
+                            <TextAnalogueValue :signalId="15" title="Active Power" unit="Kw" valueMode="raw" />
                         </div>
 
                         <div class="ui col mini-2">
-                            <TextAnalogueValue :signalId="4399" title="L1" unit="A" valueMode="raw" />
+                            <TextAnalogueValue :signalId="16" title="L1" unit="A" valueMode="raw" />
                         </div>
 
                         <div class="ui col mini-2">
-                            <TextAnalogueValue :signalId="4001" title="L2" unit="A" valueMode="raw" />
+                            <TextAnalogueValue :signalId="17" title="L2" unit="A" valueMode="raw" />
                         </div>
 
                         <div class="ui col mini-2">
-                            <TextAnalogueValue :signalId="4399" title="L3" unit="A" valueMode="raw" />
+                            <TextAnalogueValue :signalId="18" title="L3" unit="A" valueMode="raw" />
                         </div>
 
                     </div>
@@ -125,39 +125,39 @@ import TextAnalogueValue from '../components/TextAnalogueValue.vue'
                     <div class="ui grid type1 cols-mini-6 pad-no gap-sm mini-1">
 
                         <div class="ui col mini-3">
-                            <TextAnalogueValue :signalId="4001" title="Current" unit="A" valueMode="raw" />
+                            <TextAnalogueValue :signalId="19" title="Current" unit="A" valueMode="raw" />
                         </div>
 
                         <div class="ui col mini-3">
-                            <TextAnalogueValue :signalId="4398" title="Reactive Power" unit="KVAr" valueMode="raw" />
+                            <TextAnalogueValue :signalId="20" title="Reactive Power" unit="KVAr" valueMode="raw" />
                         </div>
 
                         <div class="ui col mini-3">
-                            <TextAnalogueValue :signalId="4001" title="Voltage" unit="V" valueMode="raw" />
+                            <TextAnalogueValue :signalId="21" title="Voltage" unit="V" valueMode="raw" />
                         </div>
 
                         <div class="ui col mini-3">
-                            <TextAnalogueValue :signalId="4399" title="Apparent Power" unit="KVA" valueMode="raw" />
+                            <TextAnalogueValue :signalId="22" title="Apparent Power" unit="KVA" valueMode="raw" />
                         </div>
 
                         <div class="ui col mini-3">
-                            <TextAnalogueValue :signalId="4001" title="Frequency" unit="Hz" valueMode="raw" />
+                            <TextAnalogueValue :signalId="23" title="Frequency" unit="Hz" valueMode="raw" />
                         </div>
 
                         <div class="ui col mini-3">
-                            <TextAnalogueValue :signalId="4399" title="Active Power" unit="Kw" valueMode="raw" />
+                            <TextAnalogueValue :signalId="24" title="Active Power" unit="Kw" valueMode="raw" />
                         </div>
 
                         <div class="ui col mini-2">
-                            <TextAnalogueValue :signalId="4399" title="L1" unit="A" valueMode="raw" />
+                            <TextAnalogueValue :signalId="25" title="L1" unit="A" valueMode="raw" />
                         </div>
 
                         <div class="ui col mini-2">
-                            <TextAnalogueValue :signalId="4001" title="L2" unit="A" valueMode="raw" />
+                            <TextAnalogueValue :signalId="26" title="L2" unit="A" valueMode="raw" />
                         </div>
 
                         <div class="ui col mini-2">
-                            <TextAnalogueValue :signalId="4399" title="L3" unit="A" valueMode="raw" />
+                            <TextAnalogueValue :signalId="27" title="L3" unit="A" valueMode="raw" />
                         </div>
 
                     </div>
@@ -166,39 +166,39 @@ import TextAnalogueValue from '../components/TextAnalogueValue.vue'
                     <div class="ui grid type1 cols-mini-6 pad-no gap-sm mini-1">
 
                         <div class="ui col mini-3">
-                            <TextAnalogueValue :signalId="4001" title="Current" unit="A" valueMode="raw" />
+                            <TextAnalogueValue :signalId="28" title="Current" unit="A" valueMode="raw" />
                         </div>
 
                         <div class="ui col mini-3">
-                            <TextAnalogueValue :signalId="4398" title="Reactive Power" unit="KVAr" valueMode="raw" />
+                            <TextAnalogueValue :signalId="29" title="Reactive Power" unit="KVAr" valueMode="raw" />
                         </div>
 
                         <div class="ui col mini-3">
-                            <TextAnalogueValue :signalId="4001" title="Voltage" unit="V" valueMode="raw" />
+                            <TextAnalogueValue :signalId="30" title="Voltage" unit="V" valueMode="raw" />
                         </div>
 
                         <div class="ui col mini-3">
-                            <TextAnalogueValue :signalId="4399" title="Apparent Power" unit="KVA" valueMode="raw" />
+                            <TextAnalogueValue :signalId="31" title="Apparent Power" unit="KVA" valueMode="raw" />
                         </div>
 
                         <div class="ui col mini-3">
-                            <TextAnalogueValue :signalId="4001" title="Frequency" unit="Hz" valueMode="raw" />
+                            <TextAnalogueValue :signalId="32" title="Frequency" unit="Hz" valueMode="raw" />
                         </div>
 
                         <div class="ui col mini-3">
-                            <TextAnalogueValue :signalId="4399" title="Active Power" unit="Kw" valueMode="raw" />
+                            <TextAnalogueValue :signalId="33" title="Active Power" unit="Kw" valueMode="raw" />
                         </div>
 
                         <div class="ui col mini-2">
-                            <TextAnalogueValue :signalId="4399" title="L1" unit="A" valueMode="raw" />
+                            <TextAnalogueValue :signalId="34" title="L1" unit="A" valueMode="raw" />
                         </div>
 
                         <div class="ui col mini-2">
-                            <TextAnalogueValue :signalId="4001" title="L2" unit="A" valueMode="raw" />
+                            <TextAnalogueValue :signalId="35" title="L2" unit="A" valueMode="raw" />
                         </div>
 
                         <div class="ui col mini-2">
-                            <TextAnalogueValue :signalId="4399" title="L3" unit="A" valueMode="raw" />
+                            <TextAnalogueValue :signalId="36" title="L3" unit="A" valueMode="raw" />
                         </div>
                     </div>
 
