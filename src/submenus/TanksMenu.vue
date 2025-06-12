@@ -34,7 +34,7 @@ watch(
 
         <RouterLink to="/oilTanks" custom v-slot="{ navigate }">
         <li :class="{ active: activeIndex === 2 }" @click="() => navigate()">
-          Oil Tanks
+          Oil & Waste Tanks
         </li>
       </RouterLink>
     </ul>
