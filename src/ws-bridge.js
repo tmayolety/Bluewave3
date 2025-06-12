@@ -12,6 +12,7 @@ export function startWebSocketBridge() {
       const data = JSON.parse(event.data);
       if (data.signals) applySignalData(data.signals);
       if (data.alarms) applyAlarmData(data.alarms);
+      console.log(data)
     } catch (err) {
       console.error('[WebSocket] Error procesando mensaje:', err);
     }
