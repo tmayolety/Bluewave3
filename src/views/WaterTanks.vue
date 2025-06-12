@@ -1,195 +1,38 @@
 <script setup>
-import TextAnalogueValue from '../components/TextAnalogueValue.vue'
-import BasicHorizontalBar from '../components/BasicHorizontalBar.vue'
-import GaugeRender from '../components/Gauge.vue'
-import GeneratorsMenu from '../submenus/GeneratorsMenu.vue'
-import IconTextValueDigitalLine from '../components/IconTextValueDigitalLine.vue'
-import Gauge from '../components/Gauge.vue'
+
+import TanksMenu from '../submenus/TanksMenu.vue'
+import VerticalBar from '../components/VerticalBar.vue'
+import VerticalBarTotal from '../components/VerticalBarTotal.vue';
 </script>
 
 <template>
 
-    <GeneratorsMenu />
+    <TanksMenu />
 
     <section>
         <article>
-            <div class="ui grid type1 cols-mini-2 gap-med">
+            <div class="ui grid type1 cols-mini-4 gap-med">
 
-                <!--PORT GENERATOR-->
-                <div class="ui grid cols-mini-2 col mini-1 gap-sm pad-no">
-                    <div
-                        class="ui grid type1 cols-mini-1 col mini-2 gap-no pad-no align-baseline radius shadow has-col-header-sm">
-                        <header class="col-header size-med" style="height: 30px;">Port Generator</header>
-                        <div class="ui col mini-1">
-                            <Gauge :signalId="4011" unit="kw" textSizeClass="text-size-30"
-                                unitSizeClass="text-size-15" :scaleInterval="100" :height="'200px'" />
-
-                        </div>
-                    </div>
-
-                    <div class="ui grid type1 resp  pad-no gap-mini col mini-2">
-                        <BasicHorizontalBar :signalId="4391" title="Engine RPM" unit="rpm" :scaleBottom="0"
-                            :scaleTop="3000" :scaleStep="500" :displayScale="true" color="#3498db" />
-                    </div>
-
-                    <div class="ui col mini-1">
-                        <TextAnalogueValue :signalId="4398" title="Oil Press." unit="bar" valueMode="raw" />
-                    </div>
-
-                    <div class="ui col mini-1">
-                        <TextAnalogueValue :signalId="4001" title="Coolant Press." unit="bar" valueMode="raw" />
-                    </div>
-
-                    <div class="ui col mini-1">
-                        <TextAnalogueValue :signalId="4399" title="Coolant Temp." unit="C" valueMode="raw" />
-                    </div>
-
-                    <div class="ui col mini-1">
-                        <TextAnalogueValue :signalId="4001" title="Oil Temp." unit="C" valueMode="raw" />
-                    </div>
-
-                    <div class="ui col mini-1">
-                        <ul class="ui table size-mini resp">
-                            <IconTextValueDigitalLine
-                                v-bind="{ signalId: 2049, title: 'Remote Mode', icon: 'settings', size: '20', zeroText: 'Local', zeroColor: 'secondary', oneText: 'Remote', oneColor: 'primary' }" />
-                        </ul>
-                    </div>
-                    <div class="ui col mini-1">
-                        <ul class="ui table size-mini resp">
-                            <IconTextValueDigitalLine
-                                v-bind="{ signalId: 2049, title: 'Common Alarm', icon: 'tripping', size: '20', zeroText: 'No Alarm', zeroColor: 'success', oneText: 'Alarm', oneColor: 'danger' }" />
-                        </ul>
-                    </div>
-                    <div class="ui col mini-1">
-                        <ul class="ui table size-mini resp">
-                            <IconTextValueDigitalLine
-                                v-bind="{ signalId: 2049, title: 'Status', icon: 'engines', size: '20', zeroText: 'Stopped', zeroColor: 'secondary', oneText: 'Running', oneColor: 'primary' }" />
-                        </ul>
-                    </div>
-                    <div class="ui col mini-1">
-                        <ul class="ui table size-mini resp">
-                            <IconTextValueDigitalLine
-                                v-bind="{ signalId: 2049, title: 'Shutdown', icon: 'tripping', size: '20', zeroText: 'OK', zeroColor: 'success', oneText: 'Alarm', oneColor: 'danger' }" />
-                        </ul>
-                    </div>
-                    <div class="ui col mini-1">
-                        <ul class="ui table size-mini resp">
-                            <IconTextValueDigitalLine
-                                v-bind="{ signalId: 2049, title: 'Lube Oil Pump', icon: 'on-off', size: '20', zeroText: 'OFF', zeroColor: 'secondary', oneText: 'ON', oneColor: 'primary' }" />
-                        </ul>
-                    </div>
-                    <div class="ui col mini-1">
-                        <ul class="ui table size-mini resp">
-                            <IconTextValueDigitalLine
-                                v-bind="{ signalId: 2049, title: 'Main Breaker State', icon: 'tripping', size: '20', zeroText: 'Local', zeroColor: 'secondary', oneText: 'Remote', oneColor: 'primary' }" />
-                        </ul>
-                    </div>
-                    <div class="ui col mini-1">
-                        <ul class="ui table size-mini resp">
-                            <IconTextValueDigitalLine
-                                v-bind="{ signalId: 2049, title: 'Main Breaker Status', icon: 'tripping', size: '20', zeroText: 'Opened', zeroColor: 'secondary', oneText: 'Closed', oneColor: 'primary' }" />
-                        </ul>
-                    </div>
-                    <div class="ui col mini-1">
-                        <ul class="ui table size-mini resp">
-                            <IconTextValueDigitalLine
-                                v-bind="{ signalId: 2049, title: 'Main Breaker Tripped', icon: 'tripping', size: '20', zeroText: 'OK', zeroColor: 'primary', oneText: 'Alarm', oneColor: 'danger' }" />
-                        </ul>
-                    </div>
-
-
-
-
+                <div class="ui col mini-1  flex-center">
+                    <VerticalBar :signalId="4391" title="Tank 20" unit="L" :scaleBottom="0" :scaleTop="3000"
+                        :scaleStep="500" :displayScale="true" color="#3498db" />
+                </div>
+                <div class="ui col mini-1  flex-center">
+                    <VerticalBar :signalId="4385" title="Tank 22" unit="L" :scaleBottom="0" :scaleTop="3000"
+                        :scaleStep="500" :displayScale="true" color="#3498db" />
+                </div>
+                <div class="ui col mini-1  flex-center">
+                    <VerticalBar :signalId="4388" title="Tank 22W" unit="L" :scaleBottom="0" :scaleTop="3000"
+                        :scaleStep="500" :displayScale="true" color="#3498db" />
+                </div>
+                <div class="ui col mini-1  flex-center">
+                    <VerticalBarTotal :signalIds="[4391, 4385, 4388]" title="Total Tanks" unit="L" :scaleBottom="0"
+                        :scaleTop="9000" :scaleStep="1000" :displayScale="true" color="#3498db" />
                 </div>
 
-                <!--STBD GENERATOR-->
-                <div class="ui grid cols-mini-2 col mini-1 gap-sm pad-no">
-                    <div
-                        class="ui grid type1 cols-mini-1 col mini-2 gap-no pad-no align-baseline radius shadow has-col-header-sm">
-                        <header class="col-header size-med" style="height: 30px;">Stbd Generator</header>
-                        <div class="ui col mini-1 align-top" style="height: 200px;">
-                            <GaugeRender
-                                v-bind="{ signalId: 4011, unit: 'kw', marginTopValue: 'mg-top-30', textSizeClass: 'text-size-30', unitSizeClass: 'text-size-15', valueMode: 'escalated', scaleInterval: 20 }">
-                            </GaugeRender>
-                        </div>
-                    </div>
-
-                    <div class="ui grid type1 resp  pad-no gap-mini col mini-2">
-                        <BasicHorizontalBar :signalId="4391" title="Engine RPM" unit="rpm" :scaleBottom="0"
-                            :scaleTop="3000" :scaleStep="500" :displayScale="true" color="#3498db" />
-                    </div>
-
-                    <div class="ui col mini-1">
-                        <TextAnalogueValue :signalId="4398" title="Oil Press." unit="bar" valueMode="raw" />
-                    </div>
-
-                    <div class="ui col mini-1">
-                        <TextAnalogueValue :signalId="4001" title="Coolant Press." unit="bar" valueMode="raw" />
-                    </div>
-
-                    <div class="ui col mini-1">
-                        <TextAnalogueValue :signalId="4399" title="Coolant Temp." unit="C" valueMode="raw" />
-                    </div>
-
-                    <div class="ui col mini-1">
-                        <TextAnalogueValue :signalId="4001" title="Oil Temp." unit="C" valueMode="raw" />
-                    </div>
-
-                    <div class="ui col mini-1">
-                        <ul class="ui table size-mini resp">
-                            <IconTextValueDigitalLine
-                                v-bind="{ signalId: 2049, title: 'Remote Mode', icon: 'settings', size: '20', zeroText: 'Local', zeroColor: 'secondary', oneText: 'Remote', oneColor: 'primary' }" />
-                        </ul>
-                    </div>
-                    <div class="ui col mini-1">
-                        <ul class="ui table size-mini resp">
-                            <IconTextValueDigitalLine
-                                v-bind="{ signalId: 2049, title: 'Common Alarm', icon: 'tripping', size: '20', zeroText: 'No Alarm', zeroColor: 'success', oneText: 'Alarm', oneColor: 'danger' }" />
-                        </ul>
-                    </div>
-                    <div class="ui col mini-1">
-                        <ul class="ui table size-mini resp">
-                            <IconTextValueDigitalLine
-                                v-bind="{ signalId: 2049, title: 'Status', icon: 'engines', size: '20', zeroText: 'Stopped', zeroColor: 'secondary', oneText: 'Running', oneColor: 'primary' }" />
-                        </ul>
-                    </div>
-                    <div class="ui col mini-1">
-                        <ul class="ui table size-mini resp">
-                            <IconTextValueDigitalLine
-                                v-bind="{ signalId: 2049, title: 'Shutdown', icon: 'tripping', size: '20', zeroText: 'OK', zeroColor: 'success', oneText: 'Alarm', oneColor: 'danger' }" />
-                        </ul>
-                    </div>
-                    <div class="ui col mini-1">
-                        <ul class="ui table size-mini resp">
-                            <IconTextValueDigitalLine
-                                v-bind="{ signalId: 2049, title: 'Lube Oil Pump', icon: 'on-off', size: '20', zeroText: 'OFF', zeroColor: 'secondary', oneText: 'ON', oneColor: 'primary' }" />
-                        </ul>
-                    </div>
-                    <div class="ui col mini-1">
-                        <ul class="ui table size-mini resp">
-                            <IconTextValueDigitalLine
-                                v-bind="{ signalId: 2049, title: 'Main Breaker State', icon: 'tripping', size: '20', zeroText: 'Local', zeroColor: 'secondary', oneText: 'Remote', oneColor: 'primary' }" />
-                        </ul>
-                    </div>
-                    <div class="ui col mini-1">
-                        <ul class="ui table size-mini resp">
-                            <IconTextValueDigitalLine
-                                v-bind="{ signalId: 2049, title: 'Main Breaker Status', icon: 'tripping', size: '20', zeroText: 'Opened', zeroColor: 'secondary', oneText: 'Closed', oneColor: 'primary' }" />
-                        </ul>
-                    </div>
-                    <div class="ui col mini-1">
-                        <ul class="ui table size-mini resp">
-                            <IconTextValueDigitalLine
-                                v-bind="{ signalId: 2049, title: 'Main Breaker Tripped', icon: 'tripping', size: '20', zeroText: 'OK', zeroColor: 'primary', oneText: 'Alarm', oneColor: 'danger' }" />
-                        </ul>
-                    </div>
-
-
-
-                </div>
+                
 
             </div>
-
         </article>
     </section>
 </template>

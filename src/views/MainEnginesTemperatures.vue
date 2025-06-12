@@ -10,7 +10,7 @@ import MainEnginesMenu from '../submenus/MainEnginesMenu.vue'
 
     <MainEnginesMenu />
 
-    <section>
+    <section style="overflow: hidden;">
         <article>
             <div class="ui grid type1 cols-mini-2 gap-med">
 
@@ -18,22 +18,18 @@ import MainEnginesMenu from '../submenus/MainEnginesMenu.vue'
                 <div class="ui grid cols-mini-2 col mini-1 gap-sm pad-no">
 
                     <div class="ui grid type1 cols-mini-5 col mini-2">
-
                         <div class="ui col mini-1  flex-center">
                             <VerticalBar :signalId="4391" title="Engine Oil Pressure" unit="bar" :scaleBottom="0" :scaleTop="3000"
                                 :scaleStep="500" :displayScale="true" color="#3498db" />
                         </div>
-
                         <div class="ui col mini-3 ">
                             <GaugeRender :signalId="4011" unit="rpm" textSizeClass="text-size-20"
                                 unitSizeClass="text-size-15" :scaleInterval="100" :height="'220px'" :centerY="'94%'" :radius="'120'" />
                         </div>
-
                         <div class="ui col mini-1  flex-center">
                             <VerticalBar :signalId="4391" title="Coolant Temperature" unit="C" :scaleBottom="0"
                                 :scaleTop="3000" :scaleStep="500" :displayScale="true" color="#3498db" />
                         </div>
-
                     </div>
 
                     <div class="ui grid type1 cols-mini-1 col mini-2">
@@ -41,7 +37,6 @@ import MainEnginesMenu from '../submenus/MainEnginesMenu.vue'
 
                         <div class="ui col mini-3">
                             <ul class="ui table size-mini resp">
-
                                 <IconTextValueDigitalLine
                                     v-bind="{ signalId: 1, title: 'Low Oil Pressure', icon: 'pressure', size: '20', zeroText: 'OK', zeroColor: 'success', oneText: 'Alarm', oneColor: 'danger' }" />
                                 <IconTextValueDigitalLine
@@ -70,7 +65,6 @@ import MainEnginesMenu from '../submenus/MainEnginesMenu.vue'
                                     v-bind="{ signalId: 53, title: 'Diesel Purifier Running', icon: 'tripping', size: '20', zeroText: 'OK', zeroColor: 'success', oneText: 'Alarm', oneColor: 'danger' }" />
                                 <IconTextValueDigitalLine
                                     v-bind="{ signalId: 54, title: 'Diesel Purifier Fail', icon: 'tripping', size: '20', zeroText: 'OK', zeroColor: 'success', oneText: 'Alarm', oneColor: 'danger' }" />
-
                             </ul>
                         </div>
 
@@ -82,29 +76,22 @@ import MainEnginesMenu from '../submenus/MainEnginesMenu.vue'
                 <!--STBD MAIN ENGINE-->
                 <div class="ui grid cols-mini-2 col mini-1 gap-sm pad-no">
 
-
                     <div class="ui grid type1 cols-mini-5 col mini-2">
-
                         <div class="ui col mini-1  flex-center">
                             <VerticalBar :signalId="4391" title="Engine Oil Pressure" unit="bar" :scaleBottom="0" :scaleTop="3000"
                                 :scaleStep="500" :displayScale="true" color="#3498db" />
                         </div>
-
                         <div class="ui col mini-3 ">
                             <GaugeRender :signalId="4011" unit="rpm" textSizeClass="text-size-20"
                                 unitSizeClass="text-size-15" :scaleInterval="100" :height="'220px'" :centerY="'94%'" :radius="'120'" />
                         </div>
-
                         <div class="ui col mini-1  flex-center">
                             <VerticalBar :signalId="4391" title="Coolant Temperature" unit="C" :scaleBottom="0"
                                 :scaleTop="3000" :scaleStep="500" :displayScale="true" color="#3498db" />
                         </div>
-
                     </div>
 
                     <div class="ui grid type1 cols-mini-1 col mini-2">
-
-
                         <div class="ui col mini-3">
                             <ul class="ui table size-mini resp">
 
@@ -139,14 +126,9 @@ import MainEnginesMenu from '../submenus/MainEnginesMenu.vue'
 
                             </ul>
                         </div>
-
                     </div>
-
-
                 </div>
-
             </div>
-
         </article>
     </section>
 </template>
