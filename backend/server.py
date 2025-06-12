@@ -20,7 +20,7 @@ def load_signals_config(path: str) -> Dict[str, Any]:
 
 class PLCWebSocketServer:
     def __init__(self, plc_ip: str = '192.168.11.12', plc_port: int = 502, 
-                 websocket_port: int = 8765, poll_interval: float = 3.0, 
+                 websocket_port: int = 8765, poll_interval: float = 1.0, 
                  max_chunk_size: int = 125, max_workers: int = 4):
         self.plc_ip = plc_ip
         self.plc_port = plc_port
