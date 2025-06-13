@@ -4,6 +4,19 @@ import VerticalBar from '../components/VerticalBar.vue'
 import VerticalBarTotal from '../components/VerticalBarTotal.vue'
 import TankSvgMap from '../components/TankSvgMap.vue'
 import RealTimeTrendChart from '../components/RealTimeTrendChart.vue'
+
+function onTankClick({ index }) {
+  const el = document.querySelector(`[data-tank-index="${index}"]`)
+  if (el) {
+    el.classList.add('highlight-bar')
+    setTimeout(() => {
+      el.classList.remove('highlight-bar')
+    }, 2000)
+  } else {
+    console.warn(`No bar found for tank index ${index}`)
+  }
+}
+
 </script>
 
 <template>
@@ -33,7 +46,12 @@ import RealTimeTrendChart from '../components/RealTimeTrendChart.vue'
                 </div>
 
                 <div class="ui col mini-2" style="height: 220px;">
-                    <TankSvgMap src="/ga/tanks/waterTanks.svg" targetGroupPrefix="Water Tank" />
+                    <TankSvgMap
+  src="/ga/tanks/waterTanks.svg"
+  targetGroupPrefix="Water Tank"
+  @tank-clicked="onTankClick"
+/>
+
                 </div>
 
                 <div class="ui col mini-2" style="height: 220px;">

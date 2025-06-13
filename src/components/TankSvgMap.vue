@@ -1,6 +1,8 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 
+const emit = defineEmits(['tank-clicked'])
+
 const props = defineProps({
   src: String,
   highlightDuration: {
@@ -10,25 +12,18 @@ const props = defineProps({
   targetGroupPrefix: {
     type: String,
     default: 'Water Tank'
+  },
+  groupIdToTankIndex: {
+    type: Object,
+    default: null
   }
 })
 
 const svgContainer = ref(null)
 
-function highlightTankBar(index) {
-  const el = document.querySelector(`[data-tank-index="${index}"]`)
-  if (el) {
-    el.classList.add('highlight-bar')
-    setTimeout(() => {
-      el.classList.remove('highlight-bar')
-    }, 2000)
-  }
-}
-
-
 function highlightSvgGroup(groupId) {
   const group = svgContainer.value?.querySelector(`g[id='${groupId}']`)
-  if (!group) return
+  if (!group || group.classList.contains('highlight')) return 
 
   const originalFills = []
   group.querySelectorAll('path').forEach((path, i) => {
@@ -45,22 +40,33 @@ function highlightSvgGroup(groupId) {
   }, props.highlightDuration)
 }
 
-onMounted(async () => {
-  const response = await fetch(props.src)
-  const svgText = await response.text()
-  svgContainer.value.innerHTML = svgText
 
-  const groups = Array.from(svgContainer.value.querySelectorAll('g'))
-  groups.forEach((group, index) => {
-    const groupId = group.getAttribute('id')
-    if (groupId?.startsWith(props.targetGroupPrefix)) {
+onMounted(async () => {
+  try {
+    const response = await fetch(props.src)
+    const svgText = await response.text()
+
+    svgContainer.value.innerHTML = ''
+    const parser = new DOMParser()
+    const svg = parser.parseFromString(svgText, 'image/svg+xml').documentElement
+    svgContainer.value.appendChild(svg)
+
+    const groups = Array.from(svg.querySelectorAll('g'))
+    groups.forEach((group, index) => {
+      const rawId = group.getAttribute('id')
+      if (!rawId?.startsWith(props.targetGroupPrefix)) return
+
+      const normalizedId = rawId.trim().replace(/\s+/g, ' ')
       group.style.cursor = 'pointer'
       group.addEventListener('click', () => {
-        highlightTankBar(index)
-        highlightSvgGroup(groupId)
+        const tankIndex = props.groupIdToTankIndex?.[normalizedId] ?? index
+        emit('tank-clicked', { index: tankIndex, groupId: normalizedId })
+        highlightSvgGroup(normalizedId)
       })
-    }
-  })
+    })
+  } catch (error) {
+    console.error('Failed to load SVG:', error)
+  }
 })
 </script>
 
@@ -77,15 +83,4 @@ onMounted(async () => {
 .highlight {
   filter: drop-shadow(0 0 4px #3498db);
 }
-/* en style global o scoped, pero visible para el contenedor .ui.col */
-.highlight-bar {
-  animation: pulse 1s ease-in-out 2;
-}
-
-@keyframes pulse {
-  0% { box-shadow: 0 0 0px #3498db; }
-  50% { box-shadow: 0 0 36px #3498db; }
-  100% { box-shadow: 0 0 0px #3498db; }
-}
-
 </style>
