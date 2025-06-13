@@ -1,31 +1,31 @@
 {
   "1": {
-    "address": 1,
+    "address": 426,
     "description": "Sensor 1 Analogue",
     "type": "analogue"
   },
   "2": {
-    "address": 2,
+    "address": 427,
     "description": "Sensor 2 Analogue",
     "type": "analogue"
   },
   "3": {
-    "address": 3,
+    "address": 428,
     "description": "Sensor 3 Analogue",
     "type": "analogue"
   },
   "4": {
-    "address": 4,
+    "address": 429,
     "description": "Sensor 4 Analogue",
     "type": "analogue"
   },
   "5": {
-    "address": 5,
+    "address": 430,
     "description": "Sensor 5 Analogue",
     "type": "analogue"
   },
   "6": {
-    "address": 6,
+    "address": 431,
     "description": "Sensor 6 Analogue",
     "type": "analogue"
   },
@@ -4394,8 +4394,38 @@
     "type": "digital"
   },
   "800": {
-    "address": 425,
-    "bit": 15,
+    "address": 3,
+    "bit": 0,
+    "description": "Digital Signal 800",
+    "type": "digital"
+  },
+  "801": {
+    "address": 1,
+    "bit": 0,
+    "description": "Digital Signal 800",
+    "type": "digital"
+  },
+  "802": {
+    "address": 2,
+    "bit": 0,
+    "description": "Digital Signal 800",
+    "type": "digital"
+  },
+  "803": {
+    "address": 4,
+    "bit": 0,
+    "description": "Digital Signal 800",
+    "type": "digital"
+  },
+  "804": {
+    "address": 5,
+    "bit": 0,
+    "description": "Digital Signal 800",
+    "type": "digital"
+  },
+  "805": {
+    "address": 6,
+    "bit": 0,
     "description": "Digital Signal 800",
     "type": "digital"
   }

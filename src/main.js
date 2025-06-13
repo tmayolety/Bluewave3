@@ -3,7 +3,7 @@ import '../framework/css/utilities.css';
 import { createApp } from 'vue';
 import App from './App.vue';
 import router from './router';
-import { startWebSocketBridge } from './ws-bridge.js';
+import { startWebSocketBridge, sendCommand } from './ws-bridge.js';
 import VueECharts from 'vue-echarts'
 import 'echarts'
 
@@ -24,6 +24,7 @@ app.provide('alarmsMainData', alarmsMainData);
 app.provide('getSignalValueRaw', (signalId) => valueRaw.value[signalId]);
 app.provide('getSignalValueEscalated', (signalId) => valueEscalated.value[signalId]);
 app.provide('getLimits', (signalId) => limits.value[signalId]);
+app.provide('sendCommand', sendCommand); // <--- Añadido aquí
 
 app.use(router);
 app.mount('#app');

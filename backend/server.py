@@ -39,7 +39,7 @@ class PLCWebSocketServer:
         if not self.required_addresses:
             return []
         chunks = []
-        min_addr = min(self.required_addresses) - 1  # Modbus offset
+        min_addr = max(min(self.required_addresses) - 1, 0)
         max_addr = max(self.required_addresses) - 1
         for start in range(min_addr, max_addr + 1, self.max_chunk_size):
             count = min(self.max_chunk_size, max_addr - start + 1)
@@ -70,7 +70,6 @@ class PLCWebSocketServer:
             if not self.client or not self.client.connected:
                 logger.error("❌ Modbus client not connected")
                 return chunk, None
-            # ¡IMPORTANTE! Usa argumentos nombrados
             rr = await self.client.read_input_registers(
                 address=chunk['start_address'],
                 count=chunk['count'],
@@ -89,10 +88,8 @@ class PLCWebSocketServer:
             return None
         result = {}
         try:
-            # Ejecutar lecturas concurrentes
             tasks = [self.read_modbus_chunk(chunk) for chunk in self.chunks]
             chunk_results = await asyncio.gather(*tasks)
-            # Reconstruir el mapa de registros
             register_map = {}
             successful_chunks = 0
             for chunk_info, registers in chunk_results:
@@ -107,10 +104,9 @@ class PLCWebSocketServer:
             if successful_chunks == 0:
                 logger.error("❌ All chunks failed to read")
                 return None
-            # Procesar señales configuradas
             timestamp = time.time()
             for sid, cfg in self.signals_config.items():
-                addr = int(cfg["address"]) - 1  # Modbus offset
+                addr = int(cfg["address"]) - 1
                 if addr in register_map:
                     reg_value = register_map[addr]
                     if cfg["type"] == "analogue":
@@ -135,6 +131,48 @@ class PLCWebSocketServer:
             logger.error(f"❌ Error reading PLC data: {e}")
             self.connection_status = False
             return None
+
+    async def handle_modbus_command(self, command):
+        try:
+            signal_id = str(command.get('signalId'))
+            value = int(command.get('value', 0))
+            mode = command.get('mode', 'pulse')  # 'pulse' o 'fixed'
+            cfg = self.signals_config.get(signal_id)
+            if not cfg:
+                logger.warning(f"⚠️ Signal ID {signal_id} not found in config")
+                return
+            address = int(cfg['address'])
+            if cfg['type'] == 'digital':
+                bit = int(cfg.get('bit', 0))
+                rr = await self.client.read_holding_registers(address=address, count=1, slave=self.slave_id)
+                if rr.isError():
+                    logger.error(f"❌ Error reading holding register {address}")
+                    return
+                current = rr.registers[0]
+                if value:
+                    new_value = current | (1 << bit)
+                else:
+                    new_value = current & ~(1 << bit)
+                wr = await self.client.write_register(address=address, value=new_value, slave=self.slave_id)
+                if wr.isError():
+                    logger.error(f"❌ Error writing to holding register {address}")
+                else:
+                    logger.info(f"✅ Wrote value {new_value} to holding register {address} (bit {bit}, mode {mode})")
+                if mode == 'pulse' and value:
+                    await asyncio.sleep(0.1)
+                    wr = await self.client.write_register(address=address, value=current, slave=self.slave_id)
+                    if wr.isError():
+                        logger.error(f"❌ Error clearing pulse in holding register {address}")
+            elif cfg['type'] == 'analogue':
+                wr = await self.client.write_register(address=address, value=value, slave=self.slave_id)
+                if wr.isError():
+                    logger.error(f"❌ Error writing to holding register {address}")
+                else:
+                    logger.info(f"✅ Wrote value {value} to holding register {address}")
+            else:
+                logger.warning(f"⚠️ Unsupported signal type for writing: {cfg['type']}")
+        except Exception as e:
+            logger.error(f"❌ Exception in handle_modbus_command: {e}")
 
     async def send_plc_data(self, websocket):
         consecutive_errors = 0
@@ -180,12 +218,23 @@ class PLCWebSocketServer:
     async def websocket_handler(self, websocket):
         client_address = websocket.remote_address
         logger.info(f"🔌 Client connected from {client_address}")
+        send_task = asyncio.create_task(self.send_plc_data(websocket))
         try:
-            await self.send_plc_data(websocket)
-        except Exception as e:
-            logger.error(f"❌ Error in WebSocket handler: {e}")
-        finally:
+            async for message in websocket:
+                try:
+                    data = json.loads(message)
+                    if isinstance(data, dict) and data.get('type') == 'command':
+                        await self.handle_modbus_command(data['data'])
+                except Exception as e:
+                    logger.error(f"❌ Error processing incoming message: {e}")
+        except websockets.exceptions.ConnectionClosed:
             logger.info(f"🔌 Client {client_address} disconnected")
+        finally:
+            send_task.cancel()
+            try:
+                await send_task
+            except asyncio.CancelledError:
+                pass
 
     async def start_server(self):
         await self.connect_to_plc()
@@ -212,7 +261,7 @@ async def main():
         websocket_port=8765,
         poll_interval=1.0,
         max_chunk_size=120,
-        slave_id=1  # Cambia si tu PLC usa otro slave ID
+        slave_id=1
     )
     try:
         await server.start_server()
