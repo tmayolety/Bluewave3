@@ -10,8 +10,8 @@ const props = defineProps({
     default: 2500
   },
   targetGroupPrefix: {
-    type: String,
-    default: 'Water Tank'
+    type: [String, null],
+    default: null
   },
   groupIdToTankIndex: {
     type: Object,
@@ -23,7 +23,7 @@ const svgContainer = ref(null)
 
 function highlightSvgGroup(groupId) {
   const group = svgContainer.value?.querySelector(`g[id='${groupId}']`)
-  if (!group || group.classList.contains('highlight')) return 
+  if (!group || group.classList.contains('highlight')) return
 
   const originalFills = []
   group.querySelectorAll('path').forEach((path, i) => {
@@ -40,7 +40,6 @@ function highlightSvgGroup(groupId) {
   }, props.highlightDuration)
 }
 
-
 onMounted(async () => {
   try {
     const response = await fetch(props.src)
@@ -54,9 +53,16 @@ onMounted(async () => {
     const groups = Array.from(svg.querySelectorAll('g'))
     groups.forEach((group, index) => {
       const rawId = group.getAttribute('id')
-      if (!rawId?.startsWith(props.targetGroupPrefix)) return
+      if (!rawId) return
 
       const normalizedId = rawId.trim().replace(/\s+/g, ' ')
+      const isValid =
+        props.groupIdToTankIndex
+          ? Object.keys(props.groupIdToTankIndex).includes(normalizedId)
+          : props.targetGroupPrefix && normalizedId.startsWith(props.targetGroupPrefix)
+
+      if (!isValid) return
+
       group.style.cursor = 'pointer'
       group.addEventListener('click', () => {
         const tankIndex = props.groupIdToTankIndex?.[normalizedId] ?? index
@@ -64,8 +70,8 @@ onMounted(async () => {
         highlightSvgGroup(normalizedId)
       })
     })
-  } catch (error) {
-    console.error('Failed to load SVG:', error)
+  } catch (err) {
+    console.error('Failed to load SVG:', err)
   }
 })
 </script>

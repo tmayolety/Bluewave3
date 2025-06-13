@@ -6,15 +6,15 @@ import TankSvgMap from '../components/TankSvgMap.vue';
 import RealTimeTrendChart from '../components/RealTimeTrendChart.vue';
 
 function onTankClick({ index }) {
-  const el = document.querySelector(`[data-tank-index="${index}"]`)
-  if (el) {
-    el.classList.add('highlight-bar')
-    setTimeout(() => {
-      el.classList.remove('highlight-bar')
-    }, 2000)
-  } else {
-    console.warn(`No bar found for tank index ${index}`)
-  }
+    const el = document.querySelector(`[data-tank-index="${index}"]`)
+    if (el) {
+        el.classList.add('highlight-bar')
+        setTimeout(() => {
+            el.classList.remove('highlight-bar')
+        }, 2000)
+    } else {
+        console.warn(`No bar found for tank index ${index}`)
+    }
 }
 
 </script>
@@ -50,37 +50,31 @@ function onTankClick({ index }) {
                         :scaleStep="500" :displayScale="true" color="#7f461b" />
                 </div>
                 <div class="ui col mini-1  flex-center">
-                    <VerticalBarTotal :signalIds="[108, 109, 110, 111, 112, 113]" title="Total Fuel" unit="L" :scaleBottom="0"
-                        :scaleTop="9000" :scaleStep="1000" :displayScale="true" color="#7f461b" />
+                    <VerticalBarTotal :signalIds="[108, 109, 110, 111, 112, 113]" title="Total Fuel" unit="L"
+                        :scaleBottom="0" :scaleTop="9000" :scaleStep="1000" :displayScale="true" color="#7f461b" />
                 </div>
-                
+
 
             </div>
             <div class="ui grid type1 cols-mini-2 mini-1 gap-sm mg-top-5">
 
-                    <div class="ui col mini-1" style="height: 220px;">
+                <div class="ui col mini-1" style="height: 220px;">
 
-                        <TankSvgMap
-  src="/ga/tanks/fuelTanks.svg"
-  targetGroupPrefix="Fuel Tank"
-  :groupIdToTankIndex="{
-    'Fuel Tank 11 Port': 0,
-    'Fuel Tank 11 Stbd': 1,
-    'Fuel Tank 12 Port': 2,
-    'Fuel Tank 12 Stbd': 3,
-    'Fuel Tank 13 Port': 4,
-    'Fuel Tank 13 Stbd': 5
-  }"
-  @tank-clicked="onTankClick"
-/>
+                    <TankSvgMap src="/ga/tanks/fuelTanks.svg" targetGroupPrefix="Fuel Tank" :groupIdToTankIndex="{
+                        'Fuel Tank 11 Port': 0,
+                        'Fuel Tank 11 Stbd': 1,
+                        'Fuel Tank 12 Port': 2,
+                        'Fuel Tank 12 Stbd': 3,
+                        'Fuel Tank 13 Port': 4,
+                        'Fuel Tank 13 Stbd': 5
+                    }" @tank-clicked="onTankClick" />
 
+                </div>
 
-                    </div>
-
-                    <div class="ui col mini-1" style="height: 220px;">
-                        <RealTimeTrendChart :signalIds="[108, 109, 110, 111, 112, 113]" title="Total Fuel Trend" valueMode="raw"
-                            :maxPoints="60" color="#7f461b" />
-                    </div>
+                <div class="ui col mini-1" style="height: 220px;">
+                    <RealTimeTrendChart :signalIds="[108, 109, 110, 111, 112, 113]" title="Total Fuel Trend"
+                        valueMode="raw" :maxPoints="60" color="#7f461b" />
+                </div>
 
             </div>
         </article>
