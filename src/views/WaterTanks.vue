@@ -41,7 +41,7 @@ function onTankClick({ index }) {
                 </div>
 
                 <div class="ui col mini-1 flex-center">
-                    <VerticalBarTotal :signalIds="[105, 106, 107]" title="Total Water" unit="L" :scaleBottom="0"
+                    <VerticalBarTotal :signalIds="[105, 106, 107]" title="Total Water Tanks" unit="L" :scaleBottom="0"
                         :scaleTop="9000" :scaleStep="1000" :displayScale="true" color="#3498db" />
                 </div>
 
