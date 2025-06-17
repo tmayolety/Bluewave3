@@ -10,7 +10,7 @@ import MainEnginesMenu from '../submenus/MainEnginesMenu.vue'
 
     <MainEnginesMenu />
 
-    <section>
+    <section style="overflow: hidden;">
         <article>
             <div class="ui grid type1 cols-mini-2 gap-med">
 

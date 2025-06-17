@@ -21,7 +21,7 @@ function onTankClick({ index }) {
 
 <template>
     <TanksMenu />
-    <section>
+    <section style="overflow: hidden;">
         <article>
             <div class="ui grid type1 cols-mini-4 gap-med">
 

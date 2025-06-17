@@ -8,7 +8,7 @@ import TextAnalogueValue from '../components/TextAnalogueValue.vue'
 
 <template>
 
-    <section style=" max-height: 100%;">
+    <section style=" max-height: 100%; overflow: hidden;">
         <article>
 
             <div class="ui grid type1 cols-mini-1">

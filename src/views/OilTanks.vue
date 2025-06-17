@@ -19,7 +19,7 @@ function onTankClick({ index }) {
 
 <template>
   <TanksMenu />
-  <section>
+  <section style="overflow: hidden;">
     <article>
       <div class="ui grid type1 cols-mini-6 gap-med">
         <div class="ui col mini-1 flex-center" data-tank-index="0">

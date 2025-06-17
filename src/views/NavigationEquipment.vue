@@ -8,7 +8,7 @@ import SogCog from '../components/SogCog.vue'
 </script>
 
 <template>
-    <section>
+    <section style="overflow: hidden;">
         <article>
 
 

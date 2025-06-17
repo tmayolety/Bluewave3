@@ -54,7 +54,7 @@ const colorAlarmClass = (alarmType, alarmTriggered) => {
 </script>
 
 <template>
-  <section>
+  <section  style="overflow: hidden;">
     <article>
       <div class="ui grid type1 cols-mini-1 pad-lg gap-mini">
         <div class="ui grid cols-mini-1 col mini-1 gap-mini pad-no has-header">

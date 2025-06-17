@@ -5,7 +5,7 @@ import Pump from '../components/Pump.vue';
 </script>
 
 <template>
-<section>
+<section style="overflow: hidden;">
         <article>
 
             <div class="ui grid type1 cols-mini-1  phone-1">

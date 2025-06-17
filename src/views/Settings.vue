@@ -5,7 +5,7 @@ import IconDigitalLine from '../components/IconDigitalLine.vue'
 
 <template>
 
-    <section>
+    <section style="overflow: hidden;">
 
         <article>
 

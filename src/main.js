@@ -19,12 +19,11 @@ app.component('v-chart', VueECharts)
 
 startWebSocketBridge();
 
-// Inyección global al contexto Vue
 app.provide('alarmsMainData', alarmsMainData);
 app.provide('getSignalValueRaw', (signalId) => valueRaw.value[signalId]);
 app.provide('getSignalValueEscalated', (signalId) => valueEscalated.value[signalId]);
 app.provide('getLimits', (signalId) => limits.value[signalId]);
-app.provide('sendCommand', sendCommand); // <--- Añadido aquí
+app.provide('sendCommand', sendCommand);
 
 app.use(router);
 app.mount('#app');

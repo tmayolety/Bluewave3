@@ -6,7 +6,7 @@
 
 <template>
 
-    <section>
+    <section  style="overflow: hidden;">
 
         <article style="padding: 6px!important;">
 
