@@ -29,7 +29,7 @@ const activeLabel = useActiveLabel()
   display: flex;
   position: relative;
   height: 3rem;
-  background-color: #123851;
+  background-color: #12354c;
 }
 
 .header-title-container {

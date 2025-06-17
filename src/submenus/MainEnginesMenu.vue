@@ -37,13 +37,11 @@ watch(
 <style scoped>
 .submenu {
   grid-area: menu-tabs;
-  background-color: #1c1f23;
+  background-color: #0a1e2b;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 2.2rem;
-  border-top: 1px solid #2a2f35;
-  border-bottom: 1px solid #2a2f35;
 }
 
 .submenu ul {
