@@ -71,7 +71,7 @@ onMounted(() => {
   left: 0;
   height: 100vh;
   color: white;
-  background-color: #383c41;
+  background-color: #123851;
   transition: width 0.3s ease;
 }
 
@@ -122,8 +122,8 @@ onMounted(() => {
 }
 
 .menu-list li.active a {
-  background-color: #222222;
-  border-left: 4px solid #3498db;
+  background-color: #3498db;
+  border-left: 4px solid #ffffff;
   padding: 0.5rem 1.1rem;
 }
 
