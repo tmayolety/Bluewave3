@@ -12,7 +12,7 @@ import IconValue from '../components/IconValue.vue'
 
                     <div class="ui grid cols-mini-3 pad-no gap-med">
 
-                        <div class="ui col mini-3" style="height: 280px; position: relative;">
+                        <div class="ui col mini-3 bilge-svg-container" style="position: relative;">
                             <div class="ui col">
                                 <img src="/ga/decks/bilges.svg" alt="Bilges Diagram" style="width: 100%; height: 100%; object-fit: contain;" />
 
@@ -120,3 +120,14 @@ import IconValue from '../components/IconValue.vue'
         </article>
     </section>
 </template>
+
+<style scoped>
+.bilge-svg-container {
+  height: 280px;
+}
+@media (min-height: 1080px) {
+  .bilge-svg-container {
+    height: 360px;
+  }
+}
+</style>
