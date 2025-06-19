@@ -20,7 +20,9 @@ class PLCWebSocketServer:
     def __init__(self, plc_ip: str = '192.168.11.12', plc_port: int = 502, 
                  websocket_port: int = 8765, poll_interval: float = 1.0, 
                  max_chunk_size: int = 120, slave_id: int = 1):
-        self.plc_ip = plc_ip
+        self.primary_plc_ip = '192.168.11.12'
+        self.secondary_plc_ip = '192.168.11.11'
+        self.active_plc_ip = plc_ip
         self.plc_port = plc_port
         self.websocket_port = websocket_port
         self.poll_interval = poll_interval
@@ -31,16 +33,33 @@ class PLCWebSocketServer:
         self.required_addresses = sorted(set(
             int(cfg["address"]) for cfg in self.signals_config.values()
         ))
+       
         self.chunks = self._prepare_chunks()
         self.client: Optional[AsyncModbusTcpClient] = None
         self.connection_status = False
+        self.watchdog_signal_id = self._find_watchdog_signal_id()
+        self.reconnecting = False
+        self.last_watchdog_value = None
+        self.last_watchdog_change = None
+        self.watchdog_timeout = 5  # segundos, ajustable
+
+    def _find_watchdog_signal_id(self) -> Optional[str]:
+        for sid, cfg in self.signals_config.items():
+            if (
+                str(cfg.get("address", "")) == "0"
+                and int(cfg.get("bit", 0)) == 0
+                and cfg.get("type") == "digital"
+            ):
+                return sid
+        logger.error("❌ No se encontró señal watchdog (address 0, bit 0, digital) en signals.json")
+        return None
 
     def _prepare_chunks(self) -> List[Dict[str, int]]:
         if not self.required_addresses:
             return []
         chunks = []
-        min_addr = max(min(self.required_addresses) - 1, 0)
-        max_addr = max(self.required_addresses) - 1
+        min_addr = min(self.required_addresses)
+        max_addr = max(self.required_addresses)
         for start in range(min_addr, max_addr + 1, self.max_chunk_size):
             count = min(self.max_chunk_size, max_addr - start + 1)
             chunks.append({
@@ -52,18 +71,24 @@ class PLCWebSocketServer:
         return chunks
 
     async def connect_to_plc(self) -> bool:
+        if self.reconnecting:
+            logger.info("⏳ Already reconnecting, skipping new connection attempt.")
+            return False
+        self.reconnecting = True
         try:
-            self.client = AsyncModbusTcpClient(self.plc_ip, port=self.plc_port)
+            self.client = AsyncModbusTcpClient(self.active_plc_ip, port=self.plc_port)
             await self.client.connect()
             self.connection_status = self.client.connected
             if self.connection_status:
-                logger.info(f"✅ Connected to PLC at {self.plc_ip}:{self.plc_port}")
+                logger.info(f"✅ Connected to PLC at {self.active_plc_ip}:{self.plc_port}")
             else:
-                logger.error(f"❌ Failed to connect to PLC {self.plc_ip}:{self.plc_port}")
+                logger.error(f"❌ Failed to connect to PLC {self.active_plc_ip}:{self.plc_port}")
             return self.connection_status
         except Exception as e:
             logger.error(f"❌ Exception connecting to PLC: {e}")
             return False
+        finally:
+            self.reconnecting = False
 
     async def read_modbus_chunk(self, chunk: Dict[str, int]):
         try:
@@ -106,7 +131,7 @@ class PLCWebSocketServer:
                 return None
             timestamp = time.time()
             for sid, cfg in self.signals_config.items():
-                addr = int(cfg["address"]) - 1
+                addr = int(cfg["address"])
                 if addr in register_map:
                     reg_value = register_map[addr]
                     if cfg["type"] == "analogue":
@@ -118,7 +143,7 @@ class PLCWebSocketServer:
                         continue
                     result[sid] = {
                         "value": value,
-                        "address": addr + 1,
+                        "address": addr,
                         "description": cfg.get("description", ""),
                         "type": cfg["type"],
                         "bit": cfg.get("bit") if cfg["type"] == "digital" else None,
@@ -126,11 +151,51 @@ class PLCWebSocketServer:
                     }
                 else:
                     logger.warning(f"⚠️ Signal {sid} address {cfg['address']} not found in read data")
+            # --- Watchdog robust logic ---
+            current_time = time.time()
+            if self.watchdog_signal_id and self.watchdog_signal_id in result:
+                watchdog_value = result[self.watchdog_signal_id]["value"]
+                if self.last_watchdog_value != watchdog_value:
+                    self.last_watchdog_change = current_time
+                    self.last_watchdog_value = watchdog_value
+                    logger.debug(f"🔄 Watchdog toggled to {watchdog_value}")
+                else:
+                    if self.last_watchdog_change and (current_time - self.last_watchdog_change) > self.watchdog_timeout:
+                        logger.warning(f"🚨 Watchdog frozen! No toggling in >{self.watchdog_timeout} seconds")
+                        if self.active_plc_ip != self.secondary_plc_ip:
+                            logger.warning(f"⚠️ Switching to secondary PLC ({self.secondary_plc_ip})")
+                            await self._switch_plc(self.secondary_plc_ip)
+                    # No failback automático: solo cambia si el watchdog se congela
             return result
         except Exception as e:
             logger.error(f"❌ Error reading PLC data: {e}")
             self.connection_status = False
             return None
+
+    async def _safe_close_client(self):
+        if self.client:
+            try:
+                await self.client.close()
+                logger.info("🔒 Modbus client closed")
+            except Exception as e:
+                logger.warning(f"⚠️ Exception closing Modbus client: {e}")
+            finally:
+                self.client = None
+
+    async def _switch_plc(self, new_ip: str):
+        logger.info(f"🔄 Switching PLC from {self.active_plc_ip} to {new_ip}")
+        await self._safe_close_client()
+        self.active_plc_ip = new_ip
+        self.connection_status = False
+        await asyncio.sleep(0.5)
+        await self.connect_to_plc()
+        if self.connection_status:
+            self.set_new_primary(new_ip)
+
+    def set_new_primary(self, new_primary_ip):
+        if new_primary_ip == self.primary_plc_ip:
+            return  # Ya es el principal
+        self.secondary_plc_ip, self.primary_plc_ip = self.primary_plc_ip, new_primary_ip
 
     async def handle_modbus_command(self, command):
         try:
@@ -183,6 +248,12 @@ class PLCWebSocketServer:
                     await self.connect_to_plc()
                     if not self.connection_status:
                         consecutive_errors += 1
+                        if consecutive_errors == max_consecutive_errors:
+                            logger.warning(f"❌ Unable to connect to PLC at {self.active_plc_ip}. Switching to backup.")
+                            target_ip = (
+                                self.secondary_plc_ip if self.active_plc_ip == self.primary_plc_ip else self.primary_plc_ip
+                            )
+                            await self._switch_plc(target_ip)
                         if consecutive_errors >= max_consecutive_errors:
                             logger.warning(f"⚠️ {consecutive_errors} consecutive errors. Waiting longer...")
                             await asyncio.sleep(10)
@@ -196,7 +267,7 @@ class PLCWebSocketServer:
                         "signals": signals,
                         "plc_status": {
                             "connected": self.connection_status,
-                            "ip": self.plc_ip,
+                            "ip": self.active_plc_ip,
                             "chunks": len(self.chunks),
                             "timestamp": time.time()
                         }
@@ -236,8 +307,19 @@ class PLCWebSocketServer:
             except asyncio.CancelledError:
                 pass
 
+    async def _try_connect_both_plcs(self):
+        for ip in [self.primary_plc_ip, self.secondary_plc_ip]:
+            self.active_plc_ip = ip
+            logger.info(f"🌐 Attempting connection to PLC at {ip}")
+            connected = await self.connect_to_plc()
+            if connected:
+                logger.info(f"✅ Using PLC at {ip}")
+                return True
+        logger.error("❌ Could not connect to any PLC")
+        return False
+
     async def start_server(self):
-        await self.connect_to_plc()
+        await self._try_connect_both_plcs()
         logger.info(f"🚀 Starting WebSocket server at ws://localhost:{self.websocket_port}")
         async with websockets.serve(
             self.websocket_handler,
@@ -250,9 +332,8 @@ class PLCWebSocketServer:
             await asyncio.Future()
 
     async def close(self):
-        if self.client:
-            await self.client.close()
-            logger.info("🔒 Modbus connection closed")
+        await self._safe_close_client()
+        logger.info("🔒 Modbus connection closed")
 
 async def main():
     server = PLCWebSocketServer(

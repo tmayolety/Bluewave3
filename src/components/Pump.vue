@@ -65,37 +65,27 @@ const stopPump = async () => {
 <template>
   <div class="pump-control">
     <div class="pump-label">{{ props.label }}</div>
-    
-    <div class="pump-switch" :class="buttonState">
-      <!-- Parte superior - RUN -->
-      <div 
-        class="pump-button pump-run" 
-        :class="{ active: isRunning, disabled: buttonState === 'starting' }"
-        @click="startPump"
+    <div class="pump-switch">
+      <!-- RUN (arriba) -->
+      <div
+        class="pump-button pump-run"
+        :class="{ active: isRunning, disabled: isRunning || buttonState === 'starting' }"
+        @click="!isRunning && buttonState !== 'starting' ? startPump() : null"
       >
-        <span class="button-text">{{ buttonState === 'starting' ? 'STARTING...' : 'RUN' }}</span>
+        <span class="button-text">RUN</span>
       </div>
-      
-      <!-- Separador -->
-      <div class="pump-separator"></div>
-      
-      <!-- Parte inferior - STOP -->
-      <div 
-        class="pump-button pump-stop" 
-        :class="{ active: !isRunning, disabled: buttonState === 'stopping' }"
-        @click="stopPump"
+      <!-- Estado (centro) -->
+      <div class="pump-status" :class="{ running: isRunning, stopped: !isRunning }">
+        <span class="status-text">{{ isRunning ? 'RUNNING' : 'STOPPED' }}</span>
+      </div>
+      <!-- STOP (abajo) -->
+      <div
+        class="pump-button pump-stop"
+        :class="{ active: isRunning, disabled: !isRunning || buttonState === 'stopping' }"
+        @click="isRunning && buttonState !== 'stopping' ? stopPump() : null"
       >
-        <span class="button-status">{{ isRunning ? 'RUNNING' : 'STOPPED' }}</span>
-        <span class="button-text">{{ buttonState === 'stopping' ? 'STOPPING...' : 'STOP' }}</span>
+        <span class="button-text">STOP</span>
       </div>
-    </div>
-    
-    <!-- Indicador de estado -->
-    <div class="pump-feedback">
-      <span class="feedback-label">Status:</span>
-      <span class="feedback-value" :class="{ running: isRunning, stopped: !isRunning }">
-        {{ isRunning ? 'RUNNING' : 'STOPPED' }}
-      </span>
     </div>
   </div>
 </template>
@@ -105,131 +95,122 @@ const stopPump = async () => {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
   min-width: 120px;
 }
-
 .pump-label {
   font-weight: bold;
   font-size: 14px;
-  color: #333;
+  color: #bfc9d1;
   text-align: center;
+  margin-bottom: 10px;
 }
-
 .pump-switch {
   display: flex;
   flex-direction: column;
-  border-radius: 12px;
+  border-radius: 22px;
   overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  transition: all 0.3s ease;
+  background: #11222b;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
   min-width: 100px;
-  min-height: 120px;
+  width: 90px;
 }
-
 .pump-button {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 15px 20px;
+  height: 56px;
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  border-radius: 18px 18px 0 0;
   cursor: pointer;
-  transition: all 0.2s ease;
   user-select: none;
-  position: relative;
+  transition: background 0.2s, color 0.2s;
 }
-
-.pump-button.disabled {
-  cursor: not-allowed;
+.pump-run {
+  background: #19303a;
+  color: #6c879a;
+  border-radius: 18px 18px 0 0;
+}
+.pump-run.active {
+  background: #27ae60;
+  color: #fff;
+}
+.pump-run.disabled {
+  pointer-events: none;
   opacity: 0.7;
 }
-
-.pump-run {
-  background: linear-gradient(135deg, #4a90e2, #357abd);
-  color: white;
-  flex: 1;
-}
-
-.pump-run:hover:not(.disabled) {
-  background: linear-gradient(135deg, #357abd, #2868a0);
-}
-
-.pump-run.active {
-  background: linear-gradient(135deg, #2e7d32, #1b5e20);
-  box-shadow: inset 0 2px 4px rgba(0,0,0,0.3);
-}
-
-.pump-separator {
-  height: 2px;
-  background: #333;
-}
-
-.pump-stop {
-  background: linear-gradient(135deg, #e53935, #c62828);
-  color: white;
-  flex: 1.2;
-}
-
-.pump-stop:hover:not(.disabled) {
-  background: linear-gradient(135deg, #c62828, #b71c1c);
-}
-
-.pump-stop.active {
-  background: linear-gradient(135deg, #d32f2f, #b71c1c);
-  box-shadow: inset 0 2px 4px rgba(0,0,0,0.3);
-}
-
-.button-text {
+.pump-status {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 38px;
+  font-size: 18px;
+  font-family: 'Roboto Mono', 'Consolas', monospace;
   font-weight: bold;
-  font-size: 14px;
+  letter-spacing: 1px;
+  background: #c0392b;
+  color: #fff;
+  border-radius: 0;
+  margin: 0;
+}
+.pump-status.running {
+  background: #27ae60;
+  color: #fff;
+}
+.pump-status.stopped {
+  background: #c0392b;
+  color: #fff;
+}
+.status-text {
+  width: 100%;
+  text-align: center;
+}
+.pump-stop {
+  background: #b71c1c;
+  color: #fff;
+  border-radius: 0 0 18px 18px;
+  height: 56px;
+  font-size: 22px;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3) inset;
+}
+.pump-stop.active {
+  background: #b71c1c;
+  color: #fff;
+}
+.pump-stop.disabled {
+  pointer-events: none;
+  opacity: 0.7;
+}
+.button-text {
+  font-size: 20px;
+  font-weight: bold;
   letter-spacing: 1px;
 }
-
-.button-status {
-  font-size: 11px;
-  font-weight: normal;
-  opacity: 0.9;
-  margin-bottom: 4px;
-}
-
-.pump-feedback {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 12px;
-}
-
-.feedback-label {
-  color: #666;
-}
-
-.feedback-value {
-  font-weight: bold;
-  padding: 2px 8px;
-  border-radius: 4px;
-}
-
-.feedback-value.running {
-  background: #4caf50;
-  color: white;
-}
-
-.feedback-value.stopped {
-  background: #f44336;
-  color: white;
-}
-
-/* Animaciones */
-.pump-switch.starting .pump-run {
-  animation: pulse 1s infinite;
-}
-
-.pump-switch.stopping .pump-stop {
-  animation: pulse 1s infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.7; }
+@media (max-width: 500px) {
+  .pump-control {
+    min-width: 60px;
+  }
+  .pump-switch {
+    width: 48px;
+    min-width: 48px;
+  }
+  .pump-button, .pump-stop, .pump-run {
+    height: 28px;
+    font-size: 12px;
+    border-radius: 10px 10px 0 0;
+  }
+  .pump-status {
+    height: 18px;
+    font-size: 10px;
+  }
+  .button-text {
+    font-size: 12px;
+  }
+  .pump-stop {
+    border-radius: 0 0 10px 10px;
+    font-size: 14px;
+  }
 }
 </style>

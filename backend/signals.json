@@ -1,4 +1,5 @@
 {
+  
   "1": {
     "address": 426,
     "description": "Sensor 1 Analogue",
@@ -22,11 +23,6 @@
   "5": {
     "address": 430,
     "description": "Sensor 5 Analogue",
-    "type": "analogue"
-  },
-  "6": {
-    "address": 431,
-    "description": "Sensor 6 Analogue",
     "type": "analogue"
   },
   "7": {
@@ -4427,6 +4423,12 @@
     "address": 6,
     "bit": 0,
     "description": "Digital Signal 800",
+    "type": "digital"
+  },
+  "806": {
+    "address": 0,
+    "bit": 0,
+    "description": "Watchdog PLC",
     "type": "digital"
   }
 }
