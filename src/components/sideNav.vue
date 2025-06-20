@@ -1,6 +1,6 @@
 <script setup>
 import { RouterLink, useRoute } from 'vue-router'
-import { ref, watch, onMounted } from 'vue'
+import { ref, watch, onMounted, onBeforeUnmount } from 'vue'
 import menuItems from '../../buildApp.json'
 import { useActiveLabel } from '../composables/useActiveLabel'
 
@@ -27,23 +27,46 @@ function toggleMenu() {
   }
 }
 
+function handleMenuItemClick() {
+  if (!collapsed.value) {
+    collapsed.value = true
+    const main = document.getElementById('mainContent')
+    if (main) {
+      main.setAttribute('data-nav-collapsed', collapsed.value)
+    }
+  }
+}
+
+function handleClickOutside(event) {
+  const aside = document.querySelector('.side-nav')
+  if (aside && !aside.contains(event.target) && !collapsed.value) {
+    collapsed.value = true
+    const main = document.getElementById('mainContent')
+    if (main) {
+      main.setAttribute('data-nav-collapsed', collapsed.value)
+    }
+  }
+}
+
 onMounted(() => {
   const main = document.getElementById('mainContent')
   if (main) {
     main.setAttribute('data-nav-collapsed', collapsed.value)
   }
+  document.addEventListener('click', handleClickOutside)
+})
+
+onBeforeUnmount(() => {
+  document.removeEventListener('click', handleClickOutside)
 })
 </script>
 
 
 <template>
-  <aside :class="['side-nav', { collapsed, expanded: !collapsed }]">
+  <aside :class="['side-nav', { collapsed, expanded: !collapsed }]" @click.stop>
     <div class="top-bar">
-      <button class="toggle-btn" @click="toggleMenu">
+      <button class="toggle-btn" @click.stop="toggleMenu">
         <span v-if="collapsed">☰</span>
-        <span v-else>
-            <svg class="ui icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="white"><g id="arrow-1-left"><path d="M40.79,50,78.07,87.06a7.69,7.69,0,0,1,0,10.75,7.42,7.42,0,0,1-10.53,0L19.74,50,67.54,2.19A7.19,7.19,0,0,1,72.81,0a8.24,8.24,0,0,1,5.26,2.19,7.19,7.19,0,0,1,2.19,5.27,7.18,7.18,0,0,1-2.19,5.26Z"/></g></svg>
-        </span>
       </button>
     </div>
 
@@ -53,7 +76,7 @@ onMounted(() => {
           v-for="(item, index) in menuItems.headers"
           :key="index"
           :class="{ 'active': activeIndex === index }">
-          <RouterLink :to="item.path">
+          <RouterLink :to="item.path" @click="handleMenuItemClick">
             <div class="icon" v-html="item.svg" />
             <span v-if="!collapsed" class="label">{{ item.label }}</span>
           </RouterLink>
@@ -72,11 +95,13 @@ onMounted(() => {
   height: 100vh;
   color: white;
   background-color: #123851;
-  transition: width 0.3s ease;
+  transition: width 0.3s cubic-bezier(.4,0,.2,1), background-color 0.3s cubic-bezier(.4,0,.2,1);
+  overflow-x: hidden;
+  outline: none;
 }
 
 .side-nav.collapsed {
-  position: absolute; /* Lo posicionamos sobre el placeholder */
+  position: absolute;
   width: 60px;
   z-index: 10;
 }
@@ -150,5 +175,12 @@ onMounted(() => {
 .label {
   white-space: nowrap;
   font-size: small;
+  opacity: 1;
+  transition: opacity 0.25s cubic-bezier(.4,0,.2,1) 0.08s;
+}
+.side-nav.collapsed .label {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.1s cubic-bezier(.4,0,.2,1) 0s;
 }
 </style>

@@ -6,7 +6,8 @@ const props = defineProps([
   'startSignalId',
   'stopSignalId',
   'label',
-  'commandMode' // 'pulse' o 'fixed'
+  'commandMode', // 'pulse' o 'fixed'
+  'header' // Nueva prop para la cabecera
 ])
 
 const getSignalValueRaw = inject('getSignalValueRaw')
@@ -34,7 +35,7 @@ const startPump = async () => {
       await sendCommand({
         signalId: props.startSignalId,
         value: 1,
-        mode: props.commandMode || 'pulse' // por defecto 'pulse'
+        mode: props.commandMode || 'pulse'
       })
       console.log(`[PUMP] Comando START enviado para señal ${props.startSignalId}`)
     } catch (error) {
@@ -64,6 +65,7 @@ const stopPump = async () => {
 
 <template>
   <div class="pump-control">
+    <div class="pump-header" v-if="props.header">{{ props.header }}</div>
     <div class="pump-label">{{ props.label }}</div>
     <div class="pump-switch">
       <!-- RUN (arriba) -->
@@ -95,42 +97,53 @@ const stopPump = async () => {
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: 120px;
+  min-width: 150px;
+  max-width: 190px;
+  margin: 0 auto;
+}
+.pump-header {
+  font-size: 16px;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 8px;
+  white-space: pre-line;
 }
 .pump-label {
   font-weight: bold;
-  font-size: 14px;
-  color: #bfc9d1;
+  font-size: 15px;
+  color: #fff;
   text-align: center;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 .pump-switch {
   display: flex;
   flex-direction: column;
-  border-radius: 22px;
+  border-radius: 24px;
   overflow: hidden;
-  background: #11222b;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
-  min-width: 100px;
-  width: 90px;
+  background: #0a1e2b;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.4);
+  min-width: 120px;
+  width: 100%;
+  max-width: 160px;
 }
 .pump-button {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 56px;
-  font-size: 20px;
+  height: 100px;
+  font-size: 22px;
   font-weight: bold;
   letter-spacing: 1px;
-  border-radius: 18px 18px 0 0;
+  border-radius: 12px 12px 0 0;
   cursor: pointer;
   user-select: none;
   transition: background 0.2s, color 0.2s;
+  color: #fff;
 }
 .pump-run {
   background: #19303a;
-  color: #6c879a;
-  border-radius: 18px 18px 0 0;
+  color: #fff;
+  border-radius: 12px 12px 0 0;
 }
 .pump-run.active {
   background: #27ae60;
@@ -144,8 +157,8 @@ const stopPump = async () => {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 38px;
-  font-size: 18px;
+  height: 54px;
+  font-size: 19px;
   font-family: 'Roboto Mono', 'Consolas', monospace;
   font-weight: bold;
   letter-spacing: 1px;
@@ -165,12 +178,13 @@ const stopPump = async () => {
 .status-text {
   width: 100%;
   text-align: center;
+  color: #fff;
 }
 .pump-stop {
   background: #b71c1c;
   color: #fff;
-  border-radius: 0 0 18px 18px;
-  height: 56px;
+  border-radius: 0 0 12px 12px;
+  height: 100px;
   font-size: 22px;
   font-weight: bold;
   box-shadow: 0 2px 8px rgba(0,0,0,0.3) inset;
@@ -184,33 +198,72 @@ const stopPump = async () => {
   opacity: 0.7;
 }
 .button-text {
-  font-size: 20px;
+  font-size: 22px;
   font-weight: bold;
   letter-spacing: 1px;
+  color: #fff;
 }
-@media (max-width: 500px) {
+@media (min-width: 1200px) {
   .pump-control {
-    min-width: 60px;
+    min-width: 180px;
+    max-width: 230px;
   }
   .pump-switch {
-    width: 48px;
-    min-width: 48px;
+    min-width: 150px;
+    max-width: 200px;
   }
-  .pump-button, .pump-stop, .pump-run {
-    height: 28px;
-    font-size: 12px;
-    border-radius: 10px 10px 0 0;
+  .pump-button, .pump-stop {
+    height: 110px;
+    font-size: 26px;
+  }
+  .pump-status {
+    height: 70px;
+    font-size: 24px;
+  }
+  .button-text {
+    font-size: 26px;
+  }
+}
+@media (max-width: 1080px) {
+  .pump-control {
+    min-width: 110px;
+    max-width: 140px;
+  }
+  .pump-switch {
+    min-width: 90px;
+    max-width: 110px;
+  }
+  .pump-button, .pump-stop {
+    height: 38px;
+    font-size: 13px;
   }
   .pump-status {
     height: 18px;
     font-size: 10px;
   }
   .button-text {
-    font-size: 12px;
+    font-size: 13px;
   }
-  .pump-stop {
-    border-radius: 0 0 10px 10px;
-    font-size: 14px;
+}
+@media (max-width: 700px) {
+  .pump-control {
+    min-width: 70px;
+    max-width: 90px;
+  }
+  .pump-switch {
+    min-width: 50px;
+    max-width: 60px;
+  }
+  .pump-button, .pump-stop {
+    height: 32px;
+    font-size: 9px;
+  }
+  .pump-status {
+    height: 14px;
+    font-size: 7px;
+  }
+  .button-text {
+    font-size: 9px;
   }
 }
 </style>

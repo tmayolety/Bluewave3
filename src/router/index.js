@@ -13,7 +13,11 @@ import Batteries from '../views/Batteries.vue'
 import FireSystem1 from '@/views/FireSystem1.vue'
 import FireSystem2 from '@/views/FireSystem2.vue'
 import FireSystem3 from '@/views/FireSystem3.vue'
-import Doors from '@/views/Doors.vue'
+import SunDeckDoors from '@/views/SunDeckDoors.vue'
+import UpperDeckDoors from '@/views/UpperDeckDoors.vue'
+import MainDeckDoors from '@/views/MainDeckDoors.vue'
+import LowerDeckDoors from '@/views/LowerDeckDoors.vue'
+import SubDeckDoors from '@/views/SubDeckDoors.vue'
 import RefrigerationSystem from '../views/RefrigerationSystem.vue'
 import Aux1 from '../views/Aux1.vue'
 import Aux2 from '../views/Aux2.vue'
@@ -109,9 +113,29 @@ const router = createRouter({
     }
     ,
     {
-      path: '/doors',
-      name: 'doors',
-      component: Doors
+      path: '/sundeck',
+      name: 'sundeck',
+      component: SunDeckDoors
+    },
+        {
+      path: '/upperdeck',
+      name: 'upperdeck',
+      component: UpperDeckDoors
+    },
+        {
+      path: '/maindeck',
+      name: 'maindeck',
+      component: MainDeckDoors
+    },
+        {
+      path: '/lowerdeck',
+      name: 'lowerdeck',
+      component: LowerDeckDoors
+    },
+        {
+      path: '/subdeck',
+      name: 'subdeck',
+      component: SubDeckDoors
     },
     {
       path: '/refrigerationSystem',
